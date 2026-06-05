@@ -1299,8 +1299,78 @@
             alert(`✅ Arquivo exportado: vulnerabilities-${new Date().toISOString().slice(0, 10)}.csv`);
         }
 
+        // Load data from JSON file
+        let allVulnerabilities = [];
+
+        async function loadData() {
+            try {
+                const response = await fetch('./data.json');
+                const data = await response.json();
+
+                if (data.vulnerabilities && Array.isArray(data.vulnerabilities)) {
+                    allVulnerabilities = data.vulnerabilities;
+                    populateTable();
+                    updateStatistics();
+                    console.log(`✅ Dados carregados: ${allVulnerabilities.length} vulnerabilidades`);
+                }
+            } catch (error) {
+                console.warn('⚠️ Não foi possível carregar dados.json, usando dados de exemplo');
+                // Keep using the hardcoded data if JSON fails to load
+            }
+        }
+
+        function populateTable() {
+            const tbody = document.getElementById('vuln-tbody');
+            if (!tbody || allVulnerabilities.length === 0) return;
+
+            tbody.innerHTML = '';
+
+            allVulnerabilities.forEach(vuln => {
+                const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
+                                  vuln.status === 'Em Progresso' ? 'status-inprogress' : 'status-resolved';
+                const priorityClass = vuln.classificacao ? `priority-${vuln.classificacao.toLowerCase()}` : 'priority-p3';
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${vuln.chave}</strong></td>
+                    <td>${vuln.tipo}</td>
+                    <td>${vuln.resumo.substring(0, 60)}...</td>
+                    <td><span class="status-badge ${statusClass}">${vuln.status}</span></td>
+                    <td><span class="status-badge ${priorityClass}">${vuln.classificacao || 'P3'}</span></td>
+                    <td>${vuln.responsavel}</td>
+                    <td>${vuln.categorias.substring(0, 30)}...</td>
+                    <td>${vuln.criado}</td>
+                    <td>${vuln.dias_abertos}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            filterVulnerabilities();
+        }
+
+        function updateStatistics() {
+            if (allVulnerabilities.length === 0) return;
+
+            const total = allVulnerabilities.length;
+            const backlog = allVulnerabilities.filter(v => v.status === 'Backlog').length;
+            const resolved = allVulnerabilities.filter(v => v.status === 'Concluído').length;
+            const p1 = allVulnerabilities.filter(v => v.classificacao === 'P1').length;
+
+            // Update KPI cards
+            const kpiCards = document.querySelectorAll('#vulnerabilities .kpi-value');
+            if (kpiCards.length >= 4) {
+                kpiCards[0].textContent = total.toLocaleString('pt-BR');
+                kpiCards[1].textContent = p1 || '0';
+                kpiCards[2].textContent = backlog.toLocaleString('pt-BR');
+                kpiCards[3].textContent = resolved.toLocaleString('pt-BR');
+            }
+        }
+
         // Add event listeners for real-time filtering
         document.addEventListener('DOMContentLoaded', function() {
+            // Load external data first
+            loadData();
+
             const filterInputs = [
                 'search-vuln',
                 'status-filter',
