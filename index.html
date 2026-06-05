@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Silence Tech Corp (FY27) - Security Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
         * {
             margin: 0;
@@ -375,53 +374,23 @@
         }
     </style>
 </head>
-<body x-data="dashboard()" @load="initCharts()">
+<body>
     <div class="header">
         <div class="header-content">
             <h1>🔒 The Silence Tech Corp (FY27)</h1>
             <p>Security Dashboard - Vulnerabilities & Tickets</p>
         </div>
         <div class="header-controls">
-            <button class="btn btn-secondary" @click="toggleDarkMode()" title="Toggle dark mode">
+            <button class="btn btn-secondary" onclick="toggleDarkMode()" title="Toggle dark mode">
                 🌙 Dark Mode
             </button>
-            <button class="btn btn-secondary" @click="window.print()" title="Print or export as PDF">
+            <button class="btn btn-secondary" onclick="window.print()" title="Print or export as PDF">
                 🖨️ Print
             </button>
         </div>
     </div>
 
     <div class="container">
-        <div class="filters">
-            <div class="filter-group">
-                <label class="filter-label">Status:</label>
-                <select @change="updateCharts()">
-                    <option value="">All Statuses</option>
-                    <option value="Backlog">Backlog</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Concluído">Completed</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label class="filter-label">Priority:</label>
-                <select @change="updateCharts()">
-                    <option value="">All Priorities</option>
-                    <option value="P1">P1 (Critical)</option>
-                    <option value="P2">P2 (High)</option>
-                    <option value="P3">P3 (Medium)</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label class="filter-label">Team:</label>
-                <select @change="updateCharts()">
-                    <option value="">All Teams</option>
-                    <option value="Tech Corp">Tech Corp</option>
-                    <option value="People">People</option>
-                    <option value="Outros">Others</option>
-                </select>
-            </div>
-        </div>
-
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-label">Total Vulnerabilities</div>
@@ -547,136 +516,135 @@
     </div>
 
     <script>
-        function dashboard() {
-            return {
-                darkMode: localStorage.getItem('darkMode') === 'true',
-                charts: {},
+        let darkMode = localStorage.getItem('darkMode') === 'true';
 
-                init() {
-                    if (this.darkMode) {
-                        document.body.classList.add('dark-mode');
-                    }
-                },
-
-                toggleDarkMode() {
-                    this.darkMode = !this.darkMode;
-                    localStorage.setItem('darkMode', this.darkMode);
-                    document.body.classList.toggle('dark-mode');
-                    this.updateCharts();
-                },
-
-                initCharts() {
-                    this.createStatusChart();
-                    this.createPriorityChart();
-                    this.createTeamChart();
-                    this.createResponsibleChart();
-                },
-
-                createStatusChart() {
-                    const chart = echarts.init(document.getElementById('statusChart'), this.darkMode ? 'dark' : 'light');
-                    const option = {
-                        color: ['#DC2626', '#10B981', '#3B82F6'],
-                        tooltip: {
-                            trigger: 'item',
-                            formatter: '{a} <br/>{b}: {c} ({d}%)'
-                        },
-                        legend: {
-                            orient: 'bottom',
-                            bottom: 0
-                        },
-                        series: [{
-                            name: 'Status',
-                            type: 'pie',
-                            radius: [0, '70%'],
-                            data: [
-                                {value: 4200, name: 'Backlog'},
-                                {value: 2100, name: 'Concluído'},
-                                {value: 48, name: 'In Progress'}
-                            ],
-                            emphasis: {
-                                itemStyle: {
-                                    shadowBlur: 10,
-                                    shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                }
-                            }
-                        }]
-                    };
-                    chart.setOption(option);
-                    this.charts.status = chart;
-                    window.addEventListener('resize', () => chart.resize());
-                },
-
-                createPriorityChart() {
-                    const chart = echarts.init(document.getElementById('priorityChart'), this.darkMode ? 'dark' : 'light');
-                    const option = {
-                        color: ['#EF4444', '#F59E0B', '#FBBF24'],
-                        tooltip: {trigger: 'axis'},
-                        xAxis: {
-                            type: 'category',
-                            data: ['P1 (Critical)', 'P2 (High)', 'P3 (Medium)']
-                        },
-                        yAxis: {type: 'value'},
-                        series: [{
-                            data: [948, 1900, 3500],
-                            type: 'bar',
-                            itemStyle: {borderRadius: [4, 4, 0, 0]}
-                        }]
-                    };
-                    chart.setOption(option);
-                    this.charts.priority = chart;
-                    window.addEventListener('resize', () => chart.resize());
-                },
-
-                createTeamChart() {
-                    const chart = echarts.init(document.getElementById('teamChart'), this.darkMode ? 'dark' : 'light');
-                    const option = {
-                        color: ['#3B82F6', '#8B5CF6', '#EC4899'],
-                        tooltip: {trigger: 'axis'},
-                        xAxis: {
-                            type: 'category',
-                            data: ['Tech Corp', 'People', 'Others']
-                        },
-                        yAxis: {type: 'value'},
-                        series: [{
-                            data: [4200, 1500, 648],
-                            type: 'bar',
-                            itemStyle: {borderRadius: [4, 4, 0, 0]}
-                        }]
-                    };
-                    chart.setOption(option);
-                    this.charts.team = chart;
-                    window.addEventListener('resize', () => chart.resize());
-                },
-
-                createResponsibleChart() {
-                    const chart = echarts.init(document.getElementById('responsibleChart'), this.darkMode ? 'dark' : 'light');
-                    const option = {
-                        color: ['#10B981'],
-                        tooltip: {trigger: 'axis'},
-                        xAxis: {
-                            type: 'category',
-                            data: ['Fabiano Vieira', 'Felipe Santos', 'Beatriz Matos', 'Gabriel Branco', 'Others']
-                        },
-                        yAxis: {type: 'value'},
-                        series: [{
-                            data: [1200, 950, 850, 300, 2648],
-                            type: 'bar',
-                            itemStyle: {borderRadius: [4, 4, 0, 0]}
-                        }]
-                    };
-                    chart.setOption(option);
-                    this.charts.responsible = chart;
-                    window.addEventListener('resize', () => chart.resize());
-                },
-
-                updateCharts() {
-                    // Aqui você poderia filtrar os dados baseado na seleção
-                    // Por enquanto, apenas re-renderiza com dark mode
-                    Object.values(this.charts).forEach(chart => chart.resize());
-                }
-            };
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            localStorage.setItem('darkMode', darkMode);
+            document.body.classList.toggle('dark-mode');
+            initCharts();
         }
+
+        if (darkMode) {
+            document.body.classList.add('dark-mode');
+        }
+
+        function initCharts() {
+            setTimeout(() => {
+                createStatusChart();
+                createPriorityChart();
+                createTeamChart();
+                createResponsibleChart();
+            }, 100);
+        }
+
+        function createStatusChart() {
+            const chartDom = document.getElementById('statusChart');
+            const myChart = echarts.init(chartDom, darkMode ? 'dark' : 'light');
+
+            const option = {
+                color: ['#DC2626', '#10B981', '#3B82F6'],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                },
+                legend: {
+                    orient: 'bottom',
+                    bottom: 0
+                },
+                series: [{
+                    name: 'Status',
+                    type: 'pie',
+                    radius: [0, '70%'],
+                    data: [
+                        {value: 4200, name: 'Backlog'},
+                        {value: 2100, name: 'Concluído'},
+                        {value: 48, name: 'In Progress'}
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }]
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createPriorityChart() {
+            const chartDom = document.getElementById('priorityChart');
+            const myChart = echarts.init(chartDom, darkMode ? 'dark' : 'light');
+
+            const option = {
+                color: ['#EF4444'],
+                tooltip: {trigger: 'axis'},
+                xAxis: {
+                    type: 'category',
+                    data: ['P1 (Critical)', 'P2 (High)', 'P3 (Medium)']
+                },
+                yAxis: {type: 'value'},
+                series: [{
+                    data: [948, 1900, 3500],
+                    type: 'bar',
+                    itemStyle: {borderRadius: [4, 4, 0, 0]}
+                }]
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createTeamChart() {
+            const chartDom = document.getElementById('teamChart');
+            const myChart = echarts.init(chartDom, darkMode ? 'dark' : 'light');
+
+            const option = {
+                color: ['#3B82F6'],
+                tooltip: {trigger: 'axis'},
+                xAxis: {
+                    type: 'category',
+                    data: ['Tech Corp', 'People', 'Others']
+                },
+                yAxis: {type: 'value'},
+                series: [{
+                    data: [4200, 1500, 648],
+                    type: 'bar',
+                    itemStyle: {borderRadius: [4, 4, 0, 0]}
+                }]
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createResponsibleChart() {
+            const chartDom = document.getElementById('responsibleChart');
+            const myChart = echarts.init(chartDom, darkMode ? 'dark' : 'light');
+
+            const option = {
+                color: ['#10B981'],
+                tooltip: {trigger: 'axis'},
+                xAxis: {
+                    type: 'category',
+                    data: ['Fabiano Vieira', 'Felipe Santos', 'Beatriz Matos', 'Gabriel Branco', 'Others']
+                },
+                yAxis: {type: 'value'},
+                series: [{
+                    data: [1200, 950, 850, 300, 2648],
+                    type: 'bar',
+                    itemStyle: {borderRadius: [4, 4, 0, 0]}
+                }]
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        window.addEventListener('load', initCharts);
     </script>
 </body>
 </html>
