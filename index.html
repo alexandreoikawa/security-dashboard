@@ -547,29 +547,6 @@
 
         <!-- TAB 1: VULNERABILITIES -->
         <div id="vulnerabilities" class="tab-content active">
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">Total de Vulnerabilidades</div>
-                    <div class="kpi-value">6,348</div>
-                    <div class="kpi-change negative">↑ 12 novas esta semana</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Em Andamento</div>
-                    <div class="kpi-value">3</div>
-                    <div class="kpi-change" id="inprogress-percent">0.0% do total</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Em Backlog</div>
-                    <div class="kpi-value">3,768</div>
-                    <div class="kpi-change" id="backlog-percent">59.4% do total</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Concluídas</div>
-                    <div class="kpi-value">1,316</div>
-                    <div class="kpi-change positive" id="concluido-percent">↓ 20.7% concluídas</div>
-                </div>
-            </div>
-
             <!-- FILTERS -->
             <div class="filters">
                 <h3 style="margin-bottom: 1rem;">Filtros</h3>
@@ -618,6 +595,29 @@
                     <button class="btn btn-primary" onclick="applyFilters('vulnerabilities')">🔍 Aplicar Filtros</button>
                     <button class="btn btn-secondary" onclick="clearFilters('vulnerabilities')">↺ Limpar Filtros</button>
                     <button class="btn btn-secondary export-btn" onclick="exportData('vulnerabilities')">📥 Exportar CSV</button>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Total de Vulnerabilidades</div>
+                    <div class="kpi-value">6,348</div>
+                    <div class="kpi-change negative">↑ 12 novas esta semana</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Em Andamento</div>
+                    <div class="kpi-value">3</div>
+                    <div class="kpi-change" id="inprogress-percent">0.0% do total</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Em Backlog</div>
+                    <div class="kpi-value">3,768</div>
+                    <div class="kpi-change" id="backlog-percent">59.4% do total</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Concluídas</div>
+                    <div class="kpi-value">1,316</div>
+                    <div class="kpi-change positive" id="concluido-percent">↓ 20.7% concluídas</div>
                 </div>
             </div>
 
