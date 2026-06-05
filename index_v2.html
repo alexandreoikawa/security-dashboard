@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Dashboard - Vulnerabilidades</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 28px; margin-bottom: 10px; }
+        .status-indicator {
+            font-size: 14px;
+            padding: 5px 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .kpi-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        .kpi-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .filters-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .filter-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .filter-input {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        input, select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .table-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .result-count {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        thead {
+            background: #ecf0f1;
+            border-bottom: 2px solid #bdc3c7;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .status-backlog {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .status-concluido {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-progresso {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .priority-p1 { background: #ffcdd2; color: #b71c1c; }
+        .priority-p2 { background: #fff9c4; color: #f57f17; }
+        .priority-p3 { background: #e0f2f1; color: #00695c; }
+        .priority-p4 { background: #f3e5f5; color: #512da8; }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c62828;
+        }
+
+        .success-message {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .spinner {
+            display: inline-block;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .kpi-grid { grid-template-columns: 1fr 1fr; }
+            .filter-group { grid-template-columns: 1fr; }
+            .button-group { flex-direction: column; }
+            button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🔒 Dashboard de Segurança</h1>
+            <div class="status-indicator">
+                <span id="status-text">Carregando dados...</span>
+            </div>
+        </header>
+
+        <!-- Messages -->
+        <div id="messages"></div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Total de Vulnerabilidades</div>
+                <div class="kpi-value" id="kpi-total">-</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Críticas (P1)</div>
+                <div class="kpi-value" id="kpi-p1">-</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Em Backlog</div>
+                <div class="kpi-value" id="kpi-backlog">-</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Concluídas</div>
+                <div class="kpi-value" id="kpi-concluido">-</div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-section">
+            <h3 style="margin-bottom: 15px;">🔍 Filtros</h3>
+
+            <div class="filter-group">
+                <div class="filter-input">
+                    <label for="filter-search">Buscar (Chave, Resumo, Responsável)</label>
+                    <input type="text" id="filter-search" placeholder="Digite para buscar...">
+                </div>
+
+                <div class="filter-input">
+                    <label for="filter-status">Status</label>
+                    <select id="filter-status">
+                        <option value="">Todos os Status</option>
+                        <option value="Backlog">Backlog</option>
+                        <option value="Concluído">Concluído</option>
+                    </select>
+                </div>
+
+                <div class="filter-input">
+                    <label for="filter-priority">Prioridade</label>
+                    <select id="filter-priority">
+                        <option value="">Todas as Prioridades</option>
+                        <option value="P1">P1 - Crítica</option>
+                        <option value="P2">P2 - Alta</option>
+                        <option value="P3">P3 - Média</option>
+                        <option value="P4">P4 - Baixa</option>
+                    </select>
+                </div>
+
+                <div class="filter-input">
+                    <label for="filter-responsible">Responsável</label>
+                    <select id="filter-responsible">
+                        <option value="">Todos os Responsáveis</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn-primary" onclick="applyFilters()">🔍 Aplicar Filtros</button>
+                <button class="btn-secondary" onclick="clearAllFilters()">↺ Limpar Tudo</button>
+                <button class="btn-secondary" onclick="exportToCSV()">📥 Exportar CSV</button>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-section">
+            <div class="table-header">
+                <h3>Vulnerabilidades</h3>
+                <div class="result-count" id="result-count">Carregando...</div>
+            </div>
+
+            <div id="table-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <span>Carregando vulnerabilidades...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allData = [];
+        let filteredData = [];
+
+        const showMessage = (message, type = 'info') => {
+            const container = document.getElementById('messages');
+            const div = document.createElement('div');
+            div.className = type === 'error' ? 'error-message' : 'success-message';
+            div.textContent = message;
+            container.innerHTML = '';
+            container.appendChild(div);
+            setTimeout(() => div.remove(), 5000);
+        };
+
+        const loadData = async () => {
+            try {
+                console.log('📥 Carregando dados...');
+                const response = await fetch('./data.json?v=' + Date.now());
+
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (!data.vulnerabilities || !Array.isArray(data.vulnerabilities)) {
+                    throw new Error('Formato de dados inválido');
+                }
+
+                allData = data.vulnerabilities;
+                console.log(`✅ Carregados ${allData.length} registros`);
+
+                document.getElementById('status-text').textContent = `✅ ${allData.length} vulnerabilidades carregadas`;
+
+                populateDropdowns();
+                applyFilters();
+                updateKPIs();
+
+            } catch (error) {
+                console.error('❌ Erro:', error);
+                showMessage(`Erro ao carregar dados: ${error.message}`, 'error');
+                document.getElementById('table-container').innerHTML = `
+                    <div class="error-message">
+                        ❌ Não foi possível carregar os dados. Verifique se data.json existe.
+                    </div>
+                `;
+            }
+        };
+
+        const populateDropdowns = () => {
+            const responsibles = new Set();
+            allData.forEach(v => {
+                if (v.responsavel) responsibles.add(v.responsavel);
+            });
+
+            const select = document.getElementById('filter-responsible');
+            const currentValue = select.value;
+            select.innerHTML = '<option value="">Todos os Responsáveis</option>';
+
+            Array.from(responsibles).sort().forEach(resp => {
+                const option = document.createElement('option');
+                option.value = resp;
+                option.textContent = resp;
+                select.appendChild(option);
+            });
+
+            if (currentValue) select.value = currentValue;
+        };
+
+        const applyFilters = () => {
+            const search = document.getElementById('filter-search').value.toLowerCase().trim();
+            const status = document.getElementById('filter-status').value;
+            const priority = document.getElementById('filter-priority').value;
+            const responsible = document.getElementById('filter-responsible').value;
+
+            filteredData = allData.filter(v => {
+                if (search) {
+                    const searchText = `${v.chave} ${v.resumo} ${v.responsavel}`.toLowerCase();
+                    if (!searchText.includes(search)) return false;
+                }
+
+                if (status && v.status !== status) return false;
+                if (priority && v.classificacao !== priority) return false;
+                if (responsible && v.responsavel !== responsible) return false;
+
+                return true;
+            });
+
+            renderTable();
+            updateResultCount();
+        };
+
+        const renderTable = () => {
+            if (filteredData.length === 0) {
+                document.getElementById('table-container').innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #666;">
+                        Nenhuma vulnerabilidade encontrada com esses filtros.
+                    </div>
+                `;
+                return;
+            }
+
+            const html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">Chave</th>
+                            <th style="width: 60px;">Status</th>
+                            <th style="width: 60px;">Prioridade</th>
+                            <th style="width: 120px;">Responsável</th>
+                            <th>Resumo</th>
+                            <th style="width: 80px;">Sistema</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${filteredData.slice(0, 500).map(v => `
+                            <tr>
+                                <td><strong>${v.chave}</strong></td>
+                                <td>
+                                    <span class="status-badge status-${v.status === 'Backlog' ? 'backlog' : v.status === 'Concluído' ? 'concluido' : 'progresso'}">
+                                        ${v.status}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="status-badge priority-${v.classificacao.toLowerCase()}">
+                                        ${v.classificacao}
+                                    </span>
+                                </td>
+                                <td>${v.responsavel}</td>
+                                <td style="max-width: 400px; overflow: hidden; text-overflow: ellipsis;">
+                                    ${v.resumo.substring(0, 100)}...
+                                </td>
+                                <td>${v.sistema}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                ${filteredData.length > 500 ? `<div style="padding: 10px; color: #666; text-align: center;">Mostrando primeiros 500 de ${filteredData.length} registros</div>` : ''}
+            `;
+
+            document.getElementById('table-container').innerHTML = html;
+        };
+
+        const updateResultCount = () => {
+            const count = document.getElementById('result-count');
+            count.textContent = `Mostrando ${filteredData.length.toLocaleString('pt-BR')} de ${allData.length.toLocaleString('pt-BR')}`;
+        };
+
+        const updateKPIs = () => {
+            const total = allData.length;
+            const p1 = allData.filter(v => v.classificacao === 'P1').length;
+            const backlog = allData.filter(v => v.status === 'Backlog').length;
+            const concluido = allData.filter(v => v.status === 'Concluído').length;
+
+            document.getElementById('kpi-total').textContent = total.toLocaleString('pt-BR');
+            document.getElementById('kpi-p1').textContent = p1.toLocaleString('pt-BR');
+            document.getElementById('kpi-backlog').textContent = backlog.toLocaleString('pt-BR');
+            document.getElementById('kpi-concluido').textContent = concluido.toLocaleString('pt-BR');
+        };
+
+        const clearAllFilters = () => {
+            document.getElementById('filter-search').value = '';
+            document.getElementById('filter-status').value = '';
+            document.getElementById('filter-priority').value = '';
+            document.getElementById('filter-responsible').value = '';
+            applyFilters();
+        };
+
+        const exportToCSV = () => {
+            if (filteredData.length === 0) {
+                alert('Nenhum dado para exportar. Verifique seus filtros.');
+                return;
+            }
+
+            let csv = 'Chave,Status,Prioridade,Responsável,Resumo,Sistema,Criado\n';
+
+            filteredData.forEach(v => {
+                const cols = [
+                    v.chave,
+                    v.status,
+                    v.classificacao,
+                    v.responsavel,
+                    `"${v.resumo.replace(/"/g, '""')}"`,
+                    v.sistema,
+                    v.criado
+                ];
+                csv += cols.join(',') + '\n';
+            });
+
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv));
+            element.setAttribute('download', `vulnerabilities-${new Date().toISOString().slice(0, 10)}.csv`);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+            showMessage(`✅ Exportadas ${filteredData.length} vulnerabilidades para CSV`);
+        };
+
+        // Event listeners
+        document.getElementById('filter-search').addEventListener('input', applyFilters);
+        document.getElementById('filter-status').addEventListener('change', applyFilters);
+        document.getElementById('filter-priority').addEventListener('change', applyFilters);
+        document.getElementById('filter-responsible').addEventListener('change', applyFilters);
+
+        // Load data on startup
+        window.addEventListener('load', loadData);
+    </script>
+</body>
+</html>
