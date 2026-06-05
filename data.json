@@ -113,7 +113,6 @@
       "layer:people-tech",
       "layer:tech-corp",
       "layer_root:tech-business",
-      "pii-leak",
       "priority:P0",
       "priority:P1",
       "priority:P2",
@@ -132,7 +131,7 @@
     ]
   },
   "metadata": {
-    "updated_at": "2026-06-05T16:51:00.316875",
+    "updated_at": "2026-06-05T17:02:06.741773",
     "sheet_id": "1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY",
     "sheet_name": "Página1",
     "source": "Google Sheets - Página1 (via MCP parallel batches)",
@@ -149,6 +148,6 @@
       "batch_6": "A5001:N6000 (999 data)",
       "batch_7": "A6001:N6349 (348 data)"
     },
-    "note": "All 6,348 vulnerabilities from Página1 fetched via MCP parallel reads. Full vulnerability records available but not persisted due to size constraints. Statistics calculated by dashboard using real-time filtering on the complete dataset."
+    "note": "All 6,348 vulnerabilities from Página1 fetched via MCP parallel reads. Sample records displayed; full dataset available via real-time filtering on complete MCP data."
   }
 }
