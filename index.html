@@ -1177,7 +1177,9 @@
 
         // Filter functionality
         function applyFilters(tab) {
+            console.log(`🎯 applyFilters() chamado com tab: ${tab}`);
             if (tab === 'vulnerabilities') {
+                console.log(`🔄 Reaplicando todos os filtros...`);
                 filterVulnerabilities();
             } else {
                 alert(`Filtros para ${tab} em desenvolvimento!`);
@@ -1192,12 +1194,25 @@
 
             const startTime = performance.now();
 
-            // Get filter values
+            // Get filter values - NO TRIM on status/priority, use exact values
             const search = (document.getElementById('search-vuln')?.value || '').toLowerCase().trim();
-            const status = (document.getElementById('status-filter')?.value || '').trim();
-            const priority = (document.getElementById('priority-filter')?.value || '').trim();
-            const responsible = (document.getElementById('responsible-filter')?.value || '').trim();
-            const category = (document.getElementById('category-filter')?.value || '').trim();
+            const statusElement = document.getElementById('status-filter');
+            const status = statusElement ? statusElement.value : '';
+            const priorityElement = document.getElementById('priority-filter');
+            const priority = priorityElement ? priorityElement.value : '';
+            const responsibleElement = document.getElementById('responsible-filter');
+            const responsible = responsibleElement ? responsibleElement.value : '';
+            const categoryElement = document.getElementById('category-filter');
+            const category = categoryElement ? categoryElement.value : '';
+
+            // Debug logging
+            console.log(`🔍 Filter values:`, {
+                search: `"${search}"`,
+                status: `"${status}"`,
+                priority: `"${priority}"`,
+                responsible: `"${responsible}"`,
+                category: `"${category}"`
+            });
 
             const table = document.getElementById('vuln-tbody');
             if (!table) return;
@@ -1207,6 +1222,7 @@
             const fragment = document.createDocumentFragment();
 
             // Filter and collect matching rows
+            let filterDebugCount = 0;
             const filteredVulns = allVulnerabilities.filter(vuln => {
                 // Apply search filter
                 if (search) {
@@ -1216,9 +1232,16 @@
                     }
                 }
 
-                // Apply status filter
-                if (status && vuln.status !== status) {
-                    return false;
+                // Apply status filter with detailed comparison
+                if (status) {
+                    const matches = vuln.status === status;
+                    if (filterDebugCount < 3) {
+                        console.log(`   Status comparison: vuln.status="${vuln.status}" vs filter="${status}" => ${matches}`);
+                        filterDebugCount++;
+                    }
+                    if (!matches) {
+                        return false;
+                    }
                 }
 
                 // Apply priority filter (matching on classificacao field)
@@ -1240,6 +1263,12 @@
             });
 
             visibleCount = filteredVulns.length;
+
+            // Log filter results
+            console.log(`✅ Filtro aplicado: ${visibleCount}/${totalCount} resultados`);
+            if (status) {
+                console.log(`   Status: "${status}" = ${visibleCount} registros`);
+            }
 
             // Clear table and render filtered results
             table.innerHTML = '';
@@ -1439,6 +1468,7 @@
                 return;
             }
 
+            console.log(`📋 populateTable() chamado com ${allVulnerabilities.length} registros`);
             filterVulnerabilities();
         }
 
@@ -1498,13 +1528,15 @@
                 const element = document.getElementById(id);
                 if (element) {
                     // Real-time filtering on input/change
-                    element.addEventListener('change', () => {
-                        console.log(`📝 Filtro alterado: ${id}`);
+                    element.addEventListener('change', (e) => {
+                        console.log(`📝 Filtro alterado: ${id} = "${e.target.value}"`);
                         filterVulnerabilities();
                     });
-                    element.addEventListener('input', () => {
+                    element.addEventListener('input', (e) => {
+                        console.log(`✏️  Input no filtro: ${id} = "${e.target.value}"`);
                         filterVulnerabilities();
                     });
+                    console.log(`✅ Event listener configurado para: ${id}`);
                 } else {
                     console.warn(`⚠️ Elemento não encontrado: ${id}`);
                 }

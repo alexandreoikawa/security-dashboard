@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Teste de Filtro Status</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        select { padding: 8px; margin: 10px 0; width: 300px; }
+        button { padding: 10px 20px; margin: 10px 5px 10px 0; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .results { margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 4px; }
+        .log { background: #1e1e1e; color: #0f0; padding: 15px; margin: 10px 0; border-radius: 4px; font-family: monospace; font-size: 12px; max-height: 300px; overflow-y: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #007bff; color: white; }
+        tr:hover { background: #f5f5f5; }
+        .status-backlog { background: #ffcccc; }
+        .status-progresso { background: #ffffcc; }
+        .status-resolvido { background: #ccffcc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Debug - Teste de Filtro Status</h1>
+
+        <div>
+            <label for="status-select">Selecione um Status:</label>
+            <select id="status-select">
+                <option value="">Todos</option>
+                <option value="Backlog">Backlog</option>
+                <option value="Em Progresso">Em Progresso</option>
+                <option value="Resolvido">Resolvido</option>
+            </select>
+            <button onclick="testFilter()">🔍 Testar Filtro</button>
+            <button onclick="showAllStatuses()">📊 Mostrar Todos os Status</button>
+            <button onclick="clearLog()">Limpar Log</button>
+        </div>
+
+        <div class="log" id="debug-log"></div>
+
+        <div class="results" id="results"></div>
+
+        <table id="results-table" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Chave</th>
+                    <th>Status</th>
+                    <th>Prioridade</th>
+                    <th>Responsável</th>
+                    <th>Resumo (truncado)</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <script>
+        let allData = [];
+        const log = document.getElementById('debug-log');
+
+        function addLog(message) {
+            const timestamp = new Date().toLocaleTimeString('pt-BR');
+            log.innerHTML += `[${timestamp}] ${message}\n`;
+            log.scrollTop = log.scrollHeight;
+            console.log(message);
+        }
+
+        function clearLog() {
+            log.innerHTML = '';
+        }
+
+        async function loadData() {
+            addLog('📥 Carregando data.json...');
+            try {
+                const response = await fetch('./data.json?v=' + Date.now());
+                const data = await response.json();
+                allData = data.vulnerabilities;
+                addLog(`✅ Dados carregados: ${allData.length} registros`);
+                addLog(`📊 Resumo: Backlog=${data.summary.backlog}, Em Progresso=${data.summary.in_progress}, Resolvido=${data.summary.resolved}`);
+
+                // Show data sample
+                if (allData.length > 0) {
+                    addLog(`\n📋 Amostra do primeiro registro:`);
+                    const first = allData[0];
+                    addLog(`   chave: "${first.chave}"`);
+                    addLog(`   status: "${first.status}" (tipo: ${typeof first.status})`);
+                    addLog(`   classificacao: "${first.classificacao}"`);
+                }
+            } catch (error) {
+                addLog(`❌ Erro: ${error.message}`);
+            }
+        }
+
+        function testFilter() {
+            const statusSelect = document.getElementById('status-select');
+            const filterValue = statusSelect.value;
+
+            addLog(`\n🔍 Testando filtro com status: "${filterValue}"`);
+            addLog(`   Tipo do valor: ${typeof filterValue}`);
+            addLog(`   Comprimento: ${filterValue.length}`);
+
+            let results = [];
+            if (filterValue) {
+                results = allData.filter(v => {
+                    const match = v.status === filterValue;
+                    return match;
+                });
+                addLog(`✅ Encontrados ${results.length} registros com status: "${filterValue}"`);
+            } else {
+                results = allData;
+                addLog(`📋 Mostrando todos os ${allData.length} registros`);
+            }
+
+            displayResults(results, filterValue);
+        }
+
+        function showAllStatuses() {
+            addLog(`\n📊 Analisando todos os status únicos:`);
+
+            const statusCounts = {};
+            allData.forEach(v => {
+                if (!statusCounts[v.status]) {
+                    statusCounts[v.status] = 0;
+                }
+                statusCounts[v.status]++;
+            });
+
+            Object.entries(statusCounts).forEach(([status, count]) => {
+                addLog(`   "${status}": ${count} registros`);
+            });
+
+            addLog(`\n✅ Total de status únicos: ${Object.keys(statusCounts).length}`);
+        }
+
+        function displayResults(results, filterValue) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `<strong>Resultados:</strong> ${results.length} registros`;
+
+            const tableBody = document.getElementById('table-body');
+            tableBody.innerHTML = '';
+
+            results.slice(0, 20).forEach(v => {
+                const row = document.createElement('tr');
+                const statusClass =
+                    v.status === 'Backlog' ? 'status-backlog' :
+                    v.status === 'Em Progresso' ? 'status-progresso' :
+                    'status-resolvido';
+
+                row.className = statusClass;
+                row.innerHTML = `
+                    <td>${v.chave}</td>
+                    <td>${v.status}</td>
+                    <td>${v.classificacao}</td>
+                    <td>${v.responsavel}</td>
+                    <td>${v.resumo.substring(0, 50)}...</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            document.getElementById('results-table').style.display = results.length > 0 ? 'table' : 'none';
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            addLog('🚀 Página carregada');
+            loadData();
+        });
+    </script>
+</body>
+</html>
