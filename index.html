@@ -1226,7 +1226,7 @@
             const filteredVulns = allVulnerabilities.filter(vuln => {
                 // Apply search filter
                 if (search) {
-                    const searchableText = `${vuln.chave} ${vuln.resumo} ${vuln.responsavel}`.toLowerCase();
+                    const searchableText = `${vuln.id || vuln.chave} ${vuln.titulo || vuln.resumo} ${vuln.responsavel}`.toLowerCase();
                     if (!searchableText.includes(search)) {
                         return false;
                     }
@@ -1244,8 +1244,8 @@
                     }
                 }
 
-                // Apply priority filter (matching on classificacao field)
-                if (priority && vuln.classificacao !== priority) {
+                // Apply priority filter (matching on prioridade field)
+                if (priority && vuln.prioridade !== priority) {
                     return false;
                 }
 
@@ -1276,19 +1276,19 @@
             filteredVulns.forEach(vuln => {
                 const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
                                   vuln.status === 'Resolvido' ? 'status-resolved' : 'status-inprogress';
-                const priorityClass = `priority-${vuln.classificacao.toLowerCase()}`;
+                const priorityClass = `priority-${vuln.prioridade ? vuln.prioridade.toLowerCase() : 'unknown'}`;
 
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td><strong>${vuln.chave}</strong></td>
-                    <td>${vuln.tipo}</td>
-                    <td><span title="${vuln.resumo}">${vuln.resumo.substring(0, 50)}...</span></td>
-                    <td><span class="status-badge ${statusClass}">${vuln.status}</span></td>
-                    <td><span class="status-badge ${priorityClass}">${vuln.classificacao}</span></td>
-                    <td>${vuln.responsavel}</td>
-                    <td><span title="${vuln.categorias}">${vuln.categorias.substring(0, 25)}...</span></td>
-                    <td>${vuln.criado}</td>
-                    <td>${vuln.dias_abertos}</td>
+                    <td><strong>${vuln.id || vuln.chave}</strong></td>
+                    <td>${vuln.tipo || ''}</td>
+                    <td><span title="${vuln.titulo || vuln.resumo}">${(vuln.titulo || vuln.resumo || '').substring(0, 50)}...</span></td>
+                    <td><span class="status-badge ${statusClass}">${vuln.status || ''}</span></td>
+                    <td><span class="status-badge ${priorityClass}">${vuln.prioridade || vuln.classificacao || ''}</span></td>
+                    <td>${vuln.responsavel || ''}</td>
+                    <td><span title="${vuln.categorias}">${(vuln.categorias || '').substring(0, 25)}...</span></td>
+                    <td>${vuln.criado || ''}</td>
+                    <td>${vuln.dias_abertos || '-'}</td>
                 `;
                 fragment.appendChild(row);
             });
@@ -1479,10 +1479,10 @@
             const backlog = allVulnerabilities.filter(v => v.status === 'Backlog').length;
             const resolved = allVulnerabilities.filter(v => v.status === 'Resolvido').length;
             const inProgress = allVulnerabilities.filter(v => v.status === 'Em Progresso').length;
-            const p1 = allVulnerabilities.filter(v => v.classificacao === 'P1').length;
-            const p2 = allVulnerabilities.filter(v => v.classificacao === 'P2').length;
-            const p3 = allVulnerabilities.filter(v => v.classificacao === 'P3').length;
-            const p4 = allVulnerabilities.filter(v => v.classificacao === 'P4').length;
+            const p1 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P1').length;
+            const p2 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P2').length;
+            const p3 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P3').length;
+            const p4 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P4').length;
 
             console.log(`📊 Estatísticas completas:`);
             console.log(`   Total: ${total}`);
