@@ -1192,75 +1192,52 @@
 
             const startTime = performance.now();
 
-            // Get filter values - NO TRIM on status/priority, use exact values
+            // Get filter values
             const search = (document.getElementById('search-vuln')?.value || '').toLowerCase().trim();
-            const statusElement = document.getElementById('status-filter');
-            const status = statusElement ? statusElement.value : '';
-            const priorityElement = document.getElementById('priority-filter');
-            const priority = priorityElement ? priorityElement.value : '';
-            const responsibleElement = document.getElementById('responsible-filter');
-            const responsible = responsibleElement ? responsibleElement.value : '';
-            const categoryElement = document.getElementById('category-filter');
-            const category = categoryElement ? categoryElement.value : '';
+            const status = document.getElementById('status-filter')?.value || '';
+            const priority = document.getElementById('priority-filter')?.value || '';
+            const responsible = document.getElementById('responsible-filter')?.value || '';
+            const category = document.getElementById('category-filter')?.value || '';
 
-            // Debug logging
-            console.log(`🔍 Filter values:`, {
-                search: `"${search}"`,
-                status: `"${status}"`,
-                priority: `"${priority}"`,
-                responsible: `"${responsible}"`,
-                category: `"${category}"`
-            });
+            console.log('=== FILTER DEBUG ===');
+            console.log('Total registros:', allVulnerabilities.length);
+            console.log('Filtros:', { status, priority, responsible, category, search });
 
             const table = document.getElementById('vuln-tbody');
             if (!table) return;
 
-            let visibleCount = 0;
             const totalCount = allVulnerabilities.length;
             const fragment = document.createDocumentFragment();
 
-            // Filter and collect matching rows
-            let filterDebugCount = 0;
+            // Apply filters
             const filteredVulns = allVulnerabilities.filter(vuln => {
-                // Apply search filter
+                // Search filter
                 if (search) {
-                    const searchableText = `${vuln.id || vuln.chave} ${vuln.titulo || vuln.resumo} ${vuln.responsavel}`.toLowerCase();
-                    if (!searchableText.includes(search)) {
-                        return false;
-                    }
+                    const text = `${vuln.id || ''} ${vuln.titulo || ''} ${vuln.responsavel || ''}`.toLowerCase();
+                    if (!text.includes(search)) return false;
                 }
 
-                // Apply status filter with detailed comparison
+                // Status filter
                 if (status) {
-                    const matches = vuln.status === status;
-                    if (filterDebugCount < 3) {
-                        console.log(`   Status comparison: vuln.status="${vuln.status}" vs filter="${status}" => ${matches}`);
-                        filterDebugCount++;
-                    }
-                    if (!matches) {
+                    if (vuln.status !== status) {
+                        console.log(`Status mismatch: "${vuln.status}" !== "${status}"`);
                         return false;
                     }
                 }
 
-                // Apply priority filter (matching on prioridade field)
-                if (priority && vuln.prioridade !== priority) {
-                    return false;
-                }
+                // Priority filter
+                if (priority && vuln.prioridade !== priority) return false;
 
-                // Apply responsible filter
-                if (responsible && vuln.responsavel !== responsible) {
-                    return false;
-                }
+                // Responsible filter
+                if (responsible && vuln.responsavel !== responsible) return false;
 
-                // Apply category filter (check if category is in the categorias string)
-                if (category && !vuln.categorias.includes(category)) {
-                    return false;
-                }
+                // Category filter
+                if (category && !vuln.categorias.includes(category)) return false;
 
                 return true;
             });
 
-            visibleCount = filteredVulns.length;
+            const visibleCount = filteredVulns.length;
 
             // Log filter results
             console.log(`✅ Filtro aplicado: ${visibleCount}/${totalCount} resultados`);
@@ -1298,6 +1275,9 @@
             if (countElement) {
                 countElement.textContent = `Mostrando ${visibleCount.toLocaleString('pt-BR')} de ${totalCount.toLocaleString('pt-BR')}`;
             }
+
+            // Update statistics with filtered data
+            updateStatistics(filteredVulns);
 
             const endTime = performance.now();
             console.log(`✅ Filtros aplicados: ${visibleCount}/${totalCount} resultados (${(endTime - startTime).toFixed(2)}ms)`);
@@ -1470,19 +1450,22 @@
             filterVulnerabilities();
         }
 
-        function updateStatistics() {
-            if (!allVulnerabilities || allVulnerabilities.length === 0) return;
+        function updateStatistics(dataToUse) {
+            // Use filtered data if provided, otherwise use all data
+            const vulns = dataToUse || allVulnerabilities;
 
-            const total = allVulnerabilities.length;
-            const backlog = allVulnerabilities.filter(v => v.status === 'Backlog').length;
-            const resolved = allVulnerabilities.filter(v => v.status === 'Concluído').length;
-            const inProgress = allVulnerabilities.filter(v => v.status === 'Em Progresso').length;
-            const p1 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P1').length;
-            const p2 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P2').length;
-            const p3 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P3').length;
-            const p4 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P4').length;
+            if (!vulns || vulns.length === 0) return;
 
-            console.log(`📊 Estatísticas completas:`);
+            const total = vulns.length;
+            const backlog = vulns.filter(v => v.status === 'Backlog').length;
+            const resolved = vulns.filter(v => v.status === 'Concluído').length;
+            const inProgress = vulns.filter(v => v.status === 'Em Progresso').length;
+            const p1 = vulns.filter(v => v.prioridade === 'P1').length;
+            const p2 = vulns.filter(v => v.prioridade === 'P2').length;
+            const p3 = vulns.filter(v => v.prioridade === 'P3').length;
+            const p4 = vulns.filter(v => v.prioridade === 'P4').length;
+
+            console.log(`📊 Estatísticas (${dataToUse ? 'filtradas' : 'totais'}):`);
             console.log(`   Total: ${total}`);
             console.log(`   Backlog: ${backlog} | Em Progresso: ${inProgress} | Concluído: ${resolved}`);
             console.log(`   P1: ${p1} | P2: ${p2} | P3: ${p3} | P4: ${p4}`);
