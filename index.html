@@ -583,8 +583,9 @@
                         <select id="status-filter">
                             <option value="">Todos os Status</option>
                             <option value="Backlog">Backlog</option>
+                            <option value="Concluído">Concluído</option>
                             <option value="Em Progresso">Em Progresso</option>
-                            <option value="Resolvido">Resolvido</option>
+                            <option value="Rejeitada">Rejeitada</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -601,9 +602,6 @@
                         <label for="responsible-filter">Responsável</label>
                         <select id="responsible-filter">
                             <option value="">Todos os Responsáveis</option>
-                            <option value="Fabiano Vieira De Souza">Fabiano Vieira De Souza</option>
-                            <option value="João Silva">João Silva</option>
-                            <option value="Maria Santos">Maria Santos</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -1275,7 +1273,7 @@
 
             filteredVulns.forEach(vuln => {
                 const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
-                                  vuln.status === 'Resolvido' ? 'status-resolved' : 'status-inprogress';
+                                  vuln.status === 'Concluído' ? 'status-resolved' : 'status-inprogress';
                 const priorityClass = `priority-${vuln.prioridade ? vuln.prioridade.toLowerCase() : 'unknown'}`;
 
                 const row = document.createElement('tr');
