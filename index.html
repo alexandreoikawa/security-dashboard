@@ -554,9 +554,9 @@
                     <div class="kpi-change negative">↑ 12 novas esta semana</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Críticas (P1)</div>
-                    <div class="kpi-value">760</div>
-                    <div class="kpi-change negative" id="p1-percent">↑ 12.0% do total</div>
+                    <div class="kpi-label">Em Progresso</div>
+                    <div class="kpi-value">3</div>
+                    <div class="kpi-change" id="inprogress-percent">0.0% do total</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-label">Em Backlog</div>
@@ -1484,20 +1484,20 @@
             const kpiCards = vulnTab.querySelectorAll('.kpi-value');
             if (kpiCards.length >= 4) {
                 kpiCards[0].textContent = total.toLocaleString('pt-BR');
-                kpiCards[1].textContent = p1.toLocaleString('pt-BR');
+                kpiCards[1].textContent = inProgress.toLocaleString('pt-BR');
                 kpiCards[2].textContent = backlog.toLocaleString('pt-BR');
                 kpiCards[3].textContent = resolved.toLocaleString('pt-BR');
                 console.log(`✅ KPI cards atualizados`);
             }
 
             // Update percentages
-            const p1Percent = total > 0 ? ((p1 / total) * 100).toFixed(1) : 0;
+            const inProgressPercent = total > 0 ? ((inProgress / total) * 100).toFixed(1) : 0;
             const backlogPercent = total > 0 ? ((backlog / total) * 100).toFixed(1) : 0;
             const concluidoPercent = total > 0 ? ((resolved / total) * 100).toFixed(1) : 0;
 
-            const p1PercentElem = document.getElementById('p1-percent');
-            if (p1PercentElem) {
-                p1PercentElem.textContent = `↑ ${p1Percent}% do total`;
+            const inProgressPercentElem = document.getElementById('inprogress-percent');
+            if (inProgressPercentElem) {
+                inProgressPercentElem.textContent = `${inProgressPercent}% do total`;
             }
 
             const backlogPercentElem = document.getElementById('backlog-percent');
