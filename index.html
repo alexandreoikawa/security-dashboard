@@ -1200,8 +1200,8 @@
             const category = document.getElementById('category-filter')?.value || '';
 
             console.log('=== FILTER DEBUG ===');
-            console.log('Total registros:', allVulnerabilities.length);
-            console.log('Filtros:', { status, priority, responsible, category, search });
+            console.log('allVulnerabilities.length:', allVulnerabilities.length);
+            console.log('Filtros aplicados:', { status, priority, responsible, category, search });
 
             const table = document.getElementById('vuln-tbody');
             if (!table) return;
@@ -1219,10 +1219,7 @@
 
                 // Status filter
                 if (status) {
-                    if (vuln.status !== status) {
-                        console.log(`Status mismatch: "${vuln.status}" !== "${status}"`);
-                        return false;
-                    }
+                    if (vuln.status !== status) return false;
                 }
 
                 // Priority filter
@@ -1366,15 +1363,18 @@
 
                 if (data.vulnerabilities && Array.isArray(data.vulnerabilities)) {
                     allVulnerabilities = data.vulnerabilities;
-                    console.log(`✅ Dados carregados: ${allVulnerabilities.length} vulnerabilidades`);
-                    console.log(`📊 Resumo: ${data.summary?.total || allVulnerabilities.length} total`);
+                    console.log(`✅ LOADED: ${allVulnerabilities.length} vulnerabilities`);
+                    console.log(`   Total expected: ${data.summary?.total}`);
+                    console.log(`   Data structure OK: ${allVulnerabilities[0]?.id ? 'YES' : 'NO'}`);
 
                     // Populate dropdowns with unique values
                     populateFilterOptions();
 
-                    // Populate table and update stats
+                    // Update stats with all data first (before filtering)
+                    updateStatistics(allVulnerabilities);
+
+                    // Populate table with filters applied
                     populateTable();
-                    updateStatistics();
                 } else {
                     throw new Error('Formato de dados inválido');
                 }
@@ -1454,6 +1454,11 @@
             // Use filtered data if provided, otherwise use all data
             const vulns = dataToUse || allVulnerabilities;
 
+            console.log(`📊 updateStatistics() called:`);
+            console.log(`   dataToUse length: ${dataToUse ? dataToUse.length : 'undefined'}`);
+            console.log(`   allVulnerabilities.length: ${allVulnerabilities.length}`);
+            console.log(`   vulns.length: ${vulns.length}`);
+
             if (!vulns || vulns.length === 0) return;
 
             const total = vulns.length;
@@ -1465,9 +1470,8 @@
             const p3 = vulns.filter(v => v.prioridade === 'P3').length;
             const p4 = vulns.filter(v => v.prioridade === 'P4').length;
 
-            console.log(`📊 Estatísticas (${dataToUse ? 'filtradas' : 'totais'}):`);
-            console.log(`   Total: ${total}`);
-            console.log(`   Backlog: ${backlog} | Em Progresso: ${inProgress} | Concluído: ${resolved}`);
+            console.log(`📊 Stats (${dataToUse ? 'filtered' : 'all'}):`);
+            console.log(`   Total: ${total} | Backlog: ${backlog} | Concluído: ${resolved} | Em Progresso: ${inProgress}`);
             console.log(`   P1: ${p1} | P2: ${p2} | P3: ${p3} | P4: ${p4}`);
 
             // Find and update KPI cards in the vulnerabilities tab
