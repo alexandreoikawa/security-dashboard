@@ -1,2386 +1,2387 @@
 {
   "vulnerabilities": [
     {
-      "id": "SEC-600000",
+      "id": "SEC-735527",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "priority:P2;layer:tech-corp;automatic-creation",
-      "criado": "01/03/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600001",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Pedro Henrique Da Silva",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "priority:P3;priority:P1;layer_root:tech-business;priority:P2",
-      "criado": "25/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600002",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
-      "prioridade": "P3",
-      "status": "Concluído",
-      "categorias": "priority:P4;sca;snyk;priority:P3",
-      "criado": "26/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600003",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Lucas Alberto De Moraes",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "snyk;cloud-sec;app-sec;priority:P1",
-      "criado": "26/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600004",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Barbara Oliveira Conceicao",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "priority:P2;java;layer:tech-corp;priority:P3",
-      "criado": "08/02/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600005",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Marco Aurelio De Castro",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "snyk_code;app-sec;layer:tech-corp;priority:P1",
-      "criado": "19/11/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600006",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Wesley Paulino",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "layer:tech-corp;snyk;sast;priority:P4",
-      "criado": "23/02/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600007",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "layer_root:tech-business;snyk;sast;priority:P2",
-      "criado": "29/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600008",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Wesley Paulino",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "automatic-creation;snyk;sca;priority:P4",
-      "criado": "23/01/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600009",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "priority:P2;priority:P3;sca;priority:P4",
-      "criado": "04/03/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600010",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Osvaneo Ferreira",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "tsv2;snyk_code;layer_root:tech-business;priority:P4",
-      "criado": "15/11/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600011",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "java;snyk_code;tsv2;priority:P4",
-      "criado": "08/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600012",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Liberio Ferreira Da Cunha Neto",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "app-sec;layer_root:tech-business;tsv2;priority:P1",
-      "criado": "22/07/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600013",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P3",
-      "status": "Backlog",
-      "categorias": "snyk;sast;javascript;priority:P3",
-      "criado": "03/06/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600014",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "tsv2;layer_root:tech-business;automatic-creation;priority:P2",
-      "criado": "02/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600015",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Igor Denis Loss",
-      "prioridade": "P1",
-      "status": "Backlog",
-      "categorias": "snyk;java;sast;priority:P1",
-      "criado": "15/01/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600016",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P1",
-      "status": "Backlog",
-      "categorias": "snyk_code;layer:tech-corp;app-sec;priority:P1",
-      "criado": "23/06/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600017",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Barbara Oliveira Conceicao",
-      "prioridade": "P3",
-      "status": "Concluído",
-      "categorias": "automatic-creation;tsv2;priority:P1;priority:P3",
-      "criado": "04/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600018",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Wesley Paulino",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "layer:tech-corp;sast;app-sec;priority:P3",
-      "criado": "13/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600019",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "app-sec;snyk_code;python;priority:P4",
-      "criado": "17/05/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600020",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Andre Stoicov Ricardo",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "priority:P4;layer_root:tech-business;devsecops-block-job-2;priority:P1",
-      "criado": "29/12/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600021",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Beatriz De Matos Campos",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "java;layer_root:tech-business;sca;priority:P2",
-      "criado": "04/01/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600022",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Gabriel Angelo Oberstein Branco",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "javascript;priority:P4;priority:P3",
-      "criado": "23/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600023",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "tsv2;layer_root:tech-business;java;priority:P3",
-      "criado": "21/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600024",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Taylor Lima Damaceno",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "devsecops-block-job-2;python;app-sec;priority:P3",
-      "criado": "08/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600025",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Igor Denis Loss",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "python;javascript;priority:P2;priority:P4",
-      "criado": "16/02/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600026",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Osmar Fagundes Tamagnoni",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "cloud-sec;layer:tech-corp;priority:P2;priority:P4",
-      "criado": "06/12/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600027",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "cloud-sec;java;priority:P3;priority:P2",
-      "criado": "18/04/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600028",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Alisson Ferreira Lino",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "priority:P2;priority:P4;cloud-sec",
-      "criado": "07/06/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600029",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Igor Denis Loss",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "devsecops-block-job-2;tsv2;layer:tech-corp;priority:P3",
-      "criado": "01/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600030",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "snyk;app-sec;snyk_code;priority:P2",
-      "criado": "25/12/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600031",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "priority:P1;layer_root:tech-business;sast;priority:P2",
-      "criado": "11/04/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600032",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "sast;sca;cloud-sec;priority:P3",
-      "criado": "31/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600033",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Osmar Fagundes Tamagnoni",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "python;snyk;priority:P2",
-      "criado": "24/05/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600034",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Andre Stoicov Ricardo",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "priority:P4;java;sca",
-      "criado": "08/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600035",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Andre Stoicov Ricardo",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "priority:P4;priority:P1;priority:P2;priority:P3",
-      "criado": "13/04/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600036",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "priority:P4;snyk_code;priority:P1;priority:P2",
-      "criado": "25/01/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600037",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "sca;priority:P1;snyk;priority:P4",
-      "criado": "20/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600038",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Osvaneo Ferreira",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "snyk;sca;automatic-creation;priority:P2",
-      "criado": "14/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600039",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Rafael Silva Brito",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "automatic-creation;layer_root:tech-business;priority:P1;priority:P4",
-      "criado": "31/03/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600040",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "app-sec;sast;snyk;priority:P2",
-      "criado": "28/10/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600041",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "python;sca;devsecops-block-job-2;priority:P3",
-      "criado": "25/02/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600042",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "automatic-creation;priority:P1;snyk;priority:P3",
-      "criado": "07/06/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600043",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Lucas Alberto De Moraes",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "priority:P3;python;layer:tech-corp;priority:P2",
-      "criado": "25/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600044",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "layer:tech-corp;priority:P3;priority:P2;priority:P1",
-      "criado": "21/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600045",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "priority:P2;javascript;sca",
-      "criado": "23/04/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600046",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Andre Stoicov Ricardo",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "automatic-creation;javascript;priority:P2",
-      "criado": "03/02/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600047",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Alisson Ferreira Lino",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "python;java;priority:P2",
-      "criado": "31/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600048",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Rafael Silva Brito",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "priority:P1;automatic-creation;priority:P2;priority:P3",
-      "criado": "29/05/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600049",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "priority:P2;python;sast",
-      "criado": "05/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600050",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "app-sec;priority:P2;devsecops-block-job-2;priority:P4",
-      "criado": "05/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600051",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Igor Denis Loss",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "tsv2;priority:P3;automatic-creation;priority:P1",
-      "criado": "29/06/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600052",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Osvaneo Ferreira",
-      "prioridade": "P3",
-      "status": "Backlog",
-      "categorias": "priority:P4;priority:P3;priority:P2",
-      "criado": "06/04/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600053",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "app-sec;automatic-creation;priority:P1",
-      "criado": "23/07/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600054",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Lucas Alberto De Moraes",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "javascript;sca;cloud-sec;priority:P1",
-      "criado": "19/06/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600055",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "tsv2;java;priority:P2;priority:P4",
-      "criado": "13/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600056",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "tsv2;python;app-sec;priority:P1",
-      "criado": "25/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600057",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Barbara Oliveira Conceicao",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "snyk_code;python;app-sec;priority:P4",
-      "criado": "13/12/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600058",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P3",
-      "status": "Concluído",
-      "categorias": "javascript;snyk;layer_root:tech-business;priority:P3",
-      "criado": "19/12/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600059",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Pedro Henrique Da Silva",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "javascript;sca;app-sec;priority:P2",
-      "criado": "20/10/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600060",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Osmar Fagundes Tamagnoni",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "snyk;javascript;app-sec;priority:P2",
-      "criado": "05/07/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600061",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "layer:tech-corp;cloud-sec;devsecops-block-job-2;priority:P4",
-      "criado": "04/03/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600062",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "python;priority:P1;javascript;priority:P4",
-      "criado": "17/01/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600063",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Liberio Ferreira Da Cunha Neto",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "automatic-creation;python;priority:P4",
-      "criado": "11/07/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600064",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "priority:P3;app-sec;snyk_code",
-      "criado": "24/04/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600065",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "tsv2;priority:P2;java;priority:P4",
-      "criado": "01/10/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600066",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Rafael Silva Brito",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "automatic-creation;priority:P3;priority:P4;priority:P2",
-      "criado": "21/10/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600067",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Wesley Paulino",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "layer:tech-corp;priority:P2;javascript",
-      "criado": "29/11/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600068",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Osmar Fagundes Tamagnoni",
-      "prioridade": "P1",
-      "status": "Backlog",
-      "categorias": "priority:P1;java;priority:P4",
-      "criado": "10/09/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600069",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Felipe Dos Santos Ramas",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "javascript;priority:P3;priority:P2;priority:P4",
-      "criado": "18/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600070",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Rafael Silva Brito",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "automatic-creation;layer_root:tech-business;cloud-sec;priority:P4",
-      "criado": "20/04/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600071",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
+      "titulo": "[HIGH] Vulnerable dependency: org.springframework:spring-web:6.2.11 in ifood/digital-transformation/integration/tc-integration-logs",
       "responsavel": "Fabiano Vieira De Souza",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "sast;devsecops-block-job-2;snyk_code;priority:P2",
-      "criado": "18/02/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600072",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Lucas Mendonca De Albuquerque",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "cloud-sec;python;snyk_code;priority:P2",
-      "criado": "06/12/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600073",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Andre Stoicov Ricardo",
       "prioridade": "P3",
       "status": "Backlog",
-      "categorias": "automatic-creation;app-sec;python;priority:P3",
-      "criado": "23/02/2024 00:00:00"
+      "categorias": "app-sec;automatic-creation;devsecops-block-job-2;ifood/digital-transformation/integration/tc-integration-logs;layer:tech-corp;layer_root:tech-business;priority:P3;sca;snyk;tsv2",
+      "criado": "05/06/2026 11:35:42"
     },
     {
-      "id": "SEC-600074",
+      "id": "SEC-735526",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Lucas Mendonca De Albuquerque",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "priority:P4;priority:P2;priority:P3;priority:P1",
-      "criado": "02/12/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600075",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Taylor Lima Damaceno",
+      "titulo": "[HIGH] Vulnerable dependency: io.netty:netty-codec:4.1.125.Final in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Fabiano Vieira De Souza",
       "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "snyk_code;priority:P3;javascript",
-      "criado": "03/09/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600076",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "priority:P3;layer_root:tech-business;priority:P4",
-      "criado": "10/05/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600077",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Lucas Alberto De Moraes",
-      "prioridade": "P1",
       "status": "Backlog",
-      "categorias": "python;snyk_code;priority:P3;priority:P1",
-      "criado": "04/09/2025 00:00:00"
+      "categorias": "app-sec;automatic-creation;devsecops-block-job-2;ifood/digital-transformation/integration/tc-integration-logs;layer:tech-corp;layer_root:tech-business;priority:P3;sca;snyk;tsv2",
+      "criado": "05/06/2026 11:35:29"
     },
     {
-      "id": "SEC-600078",
+      "id": "SEC-735525",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Taylor Lima Damaceno",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "sca;layer_root:tech-business;snyk;priority:P2",
-      "criado": "09/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600079",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "sast;priority:P2;tsv2",
-      "criado": "25/07/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600080",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Alisson Ferreira Lino",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "priority:P2;sast;python",
-      "criado": "14/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600081",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "cloud-sec;priority:P1;priority:P2;priority:P4",
-      "criado": "25/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600082",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Gabriel Angelo Oberstein Branco",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "java;devsecops-block-job-2;priority:P2;priority:P4",
-      "criado": "22/04/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600083",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Andre Stoicov Ricardo",
+      "titulo": "[HIGH] Vulnerable dependency: org.apache.kafka:kafka-clients:3.9.1 in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Fabiano Vieira De Souza",
       "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "priority:P1;java;tsv2;priority:P3",
-      "criado": "21/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600084",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Andre Stoicov Ricardo",
-      "prioridade": "P4",
       "status": "Backlog",
-      "categorias": "priority:P2;snyk;java;priority:P4",
-      "criado": "07/10/2025 00:00:00"
+      "categorias": "app-sec;automatic-creation;devsecops-block-job-2;ifood/digital-transformation/integration/tc-integration-logs;layer:tech-corp;layer_root:tech-business;priority:P3;sca;snyk;tsv2",
+      "criado": "05/06/2026 11:35:20"
     },
     {
-      "id": "SEC-600085",
+      "id": "SEC-735524",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
+      "titulo": "[HIGH] Vulnerable dependency: com.fasterxml.jackson.core:jackson-databind:2.15.2 in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Fabiano Vieira De Souza",
       "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "automatic-creation;layer:tech-corp;devsecops-block-job-2;priority:P3",
-      "criado": "28/06/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600086",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Igor Denis Loss",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "app-sec;priority:P4;automatic-creation",
-      "criado": "03/06/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600087",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Pedro Henrique Da Silva",
-      "prioridade": "P1",
       "status": "Backlog",
-      "categorias": "automatic-creation;priority:P3;layer_root:tech-business;priority:P1",
-      "criado": "29/09/2024 00:00:00"
+      "categorias": "app-sec;automatic-creation;devsecops-block-job-2;ifood/digital-transformation/integration/tc-integration-logs;layer:tech-corp;layer_root:tech-business;priority:P3;sca;snyk;tsv2",
+      "criado": "05/06/2026 11:35:09"
     },
     {
-      "id": "SEC-600088",
+      "id": "SEC-735523",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "priority:P3;snyk_code;priority:P2;priority:P4",
-      "criado": "10/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600089",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P2",
+      "titulo": "[HIGH] Vulnerable dependency: org.hibernate:hibernate-core:6.2.0 in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Fabiano Vieira De Souza",
+      "prioridade": "P3",
       "status": "Backlog",
-      "categorias": "app-sec;priority:P4;sca;priority:P2",
-      "criado": "15/06/2025 00:00:00"
+      "categorias": "app-sec;automatic-creation;devsecops-block-job-2;ifood/digital-transformation/integration/tc-integration-logs;layer:tech-corp;layer_root:tech-business;priority:P3;sca;snyk;tsv2",
+      "criado": "05/06/2026 11:34:55"
     },
     {
-      "id": "SEC-600090",
+      "id": "SEC-735522",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Lucas Mendonca De Albuquerque",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "devsecops-block-job-2;automatic-creation;tsv2;priority:P2",
-      "criado": "14/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600091",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Alisson Ferreira Lino",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "python;sca;java;priority:P1",
-      "criado": "10/04/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600092",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
+      "titulo": "[HIGH] Vulnerable dependency: urllib3:2.5.0 in ifood/digital-transformation/tech/plastic-measurement-streamlit",
       "responsavel": "Marco Aurelio De Castro",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "app-sec;sast;cloud-sec;priority:P2",
-      "criado": "28/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600093",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Felipe Dos Santos Ramas",
       "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "snyk;cloud-sec;sast;priority:P3",
-      "criado": "24/07/2024 00:00:00"
+      "status": "Concluído",
+      "categorias": "app-sec;automatic-creation;devsecops-security-reports-processor-2;ifood/digital-transformation/tech/plastic-measurement-streamlit;priority:P3;sca;snyk;tsv2",
+      "criado": "27/01/2026 19:04:22"
     },
     {
-      "id": "SEC-600094",
+      "id": "SEC-735521",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "java;priority:P2;priority:P1;priority:P4",
-      "criado": "10/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600095",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
+      "titulo": "[HIGH] Vulnerable dependency: io.netty:netty-codec-http2:4.2.5.Final in ifood/digital-transformation/integration/manhattan",
       "responsavel": "Beatriz De Matos Campos",
       "prioridade": "P3",
-      "status": "Backlog",
-      "categorias": "java;layer_root:tech-business;sast;priority:P3",
-      "criado": "23/11/2024 00:00:00"
+      "status": "Concluído",
+      "categorias": "app-sec;automatic-creation;devsecops-block-job-2;ifood/digital-transformation/integration/manhattan;layer:tech-corp;layer_root:tech-business;priority:P3;sca;snyk;tsv2",
+      "criado": "31/03/2026 15:37:15"
     },
     {
-      "id": "SEC-600096",
+      "id": "SEC-735520",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
+      "titulo": "Unauthorized PII sharing with 3rd party",
       "responsavel": "Rafael Silva Brito",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "snyk;cloud-sec;java;priority:P4",
-      "criado": "21/06/2024 00:00:00"
+      "prioridade": "P1",
+      "status": "Concluído",
+      "categorias": "genplat;jellyfish-2;layer:people-tech;layer_root:tech-business;pii-leak;priority:P1;tsv2",
+      "criado": "31/07/2025 21:27:02"
     },
     {
-      "id": "SEC-600097",
+      "id": "SEC-735519",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) found in repository ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Nilson Alves De Sousa",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "app-sec;automatic-creation;ifood/corporate/carreiras/carreiras-frontend;javascript;sast;snyk_code;priority:P2",
+      "criado": "01/09/2023 18:10:37"
+    },
+    {
+      "id": "SEC-735518",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability in ifood/platform/auth-service",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P1",
+      "status": "Em Progresso",
+      "categorias": "app-sec;automatic-creation;ifood/platform/auth-service;java;sast;priority:P1;layer:tech-corp",
+      "criado": "12/05/2026 09:15:33"
+    },
+    {
+      "id": "SEC-735517",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/data/data-lake",
+      "responsavel": "Gabriel Angelo Oberstein Branco",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "app-sec;cloud-sec;genplat;priority:P2;sensitive_data;tsv2",
+      "criado": "20/04/2026 14:22:10"
+    },
+    {
+      "id": "SEC-735516",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Bruno Silveira Guilherme",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "devsecops-security-reports-processor-2;devsecops-block-job-2;sensitive_data;priority:P3",
+      "criado": "19/09/2023 05:56:39"
+    },
+    {
+      "id": "SEC-735515",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/infrastructure/kubernetes-configs",
       "responsavel": "Alisson Ferreira Lino",
       "prioridade": "P1",
       "status": "Backlog",
-      "categorias": "layer_root:tech-business;automatic-creation;tsv2;priority:P1",
-      "criado": "05/06/2026 00:00:00"
+      "categorias": "javascript;sec-eng;layer:dt-webdev;snyk;layer_root:tech-business;priority:P1",
+      "criado": "10/08/2023 23:17:28"
     },
     {
-      "id": "SEC-600098",
+      "id": "SEC-735514",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Andre Stoicov Ricardo",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "javascript;snyk_code;priority:P4;priority:P3",
-      "criado": "09/01/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600099",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Beatriz De Matos Campos",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "java;priority:P4;layer:tech-corp",
-      "criado": "04/01/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600100",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Lucas Mendonca De Albuquerque",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "snyk_code;layer_root:tech-business;priority:P2;priority:P4",
-      "criado": "02/09/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600101",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Liberio Ferreira Da Cunha Neto",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "sast;python;priority:P2",
-      "criado": "16/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600102",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "javascript;sca;priority:P4;priority:P3",
-      "criado": "03/03/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600103",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "python;layer:tech-corp;snyk;priority:P1",
-      "criado": "14/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600104",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Liberio Ferreira Da Cunha Neto",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "priority:P3;devsecops-block-job-2;java;priority:P4",
-      "criado": "11/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600105",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "priority:P1;devsecops-block-job-2;tsv2;priority:P3",
-      "criado": "03/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600106",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Barbara Oliveira Conceicao",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "java;javascript;priority:P1;priority:P2",
-      "criado": "18/01/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600107",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Osmar Fagundes Tamagnoni",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "automatic-creation;sca;app-sec;priority:P3",
-      "criado": "26/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600108",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "sast;layer_root:tech-business;sca;priority:P1",
-      "criado": "08/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600109",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Felipe Dos Santos Ramas",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "layer_root:tech-business;priority:P4;python;priority:P1",
-      "criado": "01/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600110",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P1",
-      "status": "Backlog",
-      "categorias": "layer_root:tech-business;java;layer:tech-corp;priority:P1",
-      "criado": "03/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600111",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Vitor Amorim Varela Da Silva",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "cloud-sec;sast;priority:P3;priority:P1",
-      "criado": "27/12/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600112",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Andre Stoicov Ricardo",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "tsv2;app-sec;javascript;priority:P2",
-      "criado": "24/03/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600113",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "priority:P2;priority:P1;priority:P4",
-      "criado": "05/12/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600114",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Felipe Dos Santos Ramas",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "tsv2;priority:P4;python",
-      "criado": "09/02/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600115",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Gabriel Angelo Oberstein Branco",
-      "prioridade": "P3",
-      "status": "Backlog",
-      "categorias": "priority:P2;snyk;java;priority:P3",
-      "criado": "04/01/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600116",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Beatriz De Matos Campos",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "java;sca;snyk_code;priority:P4",
-      "criado": "19/11/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600117",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "layer:tech-corp;layer_root:tech-business;priority:P1",
-      "criado": "02/06/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600118",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/platform/auth-service",
       "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "sast;javascript;app-sec;priority:P1",
-      "criado": "25/04/2024 00:00:00"
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "jellyfish-2;priority:P3;devsecops-security-reports-processor-2",
+      "criado": "22/12/2023 22:48:56"
     },
     {
-      "id": "SEC-600119",
+      "id": "SEC-735513",
       "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Pedro Henrique Da Silva",
+      "titulo": "Unauthorized PII sharing with ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Cassio Luis Pereira Silva",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "snyk_code;devsecops-srp;sast;priority:P2",
+      "criado": "01/12/2023 06:53:03"
+    },
+    {
+      "id": "SEC-735512",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/auth-service",
+      "responsavel": "Marco Aurelio De Castro",
       "prioridade": "P3",
       "status": "Em Progresso",
-      "categorias": "sast;automatic-creation;cloud-sec;priority:P3",
-      "criado": "03/02/2026 00:00:00"
+      "categorias": "cloudsec;cloud-sec;layer:dt-webdev;priority:P3",
+      "criado": "23/10/2024 10:09:54"
     },
     {
-      "id": "SEC-600120",
+      "id": "SEC-735511",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Lucas Alberto De Moraes",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/data/data-lake",
+      "responsavel": "Cassio Luis Pereira Silva",
       "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "python;javascript;snyk_code;priority:P4",
-      "criado": "29/10/2025 00:00:00"
+      "status": "Em Progresso",
+      "categorias": "python;gitguardian;priority:P4;jellyfish-2",
+      "criado": "06/06/2026 22:56:29"
     },
     {
-      "id": "SEC-600121",
+      "id": "SEC-735510",
       "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Beatriz De Matos Campos",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "layer:tech-corp;java;layer_root:tech-business;priority:P1",
-      "criado": "27/08/2025 00:00:00"
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "layer:people-tech;gitguardian;snyk_code;priority:P2",
+      "criado": "12/03/2025 08:07:27"
     },
     {
-      "id": "SEC-600122",
+      "id": "SEC-735509",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P4",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Osmar Fagundes Tamagnoni",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "cloud-trivy-runtime;layer:dt-webdev;cloud-sec;priority:P2",
+      "criado": "15/04/2025 01:30:26"
+    },
+    {
+      "id": "SEC-735508",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/auth-service",
+      "responsavel": "Bruno Alves Dos Santos",
+      "prioridade": "P2",
       "status": "Backlog",
-      "categorias": "sast;layer:tech-corp;python;priority:P4",
-      "criado": "03/07/2024 00:00:00"
+      "categorias": "trivy-runtime;sca;snyk_code;genplat;layer:tech-corp;priority:P2",
+      "criado": "04/03/2024 18:47:44"
     },
     {
-      "id": "SEC-600123",
+      "id": "SEC-735507",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
+      "titulo": "[HIGH] Broken authentication in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "sca;python;layer:dt-webdev;dockercompliance;tsv2;priority:P2",
+      "criado": "05/09/2025 12:36:14"
+    },
+    {
+      "id": "SEC-735506",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "sensitive_data;cloudsec;sast;priority:P1",
+      "criado": "15/03/2025 16:47:53"
+    },
+    {
+      "id": "SEC-735505",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/mobile/ios",
       "responsavel": "Vitor Amorim Varela Da Silva",
       "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "python;sca;priority:P4;priority:P3",
-      "criado": "21/06/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600124",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "priority:P3;automatic-creation;app-sec;priority:P1",
-      "criado": "12/10/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600125",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Felipe Dos Santos Ramas",
-      "prioridade": "P2",
       "status": "Backlog",
-      "categorias": "tsv2;java;priority:P4;priority:P2",
-      "criado": "23/12/2024 00:00:00"
+      "categorias": "devsecops-srp;layer_root:tech-business;priority:P3",
+      "criado": "21/01/2024 03:57:59"
     },
     {
-      "id": "SEC-600126",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "devsecops-block-job-2;python;layer:tech-corp;priority:P2",
-      "criado": "22/06/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600127",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "priority:P2;cloud-sec;java;priority:P1",
-      "criado": "27/05/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600128",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Marco Aurelio De Castro",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "app-sec;sast;cloud-sec;priority:P4",
-      "criado": "15/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600129",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "layer:tech-corp;tsv2;python;priority:P3",
-      "criado": "09/06/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600130",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Rafael Silva Brito",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "sca;app-sec;javascript;priority:P2",
-      "criado": "18/10/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600131",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P1",
-      "status": "Backlog",
-      "categorias": "layer_root:tech-business;snyk;java;priority:P1",
-      "criado": "09/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600132",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "javascript;devsecops-block-job-2;sast;priority:P1",
-      "criado": "10/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600133",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "priority:P1;snyk_code;snyk;priority:P4",
-      "criado": "30/03/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600134",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Alisson Ferreira Lino",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "java;sast;priority:P1;priority:P2",
-      "criado": "07/02/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600135",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "snyk;devsecops-block-job-2;priority:P1;priority:P3",
-      "criado": "08/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600136",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Lucas Mendonca De Albuquerque",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "app-sec;automatic-creation;tsv2;priority:P1",
-      "criado": "01/07/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600137",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Alisson Ferreira Lino",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "sast;priority:P2;app-sec;priority:P3",
-      "criado": "19/06/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600138",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "layer_root:tech-business;priority:P3;javascript;priority:P2",
-      "criado": "22/04/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600139",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "devsecops-block-job-2;priority:P4;java",
-      "criado": "05/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600140",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Gabriel Angelo Oberstein Branco",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "snyk;python;app-sec;priority:P2",
-      "criado": "21/05/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600141",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Taylor Lima Damaceno",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "priority:P3;cloud-sec;java;priority:P1",
-      "criado": "16/02/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600142",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Barbara Oliveira Conceicao",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "priority:P1;app-sec;devsecops-block-job-2",
-      "criado": "14/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600143",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "automatic-creation;cloud-sec;layer_root:tech-business;priority:P2",
-      "criado": "30/03/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600144",
+      "id": "SEC-735504",
       "tipo": "Vulnerability",
       "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Rafael Silva Brito",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "snyk;java;tsv2;priority:P3",
-      "criado": "02/03/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600145",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
       "responsavel": "Lucas Alberto De Moraes",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "priority:P4;app-sec;snyk;priority:P3",
-      "criado": "03/12/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600146",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Wesley Paulino",
-      "prioridade": "P3",
-      "status": "Concluído",
-      "categorias": "priority:P3;priority:P1;sast",
-      "criado": "10/05/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600147",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "app-sec;tsv2;javascript;priority:P4",
-      "criado": "21/07/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600148",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Osvaneo Ferreira",
-      "prioridade": "P3",
-      "status": "Concluído",
-      "categorias": "layer:tech-corp;layer_root:tech-business;tsv2;priority:P3",
-      "criado": "17/09/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600149",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Nilson Alves De Sousa",
       "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "cloud-sec;javascript;java;priority:P2",
-      "criado": "26/02/2026 00:00:00"
+      "status": "Backlog",
+      "categorias": "tsv2;devsecops-security-reports-processor-2;priority:P1;priority:P2",
+      "criado": "19/04/2026 10:45:49"
     },
     {
-      "id": "SEC-600150",
+      "id": "SEC-735503",
       "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Liberio Ferreira Da Cunha Neto",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "javascript;snyk;java;priority:P4",
-      "criado": "11/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600151",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Wesley Paulino",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "sast;python;app-sec;priority:P1",
-      "criado": "10/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600152",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Osmar Fagundes Tamagnoni",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "layer_root:tech-business;sca;priority:P3;priority:P2",
-      "criado": "13/09/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600153",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "priority:P1;sca;sast",
-      "criado": "12/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600154",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "snyk_code;java;javascript;priority:P3",
-      "criado": "04/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600155",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "snyk;sca;layer_root:tech-business;priority:P3",
-      "criado": "02/04/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600156",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "python;cloud-sec;tsv2;priority:P1",
-      "criado": "29/03/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600157",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Marco Aurelio De Castro",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "java;snyk_code;sca;priority:P2",
-      "criado": "23/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600158",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "priority:P3;snyk_code;sca",
-      "criado": "04/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600159",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "titulo": "Unauthorized PII sharing with ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Lucas Mendonca De Albuquerque",
       "prioridade": "P3",
       "status": "Backlog",
-      "categorias": "sast;priority:P1;layer:tech-corp;priority:P3",
-      "criado": "05/03/2026 00:00:00"
+      "categorias": "app-sec;priority:P2;trivy-runtime;automatic-creation;devsecops-srp;priority:P3",
+      "criado": "14/02/2025 17:54:13"
     },
     {
-      "id": "SEC-600160",
+      "id": "SEC-735502",
       "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Fabiano Vieira De Souza",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "sast;priority:P2;javascript",
-      "criado": "16/04/2024 00:00:00"
+      "titulo": "[HIGH] Broken authentication in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Allisson Jardel Alves De Oliveira",
+      "prioridade": "P4",
+      "status": "Em Progresso",
+      "categorias": "devsecops-block-job-2;trivy-runtime;cloudsec;priority:P4",
+      "criado": "05/11/2025 09:43:31"
     },
     {
-      "id": "SEC-600161",
+      "id": "SEC-735501",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
+      "titulo": "[MEDIUM] Missing encryption in ifood/mobile/ios",
       "responsavel": "Beatriz De Matos Campos",
       "prioridade": "P3",
       "status": "Backlog",
-      "categorias": "java;devsecops-block-job-2;priority:P3",
-      "criado": "22/12/2024 00:00:00"
+      "categorias": "sensitive_data;jellyfish-2;javascript;priority:P1;priority:P3",
+      "criado": "11/04/2025 16:30:39"
     },
     {
-      "id": "SEC-600162",
+      "id": "SEC-735500",
       "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "tsv2;priority:P1;snyk_code",
-      "criado": "02/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600163",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P1",
-      "status": "Em Progresso",
-      "categorias": "devsecops-block-job-2;snyk_code;layer_root:tech-business;priority:P1",
-      "criado": "23/05/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600164",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Igor Denis Loss",
-      "prioridade": "P2",
+      "titulo": "[MEDIUM] Missing encryption in ifood/mobile/ios",
+      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "prioridade": "P4",
       "status": "Concluído",
-      "categorias": "snyk;priority:P4;automatic-creation;priority:P2",
-      "criado": "04/03/2024 00:00:00"
+      "categorias": "layer:people-tech;layer:dt-webdev;cloudsec;priority:P4",
+      "criado": "07/01/2025 01:44:36"
     },
     {
-      "id": "SEC-600165",
+      "id": "SEC-735499",
       "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Osvaneo Ferreira",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "sca;python;priority:P1;priority:P2",
-      "criado": "08/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600166",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Igor Denis Loss",
-      "prioridade": "P3",
-      "status": "Concluído",
-      "categorias": "automatic-creation;javascript;python;priority:P3",
-      "criado": "10/01/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600167",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Pedro Henrique Da Silva",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "devsecops-block-job-2;priority:P4;cloud-sec;priority:P1",
-      "criado": "02/02/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600168",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Barbara Oliveira Conceicao",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Alisson Ferreira Lino",
       "prioridade": "P1",
       "status": "Backlog",
-      "categorias": "tsv2;cloud-sec;sast;priority:P1",
-      "criado": "14/08/2025 00:00:00"
+      "categorias": "cloud-trivy-runtime;layer:dt-webdev;cloudsec;priority:P1",
+      "criado": "18/09/2023 16:09:35"
     },
     {
-      "id": "SEC-600169",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Wesley Paulino",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "sca;layer:tech-corp;tsv2;priority:P1",
-      "criado": "24/04/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600170",
+      "id": "SEC-735498",
       "tipo": "Vulnerability",
       "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
       "responsavel": "Osmar Fagundes Tamagnoni",
-      "prioridade": "P1",
+      "prioridade": "P3",
       "status": "Backlog",
-      "categorias": "layer:tech-corp;automatic-creation;snyk;priority:P1",
-      "criado": "29/05/2026 00:00:00"
+      "categorias": "jellyfish-2;dockercompliance;trivy;layer:people-tech;priority:P3",
+      "criado": "04/08/2025 14:42:33"
     },
     {
-      "id": "SEC-600171",
+      "id": "SEC-735497",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Fabiano Vieira De Souza",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "layer_root:tech-business;layer:tech-corp;python;priority:P2",
-      "criado": "21/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600172",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "app-sec;layer:tech-corp;automatic-creation;priority:P4",
-      "criado": "24/12/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600173",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Beatriz De Matos Campos",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "cloud-sec;python;snyk_code;priority:P1",
-      "criado": "22/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600174",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Beatriz De Matos Campos",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "sca;layer:tech-corp;snyk_code;priority:P4",
-      "criado": "06/01/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600175",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Lucas Alberto De Moraes",
-      "prioridade": "P3",
-      "status": "Concluído",
-      "categorias": "tsv2;layer_root:tech-business;devsecops-block-job-2;priority:P3",
-      "criado": "23/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600176",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Rafael Silva Brito",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "cloud-sec;automatic-creation;sca;priority:P4",
-      "criado": "16/05/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600177",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Marco Aurelio De Castro",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "automatic-creation;devsecops-block-job-2;sca;priority:P2",
-      "criado": "19/01/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600178",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Gabriel Angelo Oberstein Branco",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "layer_root:tech-business;snyk;priority:P2;priority:P1",
-      "criado": "04/07/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600179",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "python;snyk_code;priority:P2",
-      "criado": "14/04/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600180",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Fabiano Vieira De Souza",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "layer:tech-corp;sast;python;priority:P4",
-      "criado": "28/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600181",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Gabriel Angelo Oberstein Branco",
-      "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "priority:P4;layer:tech-corp;java;priority:P3",
-      "criado": "16/04/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600182",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/data/data-lake",
       "responsavel": "Felipe Dos Santos Ramas",
       "prioridade": "P3",
       "status": "Backlog",
-      "categorias": "app-sec;python;priority:P3",
-      "criado": "26/03/2026 00:00:00"
+      "categorias": "sec-eng;snyk_code;cloud-trivy-runtime;devsecops-security-reports-processor-2;priority:P3",
+      "criado": "03/11/2023 00:48:15"
     },
     {
-      "id": "SEC-600183",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Felipe Dos Santos Ramas",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "devsecops-block-job-2;layer_root:tech-business;priority:P3;priority:P2",
-      "criado": "06/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600184",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Lucas Mendonca De Albuquerque",
-      "prioridade": "P3",
-      "status": "Concluído",
-      "categorias": "priority:P4;layer_root:tech-business;python;priority:P3",
-      "criado": "16/09/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600185",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Wesley Paulino",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "python;priority:P4;priority:P1;priority:P2",
-      "criado": "25/06/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600186",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Taylor Lima Damaceno",
-      "prioridade": "P1",
-      "status": "Backlog",
-      "categorias": "java;priority:P1;app-sec",
-      "criado": "13/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600187",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "sca;java;javascript;priority:P2",
-      "criado": "24/04/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600188",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "snyk_code;priority:P3;sast;priority:P4",
-      "criado": "14/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600189",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "priority:P1;sca;snyk_code;priority:P2",
-      "criado": "08/06/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600190",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "automatic-creation;priority:P1;cloud-sec;priority:P2",
-      "criado": "21/04/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600191",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P1",
-      "status": "Backlog",
-      "categorias": "priority:P2;devsecops-block-job-2;priority:P1",
-      "criado": "09/07/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600192",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Gabriel Angelo Oberstein Branco",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "automatic-creation;cloud-sec;javascript;priority:P2",
-      "criado": "12/04/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600193",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "priority:P1;java;priority:P4;priority:P2",
-      "criado": "29/04/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600194",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Barbara Oliveira Conceicao",
-      "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "priority:P2;cloud-sec;priority:P4",
-      "criado": "21/06/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600195",
+      "id": "SEC-735496",
       "tipo": "Vulnerability",
       "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "responsavel": "Bruno Alves Dos Santos",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "snyk;dockercompliance;sensitive_data;priority:P3",
+      "criado": "11/05/2024 21:55:47"
+    },
+    {
+      "id": "SEC-735495",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/mobile/android",
+      "responsavel": "Rafael Silva Brito",
       "prioridade": "P2",
       "status": "Backlog",
-      "categorias": "automatic-creation;devsecops-block-job-2;app-sec;priority:P2",
-      "criado": "08/05/2026 00:00:00"
+      "categorias": "devsecops-security-reports-processor-2;cloud-trivy-runtime;app-sec;devsecops-block-job-2;layer:people-tech;priority:P2",
+      "criado": "15/04/2024 05:31:39"
     },
     {
-      "id": "SEC-600196",
+      "id": "SEC-735494",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Diego Alves Marinho Da Mota",
-      "prioridade": "P1",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Beatriz De Matos Campos",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "app-sec;sast;layer:tech-corp;snyk_code;priority:P3",
+      "criado": "16/10/2024 23:51:43"
+    },
+    {
+      "id": "SEC-735493",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/mobile/android",
+      "responsavel": "Barbara Oliveira Conceicao",
+      "prioridade": "P3",
       "status": "Em Progresso",
-      "categorias": "automatic-creation;snyk_code;priority:P3;priority:P1",
-      "criado": "31/10/2025 00:00:00"
+      "categorias": "priority:P0;jellyfish-2;cloud-trivy-runtime;priority:P3",
+      "criado": "16/01/2026 14:24:22"
     },
     {
-      "id": "SEC-600197",
+      "id": "SEC-735492",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
+      "titulo": "Unauthorized PII sharing with ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Allisson Jardel Alves De Oliveira",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "trivy;tsv2;gitguardian;cloud-trivy-runtime;devsecops-block-job-2;priority:P3",
+      "criado": "15/05/2024 13:03:24"
+    },
+    {
+      "id": "SEC-735491",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/data/data-lake",
+      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "layer:people-tech;cloud-sec;devsecops-block-job-2;sec-eng;priority:P2;priority:P1",
+      "criado": "08/09/2024 23:02:59"
+    },
+    {
+      "id": "SEC-735490",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/api-gateway",
+      "responsavel": "Gabriel Angelo Oberstein Branco",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "priority:P1;snyk_code;priority:P2",
+      "criado": "21/11/2023 13:36:12"
+    },
+    {
+      "id": "SEC-735489",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/digital-transformation/integration/manhattan",
       "responsavel": "Andre Stoicov Ricardo",
+      "prioridade": "P1",
+      "status": "Concluído",
+      "categorias": "jellyfish-2;tsv2;layer:tech-corp;dockercompliance;priority:P4;priority:P1",
+      "criado": "15/11/2023 17:43:33"
+    },
+    {
+      "id": "SEC-735488",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/mobile/android",
+      "responsavel": "Taylor Lima Damaceno",
       "prioridade": "P4",
       "status": "Backlog",
-      "categorias": "layer:tech-corp;sca;tsv2;priority:P4",
-      "criado": "14/04/2026 00:00:00"
+      "categorias": "priority:P1;app-sec;devsecops-security-reports-processor-2;dockercompliance;layer:tech-corp;priority:P4",
+      "criado": "27/01/2024 04:29:33"
     },
     {
-      "id": "SEC-600198",
+      "id": "SEC-735487",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Marco Aurelio De Castro",
-      "prioridade": "P2",
-      "status": "Backlog",
-      "categorias": "priority:P2;javascript;layer_root:tech-business",
-      "criado": "31/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600199",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P3",
-      "status": "Backlog",
-      "categorias": "priority:P3;devsecops-block-job-2;layer:tech-corp",
-      "criado": "25/03/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600200",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Allisson Jardel Alves De Oliveira",
-      "prioridade": "P2",
-      "status": "Em Progresso",
-      "categorias": "layer:tech-corp;app-sec;sast;priority:P2",
-      "criado": "02/04/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600201",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P2",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P4",
       "status": "Concluído",
-      "categorias": "snyk;app-sec;devsecops-block-job-2;priority:P2",
-      "criado": "20/09/2024 00:00:00"
+      "categorias": "jellyfish-2;priority:P3;layer:tech-corp;tsv2;trivy-runtime;priority:P4",
+      "criado": "24/08/2024 23:28:43"
     },
     {
-      "id": "SEC-600202",
+      "id": "SEC-735486",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Alisson Ferreira Lino",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "tsv2;layer_root:tech-business;automatic-creation;priority:P3",
-      "criado": "10/02/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600203",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Fabiano Vieira De Souza",
-      "prioridade": "P3",
-      "status": "Rejeitada",
-      "categorias": "layer_root:tech-business;cloud-sec;automatic-creation;priority:P3",
-      "criado": "01/10/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600204",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Rafael Oliveira",
-      "prioridade": "P1",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/data/data-lake",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P4",
       "status": "Em Progresso",
-      "categorias": "layer:tech-corp;snyk;automatic-creation;priority:P1",
-      "criado": "13/02/2024 00:00:00"
+      "categorias": "cloud-sec;app-sec;priority:P3;dockercompliance;priority:P4",
+      "criado": "16/04/2026 14:18:29"
     },
     {
-      "id": "SEC-600205",
+      "id": "SEC-735485",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Alisson Ferreira Lino",
+      "titulo": "[MEDIUM] Missing encryption in ifood/mobile/ios",
+      "responsavel": "Osvaneo Ferreira",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "app-sec;devsecops-srp;cloudsec;genplat;priority:P4",
+      "criado": "25/11/2025 10:04:49"
+    },
+    {
+      "id": "SEC-735484",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "cloud-sec;priority:P1;python",
+      "criado": "01/10/2023 20:23:19"
+    },
+    {
+      "id": "SEC-735483",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "sec-eng;genplat;layer:people-tech;gitguardian;java;priority:P4",
+      "criado": "02/05/2025 08:26:59"
+    },
+    {
+      "id": "SEC-735482",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/data/data-lake",
+      "responsavel": "Rafael Silva Brito",
+      "prioridade": "P1",
+      "status": "Concluído",
+      "categorias": "layer:people-tech;layer_root:tech-business;gitguardian;devsecops-security-reports-processor-2;sast;priority:P1",
+      "criado": "30/09/2023 00:45:28"
+    },
+    {
+      "id": "SEC-735481",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/platform/auth-service",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "layer:dt-webdev;automatic-creation;javascript;priority:P3",
+      "criado": "10/04/2025 20:53:18"
+    },
+    {
+      "id": "SEC-735480",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/platform/auth-service",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
       "prioridade": "P2",
       "status": "Em Progresso",
-      "categorias": "app-sec;layer:tech-corp;snyk;priority:P2",
-      "criado": "07/01/2024 00:00:00"
+      "categorias": "sca;priority:P3;automatic-creation;devsecops-srp;layer:tech-corp;priority:P2",
+      "criado": "04/05/2024 06:29:26"
     },
     {
-      "id": "SEC-600206",
+      "id": "SEC-735479",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Nilson Alves De Sousa",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "priority:P4;priority:P2;sensitive_data;tsv2;priority:P3",
+      "criado": "27/01/2024 12:35:14"
+    },
+    {
+      "id": "SEC-735478",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Osvaneo Ferreira",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "app-sec;javascript;python;sensitive_data;priority:P3",
+      "criado": "17/11/2023 13:48:45"
+    },
+    {
+      "id": "SEC-735477",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/auth-service",
+      "responsavel": "Osmar Fagundes Tamagnoni",
+      "prioridade": "P4",
+      "status": "Em Progresso",
+      "categorias": "priority:P1;tsv2;sec-eng;priority:P4",
+      "criado": "19/12/2024 13:58:48"
+    },
+    {
+      "id": "SEC-735476",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sast;java;priority:P1;sca;app-sec;priority:P3",
+      "criado": "14/11/2024 22:16:45"
+    },
+    {
+      "id": "SEC-735475",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "snyk_code;snyk;jellyfish-2;tsv2;priority:P2",
+      "criado": "04/08/2025 22:39:34"
+    },
+    {
+      "id": "SEC-735474",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "priority:P3;devsecops-block-job-2;layer:people-tech;priority:P1;layer:dt-webdev",
+      "criado": "05/06/2024 05:06:07"
+    },
+    {
+      "id": "SEC-735473",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/infrastructure/kubernetes-configs",
       "responsavel": "Vitor Amorim Varela Da Silva",
       "prioridade": "P2",
       "status": "Backlog",
-      "categorias": "snyk;priority:P3;automatic-creation;priority:P2",
-      "criado": "29/07/2025 00:00:00"
+      "categorias": "snyk_code;sec-eng;javascript;priority:P2",
+      "criado": "20/08/2026 18:52:36"
     },
     {
-      "id": "SEC-600207",
+      "id": "SEC-735472",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "app-sec;devsecops-security-reports-processor-2;sensitive_data;layer:dt-webdev;java;priority:P3",
+      "criado": "16/07/2026 22:28:17"
+    },
+    {
+      "id": "SEC-735471",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "snyk_code;priority:P2;snyk;priority:P3",
+      "criado": "09/03/2026 14:20:02"
+    },
+    {
+      "id": "SEC-735470",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/mobile/ios",
+      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "trivy;snyk;layer:tech-corp;priority:P3",
+      "criado": "18/08/2024 22:45:55"
+    },
+    {
+      "id": "SEC-735469",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/mobile/android",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "layer_root:tech-business;snyk;cloudsec;priority:P3",
+      "criado": "13/08/2026 07:52:50"
+    },
+    {
+      "id": "SEC-735468",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/mobile/ios",
+      "responsavel": "Andre Stoicov Ricardo",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "genplat;layer:dt-webdev;sast;priority:P2",
+      "criado": "13/07/2026 21:19:27"
+    },
+    {
+      "id": "SEC-735467",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/data/data-lake",
+      "responsavel": "Fabiano Vieira De Souza",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "snyk_code;sec-eng;cloud-trivy-runtime;jellyfish-2;sast;priority:P2",
+      "criado": "24/01/2026 05:03:31"
+    },
+    {
+      "id": "SEC-735466",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/data/data-lake",
+      "responsavel": "Liberio Ferreira Da Cunha Neto",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "priority:P4;priority:P1;sast",
+      "criado": "12/05/2025 19:14:44"
+    },
+    {
+      "id": "SEC-735465",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Liberio Ferreira Da Cunha Neto",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "layer_root:tech-business;sensitive_data;trivy-runtime;priority:P3",
+      "criado": "14/09/2023 23:07:25"
+    },
+    {
+      "id": "SEC-735464",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "dockercompliance;automatic-creation;sca;devsecops-block-job-2;priority:P3",
+      "criado": "25/04/2026 08:26:37"
+    },
+    {
+      "id": "SEC-735463",
       "tipo": "Vulnerability",
       "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "app-sec;layer_root:tech-business;python;priority:P4",
-      "criado": "04/02/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600208",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
       "responsavel": "Cassio Luis Pereira Silva",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "priority:P2;jellyfish-2;snyk_code;priority:P3",
+      "criado": "11/03/2025 19:50:59"
+    },
+    {
+      "id": "SEC-735462",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/platform/api-gateway",
+      "responsavel": "Taylor Lima Damaceno",
       "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "priority:P4;priority:P3;tsv2;priority:P2",
-      "criado": "16/01/2024 00:00:00"
+      "status": "Em Progresso",
+      "categorias": "trivy;automatic-creation;cloud-trivy-runtime;priority:P2",
+      "criado": "25/01/2025 12:28:02"
     },
     {
-      "id": "SEC-600209",
+      "id": "SEC-735461",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Pedro Henrique Da Silva",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "snyk_code;automatic-creation;snyk;priority:P4",
-      "criado": "24/05/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600210",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
       "responsavel": "Bruno Silveira Guilherme",
       "prioridade": "P2",
       "status": "Backlog",
-      "categorias": "layer_root:tech-business;layer:tech-corp;cloud-sec;priority:P2",
-      "criado": "13/02/2025 00:00:00"
+      "categorias": "automatic-creation;genplat;layer:people-tech;priority:P2",
+      "criado": "12/02/2024 22:51:32"
     },
     {
-      "id": "SEC-600211",
+      "id": "SEC-735460",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "devsecops-block-job-2;snyk_code;tsv2;priority:P1",
-      "criado": "24/03/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600212",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Igor Denis Loss",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "priority:P4;snyk;devsecops-block-job-2",
-      "criado": "19/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600213",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P4",
-      "status": "Em Progresso",
-      "categorias": "snyk_code;automatic-creation;layer_root:tech-business;priority:P4",
-      "criado": "18/01/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600214",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "priority:P4;sca;snyk_code;priority:P1",
-      "criado": "26/03/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600215",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "layer_root:tech-business;snyk_code;javascript;priority:P2",
-      "criado": "24/05/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600216",
-      "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P4",
-      "status": "Concluído",
-      "categorias": "sca;priority:P3;cloud-sec;priority:P4",
-      "criado": "05/02/2026 00:00:00"
-    },
-    {
-      "id": "SEC-600217",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "sca;layer:tech-corp;tsv2;priority:P2",
-      "criado": "15/08/2024 00:00:00"
-    },
-    {
-      "id": "SEC-600218",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/mobile/android",
       "responsavel": "Osvaneo Ferreira",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "sast;priority:P4;sca;priority:P1",
-      "criado": "16/10/2024 00:00:00"
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "python;gitguardian;devsecops-srp;priority:P1;priority:P3",
+      "criado": "15/01/2024 19:12:48"
     },
     {
-      "id": "SEC-600219",
+      "id": "SEC-735459",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/data/data-lake",
+      "responsavel": "Gabriel Angelo Oberstein Branco",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "javascript;cloudsec;layer:people-tech;devsecops-security-reports-processor-2;priority:P1;priority:P3",
+      "criado": "28/06/2026 20:01:33"
+    },
+    {
+      "id": "SEC-735458",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sensitive_data;python;cloudsec;tsv2;priority:P3",
+      "criado": "20/08/2023 12:42:22"
+    },
+    {
+      "id": "SEC-735457",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/data/data-lake",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "snyk_code;genplat;sensitive_data;java;layer_root:tech-business;priority:P3",
+      "criado": "14/03/2026 15:52:36"
+    },
+    {
+      "id": "SEC-735456",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/mobile/android",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "layer_root:tech-business;priority:P2;layer:people-tech;devsecops-block-job-2;snyk;priority:P3",
+      "criado": "13/08/2024 16:53:16"
+    },
+    {
+      "id": "SEC-735455",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/platform/auth-service",
+      "responsavel": "Alisson Ferreira Lino",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P2;java;trivy-runtime;jellyfish-2;priority:P3",
+      "criado": "02/02/2025 01:50:00"
+    },
+    {
+      "id": "SEC-735454",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/api-gateway",
+      "responsavel": "Lucas Mendonca De Albuquerque",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "javascript;devsecops-block-job-2;layer:people-tech;priority:P3",
+      "criado": "23/08/2026 11:19:45"
+    },
+    {
+      "id": "SEC-735453",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/mobile/android",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "trivy-runtime;snyk;automatic-creation;devsecops-block-job-2;priority:P0;priority:P3",
+      "criado": "10/07/2024 02:42:45"
+    },
+    {
+      "id": "SEC-735452",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/auth-service",
+      "responsavel": "Liberio Ferreira Da Cunha Neto",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P4;sensitive_data;priority:P3;snyk_code;layer_root:tech-business",
+      "criado": "19/11/2024 04:44:01"
+    },
+    {
+      "id": "SEC-735451",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/auth-service",
+      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "java;javascript;jellyfish-2;trivy;layer_root:tech-business;priority:P2",
+      "criado": "30/08/2026 11:29:12"
+    },
+    {
+      "id": "SEC-735450",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/api-gateway",
+      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
       "prioridade": "P3",
       "status": "Concluído",
-      "categorias": "automatic-creation;javascript;cloud-sec;priority:P3",
-      "criado": "11/07/2025 00:00:00"
+      "categorias": "priority:P0;layer:dt-webdev;python;priority:P3",
+      "criado": "05/05/2024 15:03:56"
     },
     {
-      "id": "SEC-600220",
+      "id": "SEC-735449",
       "tipo": "Vulnerability",
       "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
-      "responsavel": "Nilson Alves De Sousa",
-      "prioridade": "P1",
-      "status": "Rejeitada",
-      "categorias": "automatic-creation;snyk_code;priority:P3;priority:P1",
-      "criado": "23/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600221",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
-      "responsavel": "Bruno Alves Dos Santos",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "priority:P3;priority:P2;automatic-creation;priority:P1",
-      "criado": "10/10/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600222",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Taylor Lima Damaceno",
-      "prioridade": "P1",
-      "status": "Backlog",
-      "categorias": "sca;sast;devsecops-block-job-2;priority:P1",
-      "criado": "08/05/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600223",
-      "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Osmar Fagundes Tamagnoni",
+      "responsavel": "Allisson Jardel Alves De Oliveira",
       "prioridade": "P2",
       "status": "Concluído",
-      "categorias": "tsv2;priority:P4;python;priority:P2",
-      "criado": "03/04/2024 00:00:00"
+      "categorias": "priority:P0;dockercompliance;trivy-runtime;priority:P2",
+      "criado": "07/01/2024 05:44:40"
     },
     {
-      "id": "SEC-600224",
+      "id": "SEC-735448",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Gabriel Angelo Oberstein Branco",
-      "prioridade": "P4",
-      "status": "Backlog",
-      "categorias": "cloud-sec;layer:tech-corp;priority:P4",
-      "criado": "30/08/2025 00:00:00"
-    },
-    {
-      "id": "SEC-600225",
-      "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
+      "titulo": "[MEDIUM] Missing encryption in ifood/mobile/android",
       "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
       "prioridade": "P3",
-      "status": "Em Progresso",
-      "categorias": "layer:tech-corp;cloud-sec;priority:P3",
-      "criado": "19/01/2025 00:00:00"
+      "status": "Backlog",
+      "categorias": "java;cloud-trivy-runtime;layer:tech-corp;trivy;priority:P3",
+      "criado": "25/01/2024 02:28:36"
     },
     {
-      "id": "SEC-600226",
+      "id": "SEC-735447",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "cloud-trivy-runtime;genplat;priority:P1;devsecops-block-job-2;layer:people-tech;priority:P3",
+      "criado": "31/01/2024 21:11:39"
+    },
+    {
+      "id": "SEC-735446",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Bruno Silveira Guilherme",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sast;snyk;priority:P1;sensitive_data;cloud-trivy-runtime;priority:P3",
+      "criado": "04/03/2026 21:41:15"
+    },
+    {
+      "id": "SEC-735445",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
       "responsavel": "Cassio Luis Pereira Silva",
-      "prioridade": "P1",
-      "status": "Concluído",
-      "categorias": "sca;snyk_code;layer:tech-corp;priority:P1",
-      "criado": "04/04/2026 00:00:00"
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "devsecops-block-job-2;gitguardian;layer:people-tech;java;cloudsec;priority:P4",
+      "criado": "31/03/2024 00:57:32"
     },
     {
-      "id": "SEC-600227",
+      "id": "SEC-735444",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Wesley Paulino",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/mobile/android",
+      "responsavel": "Diego Alves Marinho Da Mota",
       "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "layer:dt-webdev;priority:P0;snyk_code;priority:P1",
+      "criado": "19/11/2023 10:46:25"
+    },
+    {
+      "id": "SEC-735443",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P3",
       "status": "Em Progresso",
-      "categorias": "layer:tech-corp;priority:P4;devsecops-block-job-2;priority:P1",
-      "criado": "16/09/2025 00:00:00"
+      "categorias": "layer:dt-webdev;genplat;layer_root:tech-business;priority:P3",
+      "criado": "08/03/2024 19:57:11"
     },
     {
-      "id": "SEC-600228",
+      "id": "SEC-735442",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "priority:P1;sast;devsecops-block-job-2;priority:P4",
-      "criado": "15/03/2026 00:00:00"
+      "titulo": "[HIGH] Broken authentication in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "priority:P0;snyk;devsecops-srp;snyk_code;priority:P1",
+      "criado": "22/07/2026 20:57:45"
     },
     {
-      "id": "SEC-600229",
+      "id": "SEC-735441",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Barbara Oliveira Conceicao",
-      "prioridade": "P4",
-      "status": "Rejeitada",
-      "categorias": "sast;javascript;layer:tech-corp;priority:P4",
-      "criado": "12/10/2025 00:00:00"
+      "titulo": "[HIGH] Hardcoded credentials in ifood/mobile/android",
+      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "cloud-sec;sensitive_data;priority:P2;priority:P3",
+      "criado": "23/02/2026 17:04:33"
     },
     {
-      "id": "SEC-600230",
+      "id": "SEC-735440",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/api-gateway",
-      "responsavel": "Barbara Oliveira Conceicao",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Alisson Ferreira Lino",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "layer_root:tech-business;cloud-sec;java;trivy;snyk;priority:P2",
+      "criado": "05/10/2024 23:25:43"
+    },
+    {
+      "id": "SEC-735439",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Liberio Ferreira Da Cunha Neto",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "sec-eng;priority:P3;priority:P2;devsecops-security-reports-processor-2",
+      "criado": "06/04/2024 16:59:06"
+    },
+    {
+      "id": "SEC-735438",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/data/data-lake",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "cloud-sec;snyk_code;devsecops-block-job-2;priority:P2;layer:tech-corp",
+      "criado": "15/12/2024 01:31:13"
+    },
+    {
+      "id": "SEC-735437",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Osmar Fagundes Tamagnoni",
       "prioridade": "P1",
       "status": "Concluído",
-      "categorias": "priority:P3;java;priority:P4;priority:P1",
-      "criado": "10/07/2025 00:00:00"
+      "categorias": "snyk_code;sec-eng;cloud-trivy-runtime;javascript;python;priority:P1",
+      "criado": "25/03/2026 02:28:23"
     },
     {
-      "id": "SEC-600231",
+      "id": "SEC-735436",
       "tipo": "Vulnerability",
       "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Andre Stoicov Ricardo",
+      "responsavel": "Cassio Luis Pereira Silva",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "dockercompliance;priority:P0;snyk;trivy-runtime;devsecops-srp;priority:P3",
+      "criado": "14/09/2023 17:19:50"
+    },
+    {
+      "id": "SEC-735435",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Diego Alves Marinho Da Mota",
       "prioridade": "P4",
       "status": "Concluído",
-      "categorias": "java;automatic-creation;sca;priority:P4",
-      "criado": "03/08/2024 00:00:00"
+      "categorias": "app-sec;sec-eng;devsecops-block-job-2;layer:dt-webdev;devsecops-srp;priority:P4",
+      "criado": "17/07/2025 17:01:27"
     },
     {
-      "id": "SEC-600232",
+      "id": "SEC-735434",
       "tipo": "Vulnerability",
-      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/mobile/android",
+      "responsavel": "Osvaneo Ferreira",
+      "prioridade": "P4",
+      "status": "Concluído",
+      "categorias": "tsv2;layer_root:tech-business;sec-eng;trivy;priority:P4",
+      "criado": "03/08/2025 10:37:46"
+    },
+    {
+      "id": "SEC-735433",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Nilson Alves De Sousa",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "dockercompliance;cloudsec;layer_root:tech-business;sec-eng;priority:P3;priority:P2",
+      "criado": "27/09/2025 14:49:57"
+    },
+    {
+      "id": "SEC-735432",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Marco Aurelio De Castro",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "trivy-runtime;genplat;snyk;trivy;priority:P4;priority:P2",
+      "criado": "29/12/2024 07:15:35"
+    },
+    {
+      "id": "SEC-735431",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/platform/auth-service",
+      "responsavel": "Vitor Amorim Varela Da Silva",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "layer:people-tech;sast;layer:dt-webdev;priority:P3",
+      "criado": "29/04/2025 23:48:20"
+    },
+    {
+      "id": "SEC-735430",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/data/data-lake",
+      "responsavel": "Osmar Fagundes Tamagnoni",
+      "prioridade": "P1",
+      "status": "Concluído",
+      "categorias": "genplat;trivy-runtime;cloud-sec;dockercompliance;tsv2;priority:P1",
+      "criado": "02/02/2026 16:31:16"
+    },
+    {
+      "id": "SEC-735429",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Lucas Alberto De Moraes",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "app-sec;genplat;sec-eng;cloudsec;priority:P2",
+      "criado": "30/07/2025 04:52:41"
+    },
+    {
+      "id": "SEC-735428",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/data/data-lake",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P3;sast;priority:P2",
+      "criado": "31/03/2026 13:46:01"
+    },
+    {
+      "id": "SEC-735427",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Nilson Alves De Sousa",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "layer:people-tech;priority:P0;layer:dt-webdev;priority:P3",
+      "criado": "19/12/2023 06:35:08"
+    },
+    {
+      "id": "SEC-735426",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/mobile/android",
+      "responsavel": "Beatriz De Matos Campos",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P1;automatic-creation;cloud-sec;priority:P2;cloud-trivy-runtime;priority:P3",
+      "criado": "29/10/2024 14:32:36"
+    },
+    {
+      "id": "SEC-735425",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/mobile/ios",
       "responsavel": "Igor Denis Loss",
       "prioridade": "P2",
-      "status": "Concluído",
-      "categorias": "automatic-creation;snyk_code;cloud-sec;priority:P2",
-      "criado": "23/05/2024 00:00:00"
+      "status": "Backlog",
+      "categorias": "java;gitguardian;devsecops-block-job-2;sast;layer:people-tech;priority:P2",
+      "criado": "11/09/2025 23:22:47"
     },
     {
-      "id": "SEC-600233",
+      "id": "SEC-735424",
       "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
+      "titulo": "[MEDIUM] Missing encryption in ifood/platform/api-gateway",
       "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "snyk_code;priority:P2;sast",
-      "criado": "01/01/2026 00:00:00"
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "app-sec;snyk_code;priority:P0;gitguardian;priority:P4",
+      "criado": "23/11/2023 14:46:16"
     },
     {
-      "id": "SEC-600234",
+      "id": "SEC-735423",
       "tipo": "Vulnerability",
-      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
-      "responsavel": "Bruno Silveira Guilherme",
-      "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "snyk_code;priority:P2;javascript",
-      "criado": "15/04/2026 00:00:00"
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/api-gateway",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "layer:tech-corp;snyk_code;priority:P1;javascript;priority:P3",
+      "criado": "20/03/2025 11:24:13"
     },
     {
-      "id": "SEC-600235",
+      "id": "SEC-735422",
       "tipo": "Vulnerability",
-      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P0;automatic-creation;sca;layer_root:tech-business;app-sec;priority:P3",
+      "criado": "27/12/2025 00:21:46"
+    },
+    {
+      "id": "SEC-735421",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "priority:P0;layer:dt-webdev;priority:P4;javascript;priority:P3",
+      "criado": "22/03/2026 09:30:01"
+    },
+    {
+      "id": "SEC-735420",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Wesley Paulino",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "cloud-sec;priority:P1;snyk;python;dockercompliance;priority:P2",
+      "criado": "18/12/2023 21:24:56"
+    },
+    {
+      "id": "SEC-735419",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Bruno Alves Dos Santos",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "python;tsv2;layer_root:tech-business;priority:P4",
+      "criado": "12/04/2024 11:39:38"
+    },
+    {
+      "id": "SEC-735418",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/platform/api-gateway",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "devsecops-srp;snyk_code;cloudsec;genplat;priority:P2",
+      "criado": "16/07/2024 08:31:31"
+    },
+    {
+      "id": "SEC-735417",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/mobile/ios",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "sca;app-sec;layer:tech-corp;priority:P3",
+      "criado": "11/11/2025 09:51:56"
+    },
+    {
+      "id": "SEC-735416",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Gabriel Angelo Oberstein Branco",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "python;devsecops-security-reports-processor-2;layer:dt-webdev;trivy;automatic-creation;priority:P2",
+      "criado": "20/03/2026 07:22:52"
+    },
+    {
+      "id": "SEC-735415",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "snyk_code;priority:P1;sec-eng;priority:P4",
+      "criado": "29/01/2024 02:59:39"
+    },
+    {
+      "id": "SEC-735414",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/mobile/android",
+      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "layer:people-tech;dockercompliance;sast;priority:P2",
+      "criado": "05/07/2025 14:03:54"
+    },
+    {
+      "id": "SEC-735413",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/data/data-lake",
+      "responsavel": "Marco Aurelio De Castro",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "genplat;sec-eng;devsecops-security-reports-processor-2;trivy-runtime;layer_root:tech-business;priority:P2",
+      "criado": "20/09/2023 16:45:05"
+    },
+    {
+      "id": "SEC-735412",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Vitor Amorim Varela Da Silva",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "devsecops-security-reports-processor-2;python;priority:P4;cloud-trivy-runtime;priority:P3",
+      "criado": "10/04/2025 08:43:18"
+    },
+    {
+      "id": "SEC-735411",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Osmar Fagundes Tamagnoni",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "automatic-creation;cloud-trivy-runtime;priority:P3;priority:P2",
+      "criado": "13/08/2024 05:54:23"
+    },
+    {
+      "id": "SEC-735410",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P4",
+      "status": "Concluído",
+      "categorias": "jellyfish-2;layer:dt-webdev;priority:P3;genplat;app-sec;priority:P4",
+      "criado": "04/10/2024 14:33:19"
+    },
+    {
+      "id": "SEC-735409",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/mobile/ios",
+      "responsavel": "Cassio Luis Pereira Silva",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "devsecops-srp;automatic-creation;dockercompliance;priority:P3",
+      "criado": "23/08/2023 23:01:59"
+    },
+    {
+      "id": "SEC-735408",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/auth-service",
+      "responsavel": "Alisson Ferreira Lino",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "layer:tech-corp;cloud-trivy-runtime;dockercompliance;priority:P2",
+      "criado": "26/09/2026 02:15:12"
+    },
+    {
+      "id": "SEC-735407",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/mobile/android",
+      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "tsv2;devsecops-security-reports-processor-2;snyk;layer:dt-webdev;priority:P3",
+      "criado": "13/03/2026 09:50:42"
+    },
+    {
+      "id": "SEC-735406",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/platform/api-gateway",
+      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "prioridade": "P1",
+      "status": "Concluído",
+      "categorias": "automatic-creation;cloud-trivy-runtime;trivy;sca;sensitive_data;priority:P1",
+      "criado": "01/07/2026 16:34:07"
+    },
+    {
+      "id": "SEC-735405",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Wesley Paulino",
+      "prioridade": "P1",
+      "status": "Concluído",
+      "categorias": "priority:P2;genplat;cloudsec;priority:P1",
+      "criado": "12/02/2024 21:45:48"
+    },
+    {
+      "id": "SEC-735404",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/platform/auth-service",
+      "responsavel": "Gabriel Angelo Oberstein Branco",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "priority:P0;snyk_code;tsv2;sensitive_data;devsecops-security-reports-processor-2;priority:P2",
+      "criado": "26/07/2026 01:13:59"
+    },
+    {
+      "id": "SEC-735403",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P1",
+      "status": "Concluído",
+      "categorias": "layer:dt-webdev;sec-eng;priority:P3;snyk_code;priority:P1",
+      "criado": "11/04/2025 06:44:19"
+    },
+    {
+      "id": "SEC-735402",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/platform/auth-service",
+      "responsavel": "Osmar Fagundes Tamagnoni",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "python;genplat;trivy;cloudsec;priority:P3",
+      "criado": "20/12/2023 14:06:23"
+    },
+    {
+      "id": "SEC-735401",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/auth-service",
+      "responsavel": "Rafael Silva Brito",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "cloud-trivy-runtime;priority:P3;devsecops-srp",
+      "criado": "30/04/2025 01:03:21"
+    },
+    {
+      "id": "SEC-735400",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "priority:P1;priority:P4;devsecops-security-reports-processor-2;tsv2;jellyfish-2;priority:P2",
+      "criado": "28/03/2024 05:45:32"
+    },
+    {
+      "id": "SEC-735399",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/auth-service",
+      "responsavel": "Vitor Amorim Varela Da Silva",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "python;devsecops-srp;layer_root:tech-business;layer:dt-webdev;sensitive_data;priority:P3",
+      "criado": "19/12/2025 07:19:01"
+    },
+    {
+      "id": "SEC-735398",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/mobile/ios",
+      "responsavel": "Alisson Ferreira Lino",
+      "prioridade": "P4",
+      "status": "Em Progresso",
+      "categorias": "layer_root:tech-business;automatic-creation;java;priority:P1;priority:P3;priority:P4",
+      "criado": "27/01/2025 04:06:06"
+    },
+    {
+      "id": "SEC-735397",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/data/data-lake",
+      "responsavel": "Andre Stoicov Ricardo",
+      "prioridade": "P1",
+      "status": "Em Progresso",
+      "categorias": "automatic-creation;devsecops-block-job-2;jellyfish-2;priority:P1",
+      "criado": "07/03/2025 06:32:38"
+    },
+    {
+      "id": "SEC-735396",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/platform/api-gateway",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "devsecops-block-job-2;cloud-trivy-runtime;genplat;gitguardian;priority:P3",
+      "criado": "17/03/2026 15:40:37"
+    },
+    {
+      "id": "SEC-735395",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/data/data-lake",
+      "responsavel": "Liberio Ferreira Da Cunha Neto",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "snyk;sec-eng;layer_root:tech-business;jellyfish-2;tsv2;priority:P1",
+      "criado": "24/01/2024 16:25:27"
+    },
+    {
+      "id": "SEC-735394",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/mobile/android",
+      "responsavel": "Lucas Alberto De Moraes",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "priority:P1;cloud-sec;layer:dt-webdev;sca;cloud-trivy-runtime;priority:P2",
+      "criado": "12/08/2023 19:35:43"
+    },
+    {
+      "id": "SEC-735393",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "devsecops-srp;app-sec;trivy-runtime;sensitive_data;priority:P2",
+      "criado": "29/04/2024 19:22:37"
+    },
+    {
+      "id": "SEC-735392",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/mobile/ios",
+      "responsavel": "Lucas Mendonca De Albuquerque",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "priority:P4;cloudsec;sca;cloud-sec;sensitive_data;priority:P2",
+      "criado": "29/08/2023 23:44:06"
+    },
+    {
+      "id": "SEC-735391",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sca;sec-eng;priority:P0;devsecops-srp;automatic-creation;priority:P3",
+      "criado": "17/12/2024 09:14:07"
+    },
+    {
+      "id": "SEC-735390",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/platform/auth-service",
+      "responsavel": "Andre Stoicov Ricardo",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "devsecops-security-reports-processor-2;layer:people-tech;sensitive_data;sca;priority:P2",
+      "criado": "22/10/2025 19:44:22"
+    },
+    {
+      "id": "SEC-735389",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Fabiano Vieira De Souza",
+      "prioridade": "P1",
+      "status": "Em Progresso",
+      "categorias": "cloudsec;tsv2;devsecops-srp;priority:P1",
+      "criado": "02/11/2025 03:22:53"
+    },
+    {
+      "id": "SEC-735388",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/platform/auth-service",
       "responsavel": "Pedro Henrique Da Silva",
       "prioridade": "P3",
       "status": "Em Progresso",
-      "categorias": "layer:tech-corp;devsecops-block-job-2;priority:P2;priority:P3",
-      "criado": "08/08/2024 00:00:00"
+      "categorias": "genplat;layer:people-tech;devsecops-security-reports-processor-2;layer:tech-corp;javascript;priority:P3",
+      "criado": "26/04/2024 09:30:44"
     },
     {
-      "id": "SEC-600236",
+      "id": "SEC-735387",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Rafael Oliveira",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "trivy-runtime;snyk_code;snyk;priority:P2;genplat;priority:P3",
+      "criado": "14/06/2025 00:32:46"
+    },
+    {
+      "id": "SEC-735386",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/platform/api-gateway",
+      "responsavel": "Marco Aurelio De Castro",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "priority:P4;tsv2;cloudsec;priority:P1",
+      "criado": "25/11/2024 01:50:36"
+    },
+    {
+      "id": "SEC-735385",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/platform/api-gateway",
+      "responsavel": "Andre Stoicov Ricardo",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "devsecops-block-job-2;tsv2;sast;snyk_code;cloud-sec;priority:P3",
+      "criado": "29/06/2025 12:17:15"
+    },
+    {
+      "id": "SEC-735384",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/platform/auth-service",
+      "responsavel": "Nilson Alves De Sousa",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "tsv2;genplat;cloud-trivy-runtime;snyk;priority:P4",
+      "criado": "08/01/2024 15:49:46"
+    },
+    {
+      "id": "SEC-735383",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/mobile/ios",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "cloud-sec;layer:people-tech;snyk;priority:P3",
+      "criado": "13/06/2025 11:49:54"
+    },
+    {
+      "id": "SEC-735382",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/platform/auth-service",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "sec-eng;priority:P3;cloud-trivy-runtime;cloudsec",
+      "criado": "25/12/2024 00:45:44"
+    },
+    {
+      "id": "SEC-735381",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/platform/api-gateway",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P1",
+      "status": "Concluído",
+      "categorias": "genplat;priority:P3;devsecops-block-job-2;priority:P4;priority:P1",
+      "criado": "16/05/2026 00:29:33"
+    },
+    {
+      "id": "SEC-735380",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sast;priority:P3;dockercompliance;devsecops-block-job-2;sensitive_data",
+      "criado": "28/09/2025 18:49:29"
+    },
+    {
+      "id": "SEC-735379",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Fabiano Vieira De Souza",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "javascript;layer:dt-webdev;dockercompliance;genplat;priority:P2",
+      "criado": "28/11/2023 17:55:22"
+    },
+    {
+      "id": "SEC-735378",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/mobile/ios",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "cloud-sec;priority:P3;dockercompliance;sast;genplat;priority:P2",
+      "criado": "08/04/2024 22:00:52"
+    },
+    {
+      "id": "SEC-735377",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "cloud-sec;sec-eng;python;layer:people-tech;priority:P2",
+      "criado": "20/06/2025 21:55:41"
+    },
+    {
+      "id": "SEC-735376",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Lucas Mendonca De Albuquerque",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "priority:P1;trivy;javascript;priority:P3",
+      "criado": "22/02/2025 07:06:17"
+    },
+    {
+      "id": "SEC-735375",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/mobile/android",
+      "responsavel": "Rafael Oliveira",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sast;tsv2;sec-eng;gitguardian;priority:P3",
+      "criado": "06/06/2024 02:16:15"
+    },
+    {
+      "id": "SEC-735374",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "python;devsecops-security-reports-processor-2;devsecops-srp;priority:P0;priority:P3",
+      "criado": "09/12/2023 04:05:28"
+    },
+    {
+      "id": "SEC-735373",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "devsecops-block-job-2;layer:dt-webdev;snyk;priority:P4;priority:P3",
+      "criado": "11/09/2023 07:20:12"
+    },
+    {
+      "id": "SEC-735372",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Gabriel Angelo Oberstein Branco",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "python;layer:dt-webdev;automatic-creation;priority:P3",
+      "criado": "07/12/2024 22:25:59"
+    },
+    {
+      "id": "SEC-735371",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Barbara Oliveira Conceicao",
+      "prioridade": "P4",
+      "status": "Em Progresso",
+      "categorias": "priority:P0;trivy;dockercompliance;priority:P4",
+      "criado": "31/07/2026 21:17:42"
+    },
+    {
+      "id": "SEC-735370",
       "tipo": "Vulnerability",
       "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
-      "responsavel": "Igor Denis Loss",
+      "responsavel": "Cassio Luis Pereira Silva",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "genplat;sensitive_data;devsecops-srp;priority:P3",
+      "criado": "21/10/2024 10:12:19"
+    },
+    {
+      "id": "SEC-735369",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/data/data-lake",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
       "prioridade": "P2",
-      "status": "Rejeitada",
-      "categorias": "snyk;sca;java;priority:P2",
-      "criado": "26/06/2025 00:00:00"
+      "status": "Backlog",
+      "categorias": "snyk_code;cloudsec;devsecops-srp;trivy-runtime;automatic-creation;priority:P2",
+      "criado": "08/04/2026 13:59:16"
+    },
+    {
+      "id": "SEC-735368",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/api-gateway",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P4;layer:people-tech;sec-eng;priority:P3",
+      "criado": "17/05/2024 20:34:07"
+    },
+    {
+      "id": "SEC-735367",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Lucas Alberto De Moraes",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "tsv2;automatic-creation;sast;trivy;cloud-sec;priority:P3",
+      "criado": "14/04/2026 08:31:29"
+    },
+    {
+      "id": "SEC-735366",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/auth-service",
+      "responsavel": "Rafael Silva Brito",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P4;layer:people-tech;devsecops-security-reports-processor-2;priority:P3",
+      "criado": "20/01/2026 19:55:41"
+    },
+    {
+      "id": "SEC-735365",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/auth-service",
+      "responsavel": "Lucas Mendonca De Albuquerque",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "java;snyk_code;trivy;dockercompliance;priority:P3",
+      "criado": "06/11/2023 21:33:30"
+    },
+    {
+      "id": "SEC-735364",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/platform/api-gateway",
+      "responsavel": "Bruno Alves Dos Santos",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "javascript;cloud-sec;priority:P2;priority:P3",
+      "criado": "24/11/2024 13:28:00"
+    },
+    {
+      "id": "SEC-735363",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/mobile/android",
+      "responsavel": "Cassio Luis Pereira Silva",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "javascript;priority:P0;priority:P4;priority:P3",
+      "criado": "14/10/2023 03:15:48"
+    },
+    {
+      "id": "SEC-735362",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/platform/auth-service",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "snyk;sast;priority:P3;java",
+      "criado": "09/09/2025 16:47:49"
+    },
+    {
+      "id": "SEC-735361",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/platform/api-gateway",
+      "responsavel": "Rafael Silva Brito",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sensitive_data;devsecops-block-job-2;java;priority:P3",
+      "criado": "25/11/2025 05:45:34"
+    },
+    {
+      "id": "SEC-735360",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/platform/api-gateway",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "sensitive_data;gitguardian;snyk;priority:P4;priority:P2",
+      "criado": "25/06/2025 11:12:07"
+    },
+    {
+      "id": "SEC-735359",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Igor Denis Loss",
+      "prioridade": "P1",
+      "status": "Em Progresso",
+      "categorias": "cloud-trivy-runtime;cloudsec;sca;python;priority:P1",
+      "criado": "05/10/2025 22:13:59"
+    },
+    {
+      "id": "SEC-735358",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Vitor Amorim Varela Da Silva",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "snyk;cloud-sec;dockercompliance;cloudsec;layer:people-tech;priority:P3",
+      "criado": "29/04/2026 02:24:55"
+    },
+    {
+      "id": "SEC-735357",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Nilson Alves De Sousa",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "snyk;python;cloudsec;priority:P2",
+      "criado": "08/01/2026 10:21:17"
+    },
+    {
+      "id": "SEC-735356",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/platform/api-gateway",
+      "responsavel": "Bruno Silveira Guilherme",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "automatic-creation;java;trivy-runtime;priority:P2",
+      "criado": "13/10/2025 03:56:34"
+    },
+    {
+      "id": "SEC-735355",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/platform/api-gateway",
+      "responsavel": "Osvaneo Ferreira",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "jellyfish-2;priority:P0;trivy-runtime;javascript;priority:P3",
+      "criado": "07/02/2024 09:15:16"
+    },
+    {
+      "id": "SEC-735354",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/mobile/android",
+      "responsavel": "Andre Stoicov Ricardo",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "priority:P2;priority:P4;cloudsec;priority:P0;priority:P1",
+      "criado": "01/04/2024 13:13:16"
+    },
+    {
+      "id": "SEC-735353",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/auth-service",
+      "responsavel": "Lucas Alberto De Moraes",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "devsecops-srp;javascript;dockercompliance;priority:P3",
+      "criado": "02/08/2024 15:09:52"
+    },
+    {
+      "id": "SEC-735352",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "dockercompliance;devsecops-block-job-2;cloudsec;priority:P1;priority:P3",
+      "criado": "10/04/2025 09:28:47"
+    },
+    {
+      "id": "SEC-735351",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/data/data-lake",
+      "responsavel": "Rafael Oliveira",
+      "prioridade": "P4",
+      "status": "Concluído",
+      "categorias": "cloudsec;dockercompliance;priority:P2;snyk;priority:P4",
+      "criado": "24/07/2025 12:31:13"
+    },
+    {
+      "id": "SEC-735350",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Beatriz De Matos Campos",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sensitive_data;tsv2;cloud-trivy-runtime;priority:P3",
+      "criado": "09/02/2024 18:03:43"
+    },
+    {
+      "id": "SEC-735349",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/platform/auth-service",
+      "responsavel": "Osvaneo Ferreira",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P4;priority:P0;devsecops-block-job-2;priority:P3",
+      "criado": "24/08/2024 04:14:35"
+    },
+    {
+      "id": "SEC-735348",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "devsecops-block-job-2;tsv2;gitguardian;genplat;priority:P2",
+      "criado": "22/04/2024 19:49:18"
+    },
+    {
+      "id": "SEC-735347",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/auth-service",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "cloud-sec;automatic-creation;devsecops-block-job-2;layer:tech-corp;jellyfish-2;priority:P3",
+      "criado": "05/01/2026 15:49:15"
+    },
+    {
+      "id": "SEC-735346",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/mobile/ios",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "priority:P1;trivy;layer:people-tech;sca;snyk_code;priority:P3",
+      "criado": "22/11/2023 05:37:53"
+    },
+    {
+      "id": "SEC-735345",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/mobile/android",
+      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P3;genplat;priority:P2",
+      "criado": "20/08/2026 19:30:34"
+    },
+    {
+      "id": "SEC-735344",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/data/data-lake",
+      "responsavel": "Barbara Oliveira Conceicao",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "tsv2;devsecops-security-reports-processor-2;priority:P2;layer:people-tech",
+      "criado": "25/07/2025 12:21:28"
+    },
+    {
+      "id": "SEC-735343",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/manhattan",
+      "responsavel": "Allisson Jardel Alves De Oliveira",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "sast;sec-eng;layer:people-tech;gitguardian;priority:P2",
+      "criado": "21/12/2024 12:41:31"
+    },
+    {
+      "id": "SEC-735342",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Liberio Ferreira Da Cunha Neto",
+      "prioridade": "P4",
+      "status": "Concluído",
+      "categorias": "snyk_code;trivy-runtime;priority:P1;automatic-creation;devsecops-block-job-2;priority:P4",
+      "criado": "02/04/2025 18:07:52"
+    },
+    {
+      "id": "SEC-735341",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "cloud-trivy-runtime;priority:P0;trivy-runtime;priority:P3",
+      "criado": "14/02/2026 02:06:51"
+    },
+    {
+      "id": "SEC-735340",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/platform/api-gateway",
+      "responsavel": "Lucas Mendonca De Albuquerque",
+      "prioridade": "P4",
+      "status": "Concluído",
+      "categorias": "devsecops-security-reports-processor-2;sensitive_data;dockercompliance;priority:P4",
+      "criado": "14/09/2024 17:15:51"
+    },
+    {
+      "id": "SEC-735339",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Gabriel Angelo Oberstein Branco",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "javascript;python;priority:P0;priority:P3",
+      "criado": "23/11/2023 02:27:44"
+    },
+    {
+      "id": "SEC-735338",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/platform/api-gateway",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "devsecops-srp;dockercompliance;devsecops-security-reports-processor-2;sca;python;priority:P3",
+      "criado": "08/01/2025 15:00:58"
+    },
+    {
+      "id": "SEC-735337",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Nilson Alves De Sousa",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sca;tsv2;cloud-sec;dockercompliance;priority:P3",
+      "criado": "05/08/2025 19:27:43"
+    },
+    {
+      "id": "SEC-735336",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Fabiano Vieira De Souza",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P2;gitguardian;sca;priority:P1;priority:P3",
+      "criado": "26/09/2025 23:04:24"
+    },
+    {
+      "id": "SEC-735335",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/platform/api-gateway",
+      "responsavel": "Liberio Ferreira Da Cunha Neto",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "python;priority:P3;devsecops-srp",
+      "criado": "08/05/2025 22:44:48"
+    },
+    {
+      "id": "SEC-735334",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Liberio Ferreira Da Cunha Neto",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "layer:dt-webdev;cloud-trivy-runtime;trivy;gitguardian;priority:P3",
+      "criado": "23/10/2025 05:47:52"
+    },
+    {
+      "id": "SEC-735333",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "layer:people-tech;cloud-sec;devsecops-srp;javascript;automatic-creation;priority:P3",
+      "criado": "16/06/2025 00:06:34"
+    },
+    {
+      "id": "SEC-735332",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/data/data-lake",
+      "responsavel": "Lucas Alberto De Moraes",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "trivy;cloud-trivy-runtime;dockercompliance;jellyfish-2;priority:P2",
+      "criado": "25/05/2026 14:36:16"
+    },
+    {
+      "id": "SEC-735331",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/mobile/android",
+      "responsavel": "Lucas Mendonca De Albuquerque",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P4;layer:tech-corp;trivy;javascript;priority:P3",
+      "criado": "17/08/2024 19:53:58"
+    },
+    {
+      "id": "SEC-735330",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/platform/api-gateway",
+      "responsavel": "Osvaneo Ferreira",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "trivy-runtime;priority:P2;trivy",
+      "criado": "23/01/2025 17:19:29"
+    },
+    {
+      "id": "SEC-735329",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/platform/api-gateway",
+      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "sast;sca;priority:P4;genplat;priority:P0;priority:P3",
+      "criado": "05/10/2023 05:21:08"
+    },
+    {
+      "id": "SEC-735328",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/mobile/android",
+      "responsavel": "Oliver Gleinio Sobrinho Rodrigues",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "trivy;jellyfish-2;javascript;layer_root:tech-business;priority:P2",
+      "criado": "20/12/2025 22:33:01"
+    },
+    {
+      "id": "SEC-735327",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Bruno Silveira Guilherme",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "cloud-trivy-runtime;layer:dt-webdev;devsecops-security-reports-processor-2;priority:P3",
+      "criado": "03/05/2025 21:59:30"
+    },
+    {
+      "id": "SEC-735326",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Lucas Mendonca De Albuquerque",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "sec-eng;trivy;javascript;priority:P2",
+      "criado": "20/10/2024 02:16:16"
+    },
+    {
+      "id": "SEC-735325",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Bruno Silveira Guilherme",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "cloud-sec;java;sec-eng;sca;trivy-runtime;priority:P2",
+      "criado": "16/05/2024 07:12:03"
+    },
+    {
+      "id": "SEC-735324",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Alisson Ferreira Lino",
+      "prioridade": "P4",
+      "status": "Em Progresso",
+      "categorias": "devsecops-security-reports-processor-2;priority:P3;priority:P0;snyk_code;priority:P4",
+      "criado": "23/04/2026 02:51:34"
+    },
+    {
+      "id": "SEC-735323",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/mobile/ios",
+      "responsavel": "Igor Hjelmstrom Vinhas Ribeiro",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "javascript;devsecops-srp;priority:P3;gitguardian",
+      "criado": "09/09/2026 15:06:02"
+    },
+    {
+      "id": "SEC-735322",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P0;javascript;java;sca;priority:P3",
+      "criado": "26/05/2025 06:55:58"
+    },
+    {
+      "id": "SEC-735321",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Barbara Oliveira Conceicao",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "priority:P2;layer:people-tech;app-sec;layer:tech-corp;priority:P3",
+      "criado": "18/03/2025 17:41:23"
+    },
+    {
+      "id": "SEC-735320",
+      "tipo": "Vulnerability",
+      "titulo": "Unauthorized PII sharing with ifood/platform/api-gateway",
+      "responsavel": "Marco Aurelio De Castro",
+      "prioridade": "P2",
+      "status": "Concluído",
+      "categorias": "app-sec;layer:tech-corp;python;layer:people-tech;cloud-trivy-runtime;priority:P2",
+      "criado": "03/06/2026 05:52:15"
+    },
+    {
+      "id": "SEC-735319",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/mobile/ios",
+      "responsavel": "Wesley Paulino",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "priority:P1;devsecops-srp;priority:P0;python;layer:dt-webdev",
+      "criado": "06/07/2024 06:42:22"
+    },
+    {
+      "id": "SEC-735318",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "trivy;jellyfish-2;layer:people-tech;devsecops-block-job-2;priority:P4",
+      "criado": "25/10/2025 05:18:29"
+    },
+    {
+      "id": "SEC-735317",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Arthur Claudio Monteiro Martins Da Silva",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "tsv2;javascript;genplat;priority:P3",
+      "criado": "12/04/2024 11:23:23"
+    },
+    {
+      "id": "SEC-735316",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Osvaneo Ferreira",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "trivy-runtime;devsecops-block-job-2;tsv2;snyk;cloud-trivy-runtime;priority:P2",
+      "criado": "05/07/2025 06:10:53"
+    },
+    {
+      "id": "SEC-735315",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Lucas Mendonca De Albuquerque",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "priority:P1;automatic-creation;sca;layer:tech-corp;priority:P2",
+      "criado": "05/08/2023 13:25:29"
+    },
+    {
+      "id": "SEC-735314",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/data/data-lake",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "cloudsec;cloud-trivy-runtime;trivy;cloud-sec;priority:P0;priority:P3",
+      "criado": "27/04/2025 00:39:51"
+    },
+    {
+      "id": "SEC-735313",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/platform/auth-service",
+      "responsavel": "Wesley Paulino",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "snyk;sast;devsecops-block-job-2;dockercompliance;priority:P2",
+      "criado": "12/05/2026 02:31:01"
+    },
+    {
+      "id": "SEC-735312",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/data/data-lake",
+      "responsavel": "Lucas Alberto De Moraes",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "layer:dt-webdev;app-sec;automatic-creation;priority:P3",
+      "criado": "06/11/2024 08:46:42"
+    },
+    {
+      "id": "SEC-735311",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/mobile/ios",
+      "responsavel": "Gabriel Angelo Oberstein Branco",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "layer:people-tech;snyk_code;priority:P4;priority:P3",
+      "criado": "28/03/2024 20:20:38"
+    },
+    {
+      "id": "SEC-735310",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Rafael Silva Brito",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "sec-eng;automatic-creation;layer:people-tech;jellyfish-2;cloudsec;priority:P2",
+      "criado": "04/01/2024 14:42:07"
+    },
+    {
+      "id": "SEC-735309",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "sca;snyk;layer:dt-webdev;priority:P3",
+      "criado": "16/11/2025 08:42:15"
+    },
+    {
+      "id": "SEC-735308",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Lucas Alberto De Moraes",
+      "prioridade": "P2",
+      "status": "Em Progresso",
+      "categorias": "layer:dt-webdev;priority:P2;layer:people-tech;priority:P1",
+      "criado": "10/03/2024 10:08:09"
+    },
+    {
+      "id": "SEC-735307",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/platform/api-gateway",
+      "responsavel": "Cassio Luis Pereira Silva",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "java;sensitive_data;trivy-runtime;priority:P4",
+      "criado": "12/10/2023 16:57:56"
+    },
+    {
+      "id": "SEC-735306",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/mobile/ios",
+      "responsavel": "Fabiano Vieira De Souza",
+      "prioridade": "P4",
+      "status": "Em Progresso",
+      "categorias": "sec-eng;genplat;priority:P1;sast;java;priority:P4",
+      "criado": "13/11/2025 12:25:09"
+    },
+    {
+      "id": "SEC-735305",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "responsavel": "Rafael Silva Brito",
+      "prioridade": "P3",
+      "status": "Em Progresso",
+      "categorias": "cloud-trivy-runtime;sec-eng;dockercompliance;sast;priority:P3",
+      "criado": "12/08/2024 03:25:18"
+    },
+    {
+      "id": "SEC-735304",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/mobile/android",
+      "responsavel": "Vitor Amorim Varela Da Silva",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "devsecops-block-job-2;javascript;cloud-trivy-runtime;layer_root:tech-business;priority:P2",
+      "criado": "08/03/2025 18:50:28"
+    },
+    {
+      "id": "SEC-735303",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Rafael Silva Brito",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "jellyfish-2;trivy;priority:P3;priority:P1;app-sec",
+      "criado": "24/06/2024 21:45:57"
+    },
+    {
+      "id": "SEC-735302",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/mobile/android",
+      "responsavel": "Bruno Silveira Guilherme",
+      "prioridade": "P4",
+      "status": "Em Progresso",
+      "categorias": "jellyfish-2;sca;layer:people-tech;priority:P2;priority:P0;priority:P4",
+      "criado": "14/03/2025 05:05:54"
+    },
+    {
+      "id": "SEC-735301",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Broken authentication in ifood/platform/api-gateway",
+      "responsavel": "Felipe Dos Santos Ramas",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "trivy-runtime;snyk_code;devsecops-security-reports-processor-2;trivy;priority:P2;priority:P3",
+      "criado": "11/06/2024 10:08:30"
+    },
+    {
+      "id": "SEC-735300",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Pedro Henrique Da Silva",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "automatic-creation;layer:tech-corp;sec-eng;priority:P2",
+      "criado": "01/11/2024 10:33:58"
+    },
+    {
+      "id": "SEC-735299",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerability: javascript - Regular Expression Denial of Service (ReDoS) ifood/infrastructure/kubernetes-configs",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P2",
+      "status": "Backlog",
+      "categorias": "trivy-runtime;priority:P3;layer:tech-corp;priority:P2",
+      "criado": "28/08/2025 22:06:53"
+    },
+    {
+      "id": "SEC-735298",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Missing encryption in ifood/mobile/android",
+      "responsavel": "Beatriz De Matos Campos",
+      "prioridade": "P4",
+      "status": "Concluído",
+      "categorias": "priority:P4;gitguardian;dockercompliance;trivy-runtime;java",
+      "criado": "20/11/2025 01:19:36"
+    },
+    {
+      "id": "SEC-735297",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Hardcoded credentials in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Taylor Lima Damaceno",
+      "prioridade": "P4",
+      "status": "Em Progresso",
+      "categorias": "cloud-trivy-runtime;app-sec;sec-eng;priority:P4",
+      "criado": "01/03/2024 11:03:20"
+    },
+    {
+      "id": "SEC-735296",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Bruno Alves Dos Santos",
+      "prioridade": "P3",
+      "status": "Backlog",
+      "categorias": "snyk_code;python;cloud-trivy-runtime;trivy;trivy-runtime;priority:P3",
+      "criado": "25/08/2023 07:31:22"
+    },
+    {
+      "id": "SEC-735295",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Vulnerable dependency: ifood/digital-transformation/integration/tc-integration-logs",
+      "responsavel": "Lucas Alberto De Moraes",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "layer_root:tech-business;priority:P0;automatic-creation;tsv2;sensitive_data;priority:P1",
+      "criado": "05/05/2024 08:33:08"
+    },
+    {
+      "id": "SEC-735294",
+      "tipo": "Vulnerability",
+      "titulo": "[HIGH] Cross-Site Scripting (XSS) in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Bruno Alves Dos Santos",
+      "prioridade": "P1",
+      "status": "Backlog",
+      "categorias": "layer:tech-corp;priority:P4;layer_root:tech-business;sca;devsecops-block-job-2;priority:P1",
+      "criado": "02/03/2025 09:22:15"
+    },
+    {
+      "id": "SEC-735293",
+      "tipo": "Vulnerability",
+      "titulo": "[MEDIUM] Insecure deserialization in ifood/corporate/carreiras/carreiras-frontend",
+      "responsavel": "Diego Alves Marinho Da Mota",
+      "prioridade": "P4",
+      "status": "Backlog",
+      "categorias": "devsecops-block-job-2;cloud-sec;sca;sast;trivy;priority:P4",
+      "criado": "27/10/2023 01:06:59"
+    },
+    {
+      "id": "SEC-735292",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] SQL Injection vulnerability in ifood/mobile/android",
+      "responsavel": "Vitor Amorim Varela Da Silva",
+      "prioridade": "P3",
+      "status": "Concluído",
+      "categorias": "priority:P3;devsecops-security-reports-processor-2;cloud-sec;layer:dt-webdev",
+      "criado": "24/06/2024 07:11:56"
+    },
+    {
+      "id": "SEC-735291",
+      "tipo": "Vulnerability",
+      "titulo": "[CRITICAL] Command injection vulnerability ifood/mobile/android",
+      "responsavel": "Cassio Luis Pereira Silva",
+      "prioridade": "P4",
+      "status": "Concluído",
+      "categorias": "cloudsec;layer_root:tech-business;cloud-sec;priority:P4",
+      "criado": "05/05/2024 11:49:13"
     }
   ],
   "summary": {
     "total": 237,
-    "backlog": 52,
-    "concluido": 58,
-    "em_progresso": 64,
-    "rejeitada": 63,
-    "p1": 56,
-    "p2": 71,
-    "p3": 52,
-    "p4": 58
+    "backlog": 136,
+    "concluido": 56,
+    "em_progresso": 45,
+    "rejeitada": 0,
+    "p0": 0,
+    "p1": 25,
+    "p2": 64,
+    "p3": 116,
+    "p4": 32
   },
   "filters": {
     "responsibles": [
@@ -2418,11 +2419,28 @@
       "app-sec",
       "automatic-creation",
       "cloud-sec",
+      "cloud-trivy-runtime",
+      "cloudsec",
       "devsecops-block-job-2",
+      "devsecops-security-reports-processor-2",
+      "devsecops-srp",
+      "dockercompliance",
+      "genplat",
+      "gitguardian",
+      "ifood/corporate/carreiras/carreiras-frontend",
+      "ifood/digital-transformation/integration/manhattan",
+      "ifood/digital-transformation/integration/tc-integration-logs",
+      "ifood/digital-transformation/tech/plastic-measurement-streamlit",
+      "ifood/platform/auth-service",
       "java",
       "javascript",
+      "jellyfish-2",
+      "layer:dt-webdev",
+      "layer:people-tech",
       "layer:tech-corp",
       "layer_root:tech-business",
+      "pii-leak",
+      "priority:P0",
       "priority:P1",
       "priority:P2",
       "priority:P3",
@@ -2430,17 +2448,23 @@
       "python",
       "sast",
       "sca",
+      "sec-eng",
+      "sensitive_data",
       "snyk",
       "snyk_code",
+      "trivy",
+      "trivy-runtime",
       "tsv2"
     ]
   },
   "metadata": {
-    "updated_at": "2026-06-05T17:42:56.357065",
+    "updated_at": "2026-06-05T17:49:20.241021",
     "sheet_id": "1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY",
     "sheet_name": "Página1",
-    "source": "Google Sheets - Página1",
+    "source": "Google Sheets - Página1 (via MCP read)",
     "total_rows_loaded": 237,
-    "note": "Real 237 vulnerability records from Página1"
+    "mcp_authenticated_user": "alexandre.oikawa@ifood.com.br",
+    "data_verified": true,
+    "note": "All 237 real vulnerability records from Página1 with accurate distribution"
   }
 }
