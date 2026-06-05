@@ -1185,60 +1185,82 @@
         }
 
         function filterVulnerabilities() {
-            const search = document.getElementById('search-vuln').value.toLowerCase();
-            const status = document.getElementById('status-filter').value;
-            const priority = document.getElementById('priority-filter').value;
-            const responsible = document.getElementById('responsible-filter').value;
-            const category = document.getElementById('category-filter').value;
+            if (!allVulnerabilities || allVulnerabilities.length === 0) return;
+
+            const search = document.getElementById('search-vuln')?.value?.toLowerCase() || '';
+            const status = document.getElementById('status-filter')?.value || '';
+            const priority = document.getElementById('priority-filter')?.value || '';
+            const responsible = document.getElementById('responsible-filter')?.value || '';
+            const category = document.getElementById('category-filter')?.value || '';
 
             const table = document.getElementById('vuln-tbody');
-            const rows = table.querySelectorAll('tr');
-            let visibleCount = 0;
+            if (!table) return;
 
-            rows.forEach(row => {
+            let visibleCount = 0;
+            const totalCount = allVulnerabilities.length;
+
+            // Clear table
+            table.innerHTML = '';
+
+            // Filter and render
+            allVulnerabilities.forEach(vuln => {
                 let show = true;
 
-                // Get row data
-                const cells = row.querySelectorAll('td');
-                const rowKey = cells[0].textContent.toLowerCase();
-                const rowType = cells[1].textContent.toLowerCase();
-                const rowSummary = cells[2].textContent.toLowerCase();
-                const rowStatus = cells[3].textContent;
-                const rowPriority = cells[4].textContent;
-                const rowResponsible = cells[5].textContent;
-                const rowCategory = cells[6].textContent.toLowerCase();
-
                 // Apply search filter
-                if (search && !rowKey.includes(search) && !rowSummary.includes(search) && !rowResponsible.toLowerCase().includes(search)) {
-                    show = false;
+                if (search) {
+                    const searchableText = `${vuln.chave} ${vuln.resumo} ${vuln.responsavel}`.toLowerCase();
+                    if (!searchableText.includes(search)) {
+                        show = false;
+                    }
                 }
 
                 // Apply status filter
-                if (status && !rowStatus.includes(status)) {
+                if (status && vuln.status !== status) {
                     show = false;
                 }
 
-                // Apply priority filter
-                if (priority && !rowPriority.includes(priority)) {
+                // Apply priority filter (matching on classificacao field)
+                if (priority && vuln.classificacao !== priority) {
                     show = false;
                 }
 
                 // Apply responsible filter
-                if (responsible && !rowResponsible.includes(responsible)) {
+                if (responsible && vuln.responsavel !== responsible) {
                     show = false;
                 }
 
-                // Apply category filter
-                if (category && !rowCategory.includes(category)) {
+                // Apply category filter (check if category is in the categorias string)
+                if (category && !vuln.categorias.includes(category)) {
                     show = false;
                 }
 
-                row.style.display = show ? '' : 'none';
-                if (show) visibleCount++;
+                if (show) {
+                    visibleCount++;
+                    const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
+                                      vuln.status === 'Concluído' ? 'status-resolved' : 'status-inprogress';
+                    const priorityClass = `priority-${vuln.classificacao.toLowerCase()}`;
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>${vuln.chave}</strong></td>
+                        <td>${vuln.tipo}</td>
+                        <td><span title="${vuln.resumo}">${vuln.resumo.substring(0, 50)}...</span></td>
+                        <td><span class="status-badge ${statusClass}">${vuln.status}</span></td>
+                        <td><span class="status-badge ${priorityClass}">${vuln.classificacao}</span></td>
+                        <td>${vuln.responsavel}</td>
+                        <td><span title="${vuln.categorias}">${vuln.categorias.substring(0, 25)}...</span></td>
+                        <td>${vuln.criado}</td>
+                        <td>${vuln.dias_abertos}</td>
+                    `;
+                    table.appendChild(row);
+                }
             });
 
             // Update count
-            document.getElementById('vuln-count').textContent = `Mostrando ${visibleCount} de ${rows.length}`;
+            const countElement = document.getElementById('vuln-count');
+            if (countElement) {
+                countElement.textContent = `Mostrando ${visibleCount} de ${totalCount}`;
+            }
         }
 
         function clearFilters(tab) {
@@ -1260,26 +1282,25 @@
         }
 
         function exportVulnerabilities() {
-            const table = document.getElementById('vuln-table');
-            const rows = Array.from(table.querySelectorAll('tbody tr')).filter(row => row.style.display !== 'none');
+            const tbody = document.getElementById('vuln-tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
 
             if (rows.length === 0) {
                 alert('Nenhum dado para exportar! Verifique seus filtros.');
                 return;
             }
 
-            // Get headers
-            const headers = Array.from(table.querySelectorAll('thead th')).map(h => h.textContent);
-
             // Build CSV
+            const headers = ['Chave', 'Tipo', 'Resumo', 'Status', 'Prioridade', 'Responsável', 'Categorias', 'Criado', 'Dias Abertos'];
             let csv = headers.join(',') + '\n';
+
             rows.forEach(row => {
                 const cells = Array.from(row.querySelectorAll('td')).map(cell => {
                     let text = cell.textContent.trim();
-                    // Remove HTML tags
-                    text = text.replace(/<[^>]*>/g, '');
-                    // Escape quotes
-                    if (text.includes(',') || text.includes('"')) {
+                    // Remove HTML tags and extra whitespace
+                    text = text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ');
+                    // Escape quotes and wrap if needed
+                    if (text.includes(',') || text.includes('"') || text.includes('\n')) {
                         text = '"' + text.replace(/"/g, '""') + '"';
                     }
                     return text;
@@ -1290,13 +1311,14 @@
             // Download
             const element = document.createElement('a');
             element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv));
-            element.setAttribute('download', 'vulnerabilities-' + new Date().toISOString().slice(0, 10) + '.csv');
+            const filename = 'vulnerabilities-' + new Date().toISOString().slice(0, 10) + '.csv';
+            element.setAttribute('download', filename);
             element.style.display = 'none';
             document.body.appendChild(element);
             element.click();
             document.body.removeChild(element);
 
-            alert(`✅ Arquivo exportado: vulnerabilities-${new Date().toISOString().slice(0, 10)}.csv`);
+            alert(`✅ Arquivo exportado: ${filename}\n${rows.length} vulnerabilidades exportadas`);
         }
 
         // Load data from JSON file
@@ -1304,63 +1326,105 @@
 
         async function loadData() {
             try {
-                const response = await fetch('./data.json');
+                console.log('📥 Buscando dados do arquivo data.json...');
+                const response = await fetch('./data.json?v=' + Date.now()); // Add cache buster
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
                 const data = await response.json();
 
                 if (data.vulnerabilities && Array.isArray(data.vulnerabilities)) {
                     allVulnerabilities = data.vulnerabilities;
+                    console.log(`✅ Dados carregados: ${allVulnerabilities.length} vulnerabilidades`);
+                    console.log(`📊 Resumo: ${data.summary?.total || allVulnerabilities.length} total`);
+
+                    // Populate dropdowns with unique values
+                    populateFilterOptions();
+
+                    // Populate table and update stats
                     populateTable();
                     updateStatistics();
-                    console.log(`✅ Dados carregados: ${allVulnerabilities.length} vulnerabilidades`);
+                } else {
+                    throw new Error('Formato de dados inválido');
                 }
             } catch (error) {
-                console.warn('⚠️ Não foi possível carregar dados.json, usando dados de exemplo');
-                // Keep using the hardcoded data if JSON fails to load
+                console.error('❌ Erro ao carregar dados:', error);
+                alert('⚠️ Não foi possível carregar os dados. Verifique o arquivo data.json');
+            }
+        }
+
+        function populateFilterOptions() {
+            if (!allVulnerabilities || allVulnerabilities.length === 0) return;
+
+            // Get unique values
+            const responsaveis = [...new Set(allVulnerabilities.map(v => v.responsavel))].sort();
+            const categorias = new Set();
+            allVulnerabilities.forEach(v => {
+                v.categorias.split(';').forEach(cat => categorias.add(cat.trim()));
+            });
+
+            // Populate responsible filter
+            const responsibleSelect = document.getElementById('responsible-filter');
+            if (responsibleSelect) {
+                const selected = responsibleSelect.value;
+                responsibleSelect.innerHTML = '<option value="">Todos os Responsáveis</option>';
+                responsaveis.forEach(r => {
+                    if (r) {
+                        const option = document.createElement('option');
+                        option.value = r;
+                        option.textContent = r;
+                        responsibleSelect.appendChild(option);
+                    }
+                });
+                responsibleSelect.value = selected;
+            }
+
+            // Populate category filter
+            const categorySelect = document.getElementById('category-filter');
+            if (categorySelect) {
+                const selected = categorySelect.value;
+                categorySelect.innerHTML = '<option value="">Todas as Categorias</option>';
+                Array.from(categorias).sort().forEach(c => {
+                    if (c) {
+                        const option = document.createElement('option');
+                        option.value = c;
+                        option.textContent = c;
+                        categorySelect.appendChild(option);
+                    }
+                });
+                categorySelect.value = selected;
             }
         }
 
         function populateTable() {
-            const tbody = document.getElementById('vuln-tbody');
-            if (!tbody || allVulnerabilities.length === 0) return;
-
-            tbody.innerHTML = '';
-
-            allVulnerabilities.forEach(vuln => {
-                const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
-                                  vuln.status === 'Em Progresso' ? 'status-inprogress' : 'status-resolved';
-                const priorityClass = vuln.classificacao ? `priority-${vuln.classificacao.toLowerCase()}` : 'priority-p3';
-
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><strong>${vuln.chave}</strong></td>
-                    <td>${vuln.tipo}</td>
-                    <td>${vuln.resumo.substring(0, 60)}...</td>
-                    <td><span class="status-badge ${statusClass}">${vuln.status}</span></td>
-                    <td><span class="status-badge ${priorityClass}">${vuln.classificacao || 'P3'}</span></td>
-                    <td>${vuln.responsavel}</td>
-                    <td>${vuln.categorias.substring(0, 30)}...</td>
-                    <td>${vuln.criado}</td>
-                    <td>${vuln.dias_abertos}</td>
-                `;
-                tbody.appendChild(row);
-            });
+            if (!allVulnerabilities || allVulnerabilities.length === 0) {
+                console.warn('⚠️ Nenhum dado para popular');
+                return;
+            }
 
             filterVulnerabilities();
         }
 
         function updateStatistics() {
-            if (allVulnerabilities.length === 0) return;
+            if (!allVulnerabilities || allVulnerabilities.length === 0) return;
 
             const total = allVulnerabilities.length;
             const backlog = allVulnerabilities.filter(v => v.status === 'Backlog').length;
-            const resolved = allVulnerabilities.filter(v => v.status === 'Concluído').length;
+            const resolved = allVulnerabilities.filter(v => v.status === 'Resolvido').length;
             const p1 = allVulnerabilities.filter(v => v.classificacao === 'P1').length;
 
-            // Update KPI cards
-            const kpiCards = document.querySelectorAll('#vulnerabilities .kpi-value');
+            console.log(`📊 Estatísticas: Total=${total}, Backlog=${backlog}, Resolvido=${resolved}, P1=${p1}`);
+
+            // Find and update KPI cards in the vulnerabilities tab
+            const vulnTab = document.getElementById('vulnerabilities');
+            if (!vulnTab) return;
+
+            const kpiCards = vulnTab.querySelectorAll('.kpi-value');
             if (kpiCards.length >= 4) {
                 kpiCards[0].textContent = total.toLocaleString('pt-BR');
-                kpiCards[1].textContent = p1 || '0';
+                kpiCards[1].textContent = (p1 || 0).toLocaleString('pt-BR');
                 kpiCards[2].textContent = backlog.toLocaleString('pt-BR');
                 kpiCards[3].textContent = resolved.toLocaleString('pt-BR');
             }
