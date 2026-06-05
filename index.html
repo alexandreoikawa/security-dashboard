@@ -555,18 +555,18 @@
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-label">Críticas (P1)</div>
-                    <div class="kpi-value">948</div>
-                    <div class="kpi-change negative">↑ 3 novas</div>
+                    <div class="kpi-value">760</div>
+                    <div class="kpi-change negative" id="p1-percent">↑ 12.0% do total</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-label">Em Backlog</div>
-                    <div class="kpi-value">4,200</div>
-                    <div class="kpi-change">66% do total</div>
+                    <div class="kpi-value">3,768</div>
+                    <div class="kpi-change" id="backlog-percent">59.4% do total</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-label">Concluídas</div>
-                    <div class="kpi-value">2,100</div>
-                    <div class="kpi-change positive">↓ 33% concluídas</div>
+                    <div class="kpi-value">1,316</div>
+                    <div class="kpi-change positive" id="concluido-percent">↓ 20.7% concluídas</div>
                 </div>
             </div>
 
@@ -1484,10 +1484,29 @@
                 kpiCards[2].textContent = backlog.toLocaleString('pt-BR');
                 kpiCards[3].textContent = resolved.toLocaleString('pt-BR');
                 console.log(`✅ KPI cards atualizados`);
-            } else {
-                console.warn(`⚠️ Esperava 4 KPI cards, encontrou ${kpiCards.length}`);
             }
-        }
+
+            // Update percentages
+            const p1Percent = total > 0 ? ((p1 / total) * 100).toFixed(1) : 0;
+            const backlogPercent = total > 0 ? ((backlog / total) * 100).toFixed(1) : 0;
+            const concluidoPercent = total > 0 ? ((resolved / total) * 100).toFixed(1) : 0;
+
+            const p1PercentElem = document.getElementById('p1-percent');
+            if (p1PercentElem) {
+                p1PercentElem.textContent = `↑ ${p1Percent}% do total`;
+            }
+
+            const backlogPercentElem = document.getElementById('backlog-percent');
+            if (backlogPercentElem) {
+                backlogPercentElem.textContent = `${backlogPercent}% do total`;
+            }
+
+            const concluidoPercentElem = document.getElementById('concluido-percent');
+            if (concluidoPercentElem) {
+                concluidoPercentElem.textContent = `↓ ${concluidoPercent}% concluídas`;
+            }
+
+            console.log(`✅ Percentuais atualizados: P1 ${p1Percent}%, Backlog ${backlogPercent}%, Concluído ${concluidoPercent}%`);
 
         // Add event listeners for real-time filtering
         document.addEventListener('DOMContentLoaded', function() {
