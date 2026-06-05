@@ -615,6 +615,11 @@
                     <div class="kpi-change" id="backlog-percent">59.4% do total</div>
                 </div>
                 <div class="kpi-card">
+                    <div class="kpi-label">Em Aberto</div>
+                    <div class="kpi-value">0</div>
+                    <div class="kpi-change" id="open-percent">0.0% do total</div>
+                </div>
+                <div class="kpi-card">
                     <div class="kpi-label">Concluídas</div>
                     <div class="kpi-value">1,316</div>
                     <div class="kpi-change positive" id="concluido-percent">↓ 20.7% concluídas</div>
@@ -1465,13 +1470,15 @@
             const backlog = vulns.filter(v => v.status === 'Backlog').length;
             const resolved = vulns.filter(v => v.status === 'Concluído').length;
             const inProgress = vulns.filter(v => v.status === 'Em Progresso').length;
+            const rejected = vulns.filter(v => v.status === 'Rejeitada').length;
+            const open = backlog + inProgress + rejected;
             const p1 = vulns.filter(v => v.prioridade === 'P1').length;
             const p2 = vulns.filter(v => v.prioridade === 'P2').length;
             const p3 = vulns.filter(v => v.prioridade === 'P3').length;
             const p4 = vulns.filter(v => v.prioridade === 'P4').length;
 
             console.log(`📊 Stats (${dataToUse ? 'filtered' : 'all'}):`);
-            console.log(`   Total: ${total} | Backlog: ${backlog} | Concluído: ${resolved} | Em Progresso: ${inProgress}`);
+            console.log(`   Total: ${total} | Backlog: ${backlog} | Concluído: ${resolved} | Em Progresso: ${inProgress} | Rejeitada: ${rejected} | Em Aberto: ${open}`);
             console.log(`   P1: ${p1} | P2: ${p2} | P3: ${p3} | P4: ${p4}`);
 
             // Find and update KPI cards in the vulnerabilities tab
@@ -1482,17 +1489,19 @@
             }
 
             const kpiCards = vulnTab.querySelectorAll('.kpi-value');
-            if (kpiCards.length >= 4) {
+            if (kpiCards.length >= 5) {
                 kpiCards[0].textContent = total.toLocaleString('pt-BR');
                 kpiCards[1].textContent = inProgress.toLocaleString('pt-BR');
                 kpiCards[2].textContent = backlog.toLocaleString('pt-BR');
-                kpiCards[3].textContent = resolved.toLocaleString('pt-BR');
+                kpiCards[3].textContent = open.toLocaleString('pt-BR');
+                kpiCards[4].textContent = resolved.toLocaleString('pt-BR');
                 console.log(`✅ KPI cards atualizados`);
             }
 
             // Update percentages
             const inProgressPercent = total > 0 ? ((inProgress / total) * 100).toFixed(1) : 0;
             const backlogPercent = total > 0 ? ((backlog / total) * 100).toFixed(1) : 0;
+            const openPercent = total > 0 ? ((open / total) * 100).toFixed(1) : 0;
             const concluidoPercent = total > 0 ? ((resolved / total) * 100).toFixed(1) : 0;
 
             const inProgressPercentElem = document.getElementById('inprogress-percent');
@@ -1505,12 +1514,17 @@
                 backlogPercentElem.textContent = `${backlogPercent}% do total`;
             }
 
+            const openPercentElem = document.getElementById('open-percent');
+            if (openPercentElem) {
+                openPercentElem.textContent = `${openPercent}% do total`;
+            }
+
             const concluidoPercentElem = document.getElementById('concluido-percent');
             if (concluidoPercentElem) {
                 concluidoPercentElem.textContent = `↓ ${concluidoPercent}% concluídas`;
             }
 
-            console.log(`✅ Percentuais atualizados: Em Progresso ${inProgressPercent}%, Backlog ${backlogPercent}%, Concluído ${concluidoPercent}%`);
+            console.log(`✅ Percentuais atualizados: Em Progresso ${inProgressPercent}%, Backlog ${backlogPercent}%, Em Aberto ${openPercent}%, Concluído ${concluidoPercent}%`);
         }
 
         // Add event listeners for real-time filtering
