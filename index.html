@@ -1158,6 +1158,11 @@
     </div>
 
     <script>
+        // Store original data
+        const originalData = {
+            vulnerabilities: []
+        };
+
         // Tab switching
         function switchTab(tabName) {
             const tabs = document.querySelectorAll('.tab-content');
@@ -1172,7 +1177,68 @@
 
         // Filter functionality
         function applyFilters(tab) {
-            alert(`Filtros aplicados para ${tab}. Implementação com dados reais em breve!`);
+            if (tab === 'vulnerabilities') {
+                filterVulnerabilities();
+            } else {
+                alert(`Filtros para ${tab} em desenvolvimento!`);
+            }
+        }
+
+        function filterVulnerabilities() {
+            const search = document.getElementById('search-vuln').value.toLowerCase();
+            const status = document.getElementById('status-filter').value;
+            const priority = document.getElementById('priority-filter').value;
+            const responsible = document.getElementById('responsible-filter').value;
+            const category = document.getElementById('category-filter').value;
+
+            const table = document.getElementById('vuln-tbody');
+            const rows = table.querySelectorAll('tr');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                let show = true;
+
+                // Get row data
+                const cells = row.querySelectorAll('td');
+                const rowKey = cells[0].textContent.toLowerCase();
+                const rowType = cells[1].textContent.toLowerCase();
+                const rowSummary = cells[2].textContent.toLowerCase();
+                const rowStatus = cells[3].textContent;
+                const rowPriority = cells[4].textContent;
+                const rowResponsible = cells[5].textContent;
+                const rowCategory = cells[6].textContent.toLowerCase();
+
+                // Apply search filter
+                if (search && !rowKey.includes(search) && !rowSummary.includes(search) && !rowResponsible.toLowerCase().includes(search)) {
+                    show = false;
+                }
+
+                // Apply status filter
+                if (status && !rowStatus.includes(status)) {
+                    show = false;
+                }
+
+                // Apply priority filter
+                if (priority && !rowPriority.includes(priority)) {
+                    show = false;
+                }
+
+                // Apply responsible filter
+                if (responsible && !rowResponsible.includes(responsible)) {
+                    show = false;
+                }
+
+                // Apply category filter
+                if (category && !rowCategory.includes(category)) {
+                    show = false;
+                }
+
+                row.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+
+            // Update count
+            document.getElementById('vuln-count').textContent = `Mostrando ${visibleCount} de ${rows.length}`;
         }
 
         function clearFilters(tab) {
@@ -1180,18 +1246,78 @@
             const selects = document.querySelectorAll(`#${tab} select`);
             inputs.forEach(input => input.value = '');
             selects.forEach(select => select.value = '');
-            alert('Filtros limpos!');
+
+            if (tab === 'vulnerabilities') {
+                filterVulnerabilities();
+            }
         }
 
         // Export functionality
         function exportData(tab) {
-            alert(`Exportando dados de ${tab}...`);
-            // CSV export implementation
+            if (tab === 'vulnerabilities') {
+                exportVulnerabilities();
+            }
         }
 
-        // Initialize
+        function exportVulnerabilities() {
+            const table = document.getElementById('vuln-table');
+            const rows = Array.from(table.querySelectorAll('tbody tr')).filter(row => row.style.display !== 'none');
+
+            if (rows.length === 0) {
+                alert('Nenhum dado para exportar! Verifique seus filtros.');
+                return;
+            }
+
+            // Get headers
+            const headers = Array.from(table.querySelectorAll('thead th')).map(h => h.textContent);
+
+            // Build CSV
+            let csv = headers.join(',') + '\n';
+            rows.forEach(row => {
+                const cells = Array.from(row.querySelectorAll('td')).map(cell => {
+                    let text = cell.textContent.trim();
+                    // Remove HTML tags
+                    text = text.replace(/<[^>]*>/g, '');
+                    // Escape quotes
+                    if (text.includes(',') || text.includes('"')) {
+                        text = '"' + text.replace(/"/g, '""') + '"';
+                    }
+                    return text;
+                });
+                csv += cells.join(',') + '\n';
+            });
+
+            // Download
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv));
+            element.setAttribute('download', 'vulnerabilities-' + new Date().toISOString().slice(0, 10) + '.csv');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+            alert(`✅ Arquivo exportado: vulnerabilities-${new Date().toISOString().slice(0, 10)}.csv`);
+        }
+
+        // Add event listeners for real-time filtering
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Dashboard carregado com sucesso!');
+            const filterInputs = [
+                'search-vuln',
+                'status-filter',
+                'priority-filter',
+                'responsible-filter',
+                'category-filter'
+            ];
+
+            filterInputs.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('change', () => filterVulnerabilities());
+                    element.addEventListener('input', () => filterVulnerabilities());
+                }
+            });
+
+            console.log('✅ Dashboard carregado com filtros ativos!');
         });
     </script>
 </body>
