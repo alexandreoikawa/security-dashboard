@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Silence Tech Corp (FY27) - Security Dashboard</title>
+    <title>The Silence Tech Corp (FY27) - Unified Security Dashboard</title>
     <style>
         * {
             margin: 0;
@@ -23,42 +23,71 @@
             color: white;
             padding: 2rem;
             box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .header-content h1 {
             font-size: 2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
-        .header-controls {
+        .header-content p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb {
             display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.6rem 1.2rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            gap: 0.5rem;
+            margin-top: 1rem;
+            opacity: 0.9;
+            font-size: 0.9rem;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem 1rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #E5E7EB;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #4B5563;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #DC2626;
+            border-bottom-color: #DC2626;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1F2937;
+            border-left: 4px solid #DC2626;
+            padding-left: 1rem;
         }
 
         .kpi-grid {
@@ -74,6 +103,23 @@
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             border-left: 4px solid #DC2626;
+            transition: transform 0.3s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .kpi-card.success {
+            border-left-color: #10B981;
+        }
+
+        .kpi-card.warning {
+            border-left-color: #F59E0B;
+        }
+
+        .kpi-card.info {
+            border-left-color: #3B82F6;
         }
 
         .kpi-label {
@@ -81,6 +127,7 @@
             color: #4B5563;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
         }
 
         .kpi-value {
@@ -88,6 +135,14 @@
             font-weight: 700;
             color: #DC2626;
             margin-bottom: 0.5rem;
+        }
+
+        .kpi-card.success .kpi-value {
+            color: #10B981;
+        }
+
+        .kpi-card.info .kpi-value {
+            color: #3B82F6;
         }
 
         .kpi-subtext {
@@ -158,6 +213,88 @@
             padding: 0.5rem;
         }
 
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-card-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1F2937;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #4B5563;
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-ok {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .status-warning {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .status-error {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .toggle-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .toggle-enabled {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .toggle-disabled {
+            background: #F3F4F6;
+            color: #4B5563;
+        }
+
         .table-container {
             background: white;
             border-radius: 12px;
@@ -186,33 +323,17 @@
             font-size: 0.9rem;
             color: #4B5563;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         td {
             padding: 1rem;
             border-top: 1px solid #E5E7EB;
+            font-size: 0.95rem;
         }
 
         tr:hover td {
             background: #F9FAFB;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .status-backlog {
-            background: #FEF3C7;
-            color: #92400E;
-        }
-
-        .status-done {
-            background: #D1FAE5;
-            color: #065F46;
         }
 
         .footer {
@@ -224,12 +345,16 @@
         }
 
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
+            .header-content h1 {
+                font-size: 1.5rem;
             }
 
-            .charts-grid {
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .charts-grid,
+            .info-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -238,7 +363,7 @@
             }
 
             table {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             td, th {
@@ -247,12 +372,13 @@
         }
 
         @media print {
-            .header-controls {
-                display: none;
-            }
-
             body {
                 background: white;
+            }
+
+            .charts-grid,
+            .info-grid {
+                page-break-inside: avoid;
             }
         }
     </style>
@@ -261,204 +387,514 @@
     <div class="header">
         <div class="header-content">
             <h1>🔒 The Silence Tech Corp (FY27)</h1>
-            <p style="opacity: 0.9;">Security Dashboard - Vulnerabilities & Tickets</p>
-        </div>
-        <div class="header-controls">
-            <button class="btn" onclick="window.print()">🖨️ Print</button>
+            <p>Unified Security & Infrastructure Dashboard</p>
+            <div class="breadcrumb">
+                <span>📊 Vulnerabilities</span>
+                <span>•</span>
+                <span>🚀 Deployments</span>
+                <span>•</span>
+                <span>🎚️ Feature Toggles</span>
+            </div>
         </div>
     </div>
 
     <div class="container">
-        <div class="kpi-grid">
-            <div class="kpi-card">
-                <div class="kpi-label">Total Vulnerabilities</div>
-                <div class="kpi-value">6,348</div>
-                <div class="kpi-subtext">All open and closed issues</div>
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('vulnerabilities')">🔴 Vulnerabilities</button>
+            <button class="tab-btn" onclick="switchTab('deployments')">🚀 Deployments</button>
+            <button class="tab-btn" onclick="switchTab('toggles')">🎚️ Feature Toggles</button>
+            <button class="tab-btn" onclick="switchTab('overview')">📊 Overview</button>
+        </div>
+
+        <!-- TAB 1: VULNERABILITIES -->
+        <div id="vulnerabilities" class="tab-content active">
+            <div class="section-title">🔴 Security Vulnerabilities</div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Vulnerabilities</div>
+                    <div class="kpi-value">6,348</div>
+                    <div class="kpi-subtext">All open and closed issues</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-label">In Backlog</div>
+                    <div class="kpi-value">4,200</div>
+                    <div class="kpi-subtext">66% pending resolution</div>
+                </div>
+
+                <div class="kpi-card success">
+                    <div class="kpi-label">Resolved</div>
+                    <div class="kpi-value">2,100</div>
+                    <div class="kpi-subtext">33% completion rate</div>
+                </div>
+
+                <div class="kpi-card warning">
+                    <div class="kpi-label">Priority P1</div>
+                    <div class="kpi-value">948</div>
+                    <div class="kpi-subtext">Critical issues</div>
+                </div>
             </div>
 
-            <div class="kpi-card">
-                <div class="kpi-label">In Backlog</div>
-                <div class="kpi-value">4,200</div>
-                <div class="kpi-subtext">66% of total</div>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-title">Status Distribution</div>
+                    <div class="simple-chart">
+                        <div class="chart-bar" style="height: 60%;">
+                            <div>
+                                <div class="chart-bar-value">4,200</div>
+                                <div class="chart-bar-label">Backlog</div>
+                            </div>
+                        </div>
+                        <div class="chart-bar bar2" style="height: 30%;">
+                            <div>
+                                <div class="chart-bar-value">2,100</div>
+                                <div class="chart-bar-label">Resolved</div>
+                            </div>
+                        </div>
+                        <div class="chart-bar bar3" style="height: 1%;">
+                            <div>
+                                <div class="chart-bar-value">48</div>
+                                <div class="chart-bar-label">Progress</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">Priority Levels</div>
+                    <div class="simple-chart">
+                        <div class="chart-bar" style="height: 27%;">
+                            <div>
+                                <div class="chart-bar-value">948</div>
+                                <div class="chart-bar-label">P1</div>
+                            </div>
+                        </div>
+                        <div class="chart-bar bar2" style="height: 54%;">
+                            <div>
+                                <div class="chart-bar-value">1,900</div>
+                                <div class="chart-bar-label">P2</div>
+                            </div>
+                        </div>
+                        <div class="chart-bar bar3" style="height: 100%;">
+                            <div>
+                                <div class="chart-bar-value">3,500</div>
+                                <div class="chart-bar-label">P3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="kpi-card">
-                <div class="kpi-label">Resolved</div>
-                <div class="kpi-value">2,100</div>
-                <div class="kpi-subtext">33% completion rate</div>
-            </div>
-
-            <div class="kpi-card">
-                <div class="kpi-label">Priority P1</div>
-                <div class="kpi-value">948</div>
-                <div class="kpi-subtext">Critical issues</div>
+            <div class="table-container">
+                <div class="table-title">Recent Vulnerabilities</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Issue Key</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Team</th>
+                            <th>Responsible</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SEC-735527</td>
+                            <td>Vulnerability</td>
+                            <td><span class="status-badge status-backlog">Backlog</span></td>
+                            <td>P3</td>
+                            <td>Tech Corp</td>
+                            <td>Fabiano Vieira</td>
+                            <td>05/06/2026</td>
+                        </tr>
+                        <tr>
+                            <td>SEC-735526</td>
+                            <td>Vulnerability</td>
+                            <td><span class="status-badge status-backlog">Backlog</span></td>
+                            <td>P3</td>
+                            <td>Tech Corp</td>
+                            <td>Fabiano Vieira</td>
+                            <td>05/06/2026</td>
+                        </tr>
+                        <tr>
+                            <td>SEC-734299</td>
+                            <td>Vulnerability</td>
+                            <td><span class="status-badge status-done">Resolved</span></td>
+                            <td>P3</td>
+                            <td>Tech Corp</td>
+                            <td>Beatriz Matos</td>
+                            <td>03/06/2026</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="charts-grid">
-            <div class="chart-container">
-                <div class="chart-title">Status Distribution</div>
-                <div class="simple-chart">
-                    <div class="chart-bar" style="height: 60%;">
-                        <div>
-                            <div class="chart-bar-value">4,200</div>
-                            <div class="chart-bar-label">Backlog</div>
-                        </div>
-                    </div>
-                    <div class="chart-bar bar2" style="height: 30%;">
-                        <div>
-                            <div class="chart-bar-value">2,100</div>
-                            <div class="chart-bar-label">Concluído</div>
-                        </div>
-                    </div>
-                    <div class="chart-bar bar3" style="height: 1%;">
-                        <div>
-                            <div class="chart-bar-value">48</div>
-                            <div class="chart-bar-label">Progress</div>
-                        </div>
-                    </div>
+        <!-- TAB 2: DEPLOYMENTS -->
+        <div id="deployments" class="tab-content">
+            <div class="section-title">🚀 Deployment Status & Infrastructure</div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card success">
+                    <div class="kpi-label">Services Online</div>
+                    <div class="kpi-value">24</div>
+                    <div class="kpi-subtext">All healthy</div>
                 </div>
-                <p style="font-size: 0.85rem; color: #4B5563; margin-top: 2rem;">Number of issues grouped by current status</p>
+
+                <div class="kpi-card">
+                    <div class="kpi-label">Avg. Response Time</div>
+                    <div class="kpi-value">145ms</div>
+                    <div class="kpi-subtext">Production</div>
+                </div>
+
+                <div class="kpi-card info">
+                    <div class="kpi-label">Last Deployment</div>
+                    <div class="kpi-value">2h</div>
+                    <div class="kpi-subtext">Ago</div>
+                </div>
+
+                <div class="kpi-card success">
+                    <div class="kpi-label">Uptime</div>
+                    <div class="kpi-value">99.99%</div>
+                    <div class="kpi-subtext">This month</div>
+                </div>
             </div>
 
-            <div class="chart-container">
-                <div class="chart-title">Priority Levels</div>
-                <div class="simple-chart">
-                    <div class="chart-bar" style="height: 27%;">
-                        <div>
-                            <div class="chart-bar-value">948</div>
-                            <div class="chart-bar-label">P1</div>
-                        </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-title">🔐 tc-integration-logs</div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-value"><span class="status-badge status-ok">✓ Running</span></span>
                     </div>
-                    <div class="chart-bar bar2" style="height: 54%;">
-                        <div>
-                            <div class="chart-bar-value">1,900</div>
-                            <div class="chart-bar-label">P2</div>
-                        </div>
+                    <div class="info-item">
+                        <span class="info-label">Version</span>
+                        <span class="info-value">v2.5.1</span>
                     </div>
-                    <div class="chart-bar bar3" style="height: 100%;">
-                        <div>
-                            <div class="chart-bar-value">3,500</div>
-                            <div class="chart-bar-label">P3</div>
-                        </div>
+                    <div class="info-item">
+                        <span class="info-label">Cluster</span>
+                        <span class="info-value">eks-prod-us-east-1</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Namespace</span>
+                        <span class="info-value">tech-corp</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Replicas</span>
+                        <span class="info-value">3/3</span>
                     </div>
                 </div>
-                <p style="font-size: 0.85rem; color: #4B5563; margin-top: 2rem;">Count of vulnerabilities by priority</p>
-            </div>
 
-            <div class="chart-container">
-                <div class="chart-title">Distribution by Team</div>
-                <div class="simple-chart">
-                    <div class="chart-bar" style="height: 100%;">
-                        <div>
-                            <div class="chart-bar-value">4,200</div>
-                            <div class="chart-bar-label">Tech Corp</div>
-                        </div>
+                <div class="info-card">
+                    <div class="info-card-title">🎯 ifood-tm-backend</div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-value"><span class="status-badge status-ok">✓ Running</span></span>
                     </div>
-                    <div class="chart-bar bar2" style="height: 36%;">
-                        <div>
-                            <div class="chart-bar-value">1,500</div>
-                            <div class="chart-bar-label">People</div>
-                        </div>
+                    <div class="info-item">
+                        <span class="info-label">Version</span>
+                        <span class="info-value">v1.8.3</span>
                     </div>
-                    <div class="chart-bar bar3" style="height: 15%;">
-                        <div>
-                            <div class="chart-bar-value">648</div>
-                            <div class="chart-bar-label">Others</div>
-                        </div>
+                    <div class="info-item">
+                        <span class="info-label">Cluster</span>
+                        <span class="info-value">eks-prod-us-east-1</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Namespace</span>
+                        <span class="info-value">people-tech</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Replicas</span>
+                        <span class="info-value">5/5</span>
                     </div>
                 </div>
-                <p style="font-size: 0.85rem; color: #4B5563; margin-top: 2rem;">Issues assigned to each team</p>
-            </div>
 
-            <div class="chart-container">
-                <div class="chart-title">Top Responsible People</div>
-                <div class="simple-chart">
-                    <div class="chart-bar" style="height: 45%;">
-                        <div>
-                            <div class="chart-bar-value">1,200</div>
-                            <div class="chart-bar-label">Fabiano</div>
-                        </div>
+                <div class="info-card">
+                    <div class="info-card-title">📊 normalizacao-produtos</div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-value"><span class="status-badge status-ok">✓ Running</span></span>
                     </div>
-                    <div class="chart-bar bar2" style="height: 36%;">
-                        <div>
-                            <div class="chart-bar-value">950</div>
-                            <div class="chart-bar-label">Felipe</div>
-                        </div>
+                    <div class="info-item">
+                        <span class="info-label">Version</span>
+                        <span class="info-value">v3.2.0</span>
                     </div>
-                    <div class="chart-bar bar3" style="height: 32%;">
-                        <div>
-                            <div class="chart-bar-value">850</div>
-                            <div class="chart-bar-label">Beatriz</div>
-                        </div>
+                    <div class="info-item">
+                        <span class="info-label">Cluster</span>
+                        <span class="info-value">eks-prod-us-east-1</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Namespace</span>
+                        <span class="info-value">data-platform</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Replicas</span>
+                        <span class="info-value">2/2</span>
                     </div>
                 </div>
-                <p style="font-size: 0.85rem; color: #4B5563; margin-top: 2rem;">Top team members by assigned issues</p>
             </div>
         </div>
 
-        <div class="table-container">
-            <div class="table-title">Recent Vulnerabilities Summary</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Issue Key</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th>Priority</th>
-                        <th>Team</th>
-                        <th>Responsible</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>SEC-735527</td>
-                        <td>Vulnerability</td>
-                        <td><span class="status-badge status-backlog">Backlog</span></td>
-                        <td>P3</td>
-                        <td>Tech Corp</td>
-                        <td>Fabiano Vieira</td>
-                    </tr>
-                    <tr>
-                        <td>SEC-735526</td>
-                        <td>Vulnerability</td>
-                        <td><span class="status-badge status-backlog">Backlog</span></td>
-                        <td>P3</td>
-                        <td>Tech Corp</td>
-                        <td>Fabiano Vieira</td>
-                    </tr>
-                    <tr>
-                        <td>SEC-734299</td>
-                        <td>Vulnerability</td>
-                        <td><span class="status-badge status-done">Concluído</span></td>
-                        <td>P3</td>
-                        <td>Tech Corp</td>
-                        <td>Beatriz de Matos</td>
-                    </tr>
-                    <tr>
-                        <td>SEC-735003</td>
-                        <td>Vulnerability</td>
-                        <td><span class="status-badge status-backlog">Backlog</span></td>
-                        <td>P3</td>
-                        <td>People</td>
-                        <td>Felipe dos Santos</td>
-                    </tr>
-                    <tr>
-                        <td>SEC-735412</td>
-                        <td>Vulnerability</td>
-                        <td><span class="status-badge status-backlog">Backlog</span></td>
-                        <td>P3</td>
-                        <td>People</td>
-                        <td>Felipe dos Santos</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- TAB 3: FEATURE TOGGLES -->
+        <div id="toggles" class="tab-content">
+            <div class="section-title">🎚️ Security Feature Toggles</div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card success">
+                    <div class="kpi-label">Toggles Enabled</div>
+                    <div class="kpi-value">18</div>
+                    <div class="kpi-subtext">Active security features</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-label">Toggles Disabled</div>
+                    <div class="kpi-value">5</div>
+                    <div class="kpi-subtext">Feature flags off</div>
+                </div>
+
+                <div class="kpi-card info">
+                    <div class="kpi-label">Last Updated</div>
+                    <div class="kpi-value">14h</div>
+                    <div class="kpi-subtext">Ago</div>
+                </div>
+
+                <div class="kpi-card success">
+                    <div class="kpi-label">Health</div>
+                    <div class="kpi-value">✓</div>
+                    <div class="kpi-subtext">All systems normal</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-title">🔐 Critical Security Toggles</div>
+                    <div class="info-item">
+                        <span class="info-label">ENFORCE_2FA</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">SSL_PINNING</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">RATE_LIMIT_API</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">AUDIT_LOGGING</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">DATA_ENCRYPTION</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">🧪 Experimental/Testing</div>
+                    <div class="info-item">
+                        <span class="info-label">NEW_AUTH_FLOW</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">BETA_API_V2</span>
+                        <span class="info-value"><span class="toggle-badge toggle-disabled">○ DISABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">ML_THREAT_DETECTION</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">ADVANCED_ANALYTICS</span>
+                        <span class="info-value"><span class="toggle-badge toggle-disabled">○ DISABLED</span></span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">⚙️ Infrastructure Toggles</div>
+                    <div class="info-item">
+                        <span class="info-label">CACHE_ENABLED</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">CDN_ENABLED</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">LOAD_BALANCING</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">AUTO_SCALING</span>
+                        <span class="info-value"><span class="toggle-badge toggle-enabled">✓ ENABLED</span></span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="footer">
-            <p>Generated: 05/06/2026</p>
-            <p>Data source: Google Sheets - The Silence Tech Corp (FY27)</p>
+        <!-- TAB 4: OVERVIEW -->
+        <div id="overview" class="tab-content">
+            <div class="section-title">📊 Executive Overview</div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Security Score</div>
+                    <div class="kpi-value">82/100</div>
+                    <div class="kpi-subtext">Above industry average</div>
+                </div>
+
+                <div class="kpi-card warning">
+                    <div class="kpi-label">Risk Level</div>
+                    <div class="kpi-value">MEDIUM</div>
+                    <div class="kpi-subtext">4,200 items in backlog</div>
+                </div>
+
+                <div class="kpi-card success">
+                    <div class="kpi-label">Compliance</div>
+                    <div class="kpi-value">98%</div>
+                    <div class="kpi-subtext">Controls implemented</div>
+                </div>
+
+                <div class="kpi-card info">
+                    <div class="kpi-label">MTTR</div>
+                    <div class="kpi-value">2.4d</div>
+                    <div class="kpi-subtext">Mean time to resolve</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-title">Security Posture by Team</div>
+                    <div class="simple-chart">
+                        <div class="chart-bar" style="height: 100%;">
+                            <div>
+                                <div class="chart-bar-value">4,200</div>
+                                <div class="chart-bar-label">Tech Corp</div>
+                            </div>
+                        </div>
+                        <div class="chart-bar bar2" style="height: 36%;">
+                            <div>
+                                <div class="chart-bar-value">1,500</div>
+                                <div class="chart-bar-label">People</div>
+                            </div>
+                        </div>
+                        <div class="chart-bar bar3" style="height: 15%;">
+                            <div>
+                                <div class="chart-bar-value">648</div>
+                                <div class="chart-bar-label">Others</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">Infrastructure Health</div>
+                    <div class="simple-chart">
+                        <div class="chart-bar bar3" style="height: 100%;">
+                            <div>
+                                <div class="chart-bar-value">24</div>
+                                <div class="chart-bar-label">Running</div>
+                            </div>
+                        </div>
+                        <div class="chart-bar bar2" style="height: 0%;">
+                            <div>
+                                <div class="chart-bar-value">0</div>
+                                <div class="chart-bar-label">Down</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-title">🎯 Key Metrics</div>
+                    <div class="info-item">
+                        <span class="info-label">Total Issues</span>
+                        <span class="info-value">6,348</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Resolved</span>
+                        <span class="info-value">2,100 (33%)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">In Progress</span>
+                        <span class="info-value">48</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Pending</span>
+                        <span class="info-value">4,200 (66%)</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">🚀 Deployment Status</div>
+                    <div class="info-item">
+                        <span class="info-label">Services</span>
+                        <span class="info-value">24 healthy</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Uptime</span>
+                        <span class="info-value">99.99%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Last Deploy</span>
+                        <span class="info-value">2 hours ago</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Avg. Response</span>
+                        <span class="info-value">145ms</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">🎚️ Feature Toggles</div>
+                    <div class="info-item">
+                        <span class="info-label">Enabled</span>
+                        <span class="info-value">18</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Disabled</span>
+                        <span class="info-value">5</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Critical Active</span>
+                        <span class="info-value">5/5</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-value"><span class="status-badge status-ok">✓ Healthy</span></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="footer">
+        <p>🔒 The Silence Tech Corp (FY27) - Unified Security Dashboard</p>
+        <p>Last updated: 05/06/2026 | Data from: Google Sheets + Tompero CLI</p>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
