@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Silence Tech Corp (FY27) - Security Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -12,37 +11,15 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #DC2626;
-            --primary-light: #EF4444;
-            --primary-dark: #991B1B;
-            --gray-50: #F9FAFB;
-            --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
-            --gray-300: #D1D5DB;
-            --gray-600: #4B5563;
-            --gray-800: #1F2937;
-            --gray-900: #111827;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --error: #EF4444;
-            --info: #3B82F6;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
-            color: var(--gray-800);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+            color: #1F2937;
             line-height: 1.6;
         }
 
-        body.dark-mode {
-            background: linear-gradient(135deg, var(--gray-900) 0%, #1a202c 100%);
-            color: #E5E7EB;
-        }
-
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
             color: white;
             padding: 2rem;
             box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
@@ -58,15 +35,9 @@
             margin-bottom: 0.5rem;
         }
 
-        .header-content p {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
         .header-controls {
             display: flex;
             gap: 1rem;
-            flex-wrap: wrap;
         }
 
         .btn {
@@ -75,29 +46,24 @@
             border-radius: 6px;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .btn-secondary {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .btn-secondary:hover {
+        .btn:hover {
             background: rgba(255, 255, 255, 0.3);
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 1rem;
         }
 
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
@@ -107,51 +73,31 @@
             padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid var(--primary);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        body.dark-mode .kpi-card {
-            background: #1F2937;
-            color: #E5E7EB;
-        }
-
-        .kpi-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            border-left: 4px solid #DC2626;
         }
 
         .kpi-label {
             font-size: 0.85rem;
-            color: var(--gray-600);
+            color: #4B5563;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
-        }
-
-        body.dark-mode .kpi-label {
-            color: #9CA3AF;
         }
 
         .kpi-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary);
+            color: #DC2626;
             margin-bottom: 0.5rem;
         }
 
         .kpi-subtext {
             font-size: 0.9rem;
-            color: var(--gray-600);
-        }
-
-        body.dark-mode .kpi-subtext {
-            color: #9CA3AF;
+            color: #4B5563;
         }
 
         .charts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
@@ -163,37 +109,92 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
-        body.dark-mode .chart-container {
-            background: #1F2937;
-        }
-
         .chart-title {
             font-size: 1.1rem;
             font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .simple-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            height: 250px;
             margin-bottom: 1rem;
-            color: var(--gray-800);
         }
 
-        body.dark-mode .chart-title {
-            color: #E5E7EB;
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(180deg, #DC2626 0%, #991B1B 100%);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            min-height: 20px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
 
-        .chart {
-            width: 100%;
-            height: 300px;
+        .chart-bar.bar2 {
+            background: linear-gradient(180deg, #3B82F6 0%, #1D4ED8 100%);
         }
 
-        .chart-legend {
+        .chart-bar.bar3 {
+            background: linear-gradient(180deg, #10B981 0%, #059669 100%);
+        }
+
+        .chart-bar-label {
+            position: absolute;
+            bottom: -30px;
+            text-align: center;
             font-size: 0.85rem;
-            color: var(--gray-600);
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--gray-200);
+            width: 100%;
+            color: #4B5563;
         }
 
-        body.dark-mode .chart-legend {
-            border-color: #374151;
-            color: #9CA3AF;
+        .chart-bar-value {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .table-title {
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #F9FAFB;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #4B5563;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 1rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        tr:hover td {
+            background: #F9FAFB;
         }
 
         .status-badge {
@@ -209,128 +210,17 @@
             color: #92400E;
         }
 
-        .status-concluido {
+        .status-done {
             background: #D1FAE5;
             color: #065F46;
-        }
-
-        .status-progress {
-            background: #DBEAFE;
-            color: #0C4A6E;
-        }
-
-        .table-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            margin-top: 2rem;
-        }
-
-        body.dark-mode .table-container {
-            background: #1F2937;
-        }
-
-        .table-title {
-            padding: 1.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        body.dark-mode .table-title {
-            border-color: #374151;
-            color: #E5E7EB;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            background: var(--gray-50);
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--gray-600);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        body.dark-mode th {
-            background: #374151;
-            color: #9CA3AF;
-        }
-
-        td {
-            padding: 1rem;
-            border-top: 1px solid var(--gray-200);
-        }
-
-        body.dark-mode td {
-            border-color: #374151;
-        }
-
-        tr:hover td {
-            background: var(--gray-50);
-        }
-
-        body.dark-mode tr:hover td {
-            background: #374151;
-        }
-
-        .filters {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filter-label {
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        select {
-            padding: 0.6rem 1rem;
-            border: 1px solid var(--gray-300);
-            border-radius: 6px;
-            background: white;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: border-color 0.3s ease;
-        }
-
-        body.dark-mode select {
-            background: #374151;
-            border-color: #4B5563;
-            color: #E5E7EB;
-        }
-
-        select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
         }
 
         .footer {
             text-align: center;
             padding: 2rem;
-            color: var(--gray-600);
+            color: #4B5563;
             font-size: 0.9rem;
             margin-top: 3rem;
-        }
-
-        body.dark-mode .footer {
-            color: #9CA3AF;
         }
 
         @media (max-width: 768px) {
@@ -339,16 +229,20 @@
                 text-align: center;
             }
 
-            .header-content h1 {
-                font-size: 1.5rem;
-            }
-
             .charts-grid {
                 grid-template-columns: 1fr;
             }
 
-            .kpi-grid {
-                grid-template-columns: 1fr;
+            .simple-chart {
+                height: 200px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            td, th {
+                padding: 0.75rem;
             }
         }
 
@@ -357,19 +251,8 @@
                 display: none;
             }
 
-            .filters {
-                display: none;
-            }
-
             body {
                 background: white;
-            }
-
-            .kpi-card,
-            .chart-container,
-            .table-container {
-                box-shadow: none;
-                page-break-inside: avoid;
             }
         }
     </style>
@@ -378,15 +261,10 @@
     <div class="header">
         <div class="header-content">
             <h1>🔒 The Silence Tech Corp (FY27)</h1>
-            <p>Security Dashboard - Vulnerabilities & Tickets</p>
+            <p style="opacity: 0.9;">Security Dashboard - Vulnerabilities & Tickets</p>
         </div>
         <div class="header-controls">
-            <button class="btn btn-secondary" onclick="toggleDarkMode()" title="Toggle dark mode">
-                🌙 Dark Mode
-            </button>
-            <button class="btn btn-secondary" onclick="window.print()" title="Print or export as PDF">
-                🖨️ Print
-            </button>
+            <button class="btn" onclick="window.print()">🖨️ Print</button>
         </div>
     </div>
 
@@ -420,34 +298,102 @@
         <div class="charts-grid">
             <div class="chart-container">
                 <div class="chart-title">Status Distribution</div>
-                <div id="statusChart" class="chart"></div>
-                <div class="chart-legend">
-                    <strong>Definition:</strong> Number of issues grouped by current status (Backlog, In Progress, Completed)
+                <div class="simple-chart">
+                    <div class="chart-bar" style="height: 60%;">
+                        <div>
+                            <div class="chart-bar-value">4,200</div>
+                            <div class="chart-bar-label">Backlog</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar bar2" style="height: 30%;">
+                        <div>
+                            <div class="chart-bar-value">2,100</div>
+                            <div class="chart-bar-label">Concluído</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar bar3" style="height: 1%;">
+                        <div>
+                            <div class="chart-bar-value">48</div>
+                            <div class="chart-bar-label">Progress</div>
+                        </div>
+                    </div>
                 </div>
+                <p style="font-size: 0.85rem; color: #4B5563; margin-top: 2rem;">Number of issues grouped by current status</p>
             </div>
 
             <div class="chart-container">
                 <div class="chart-title">Priority Levels</div>
-                <div id="priorityChart" class="chart"></div>
-                <div class="chart-legend">
-                    <strong>Definition:</strong> Count of vulnerabilities by priority classification (P1, P2, P3)
+                <div class="simple-chart">
+                    <div class="chart-bar" style="height: 27%;">
+                        <div>
+                            <div class="chart-bar-value">948</div>
+                            <div class="chart-bar-label">P1</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar bar2" style="height: 54%;">
+                        <div>
+                            <div class="chart-bar-value">1,900</div>
+                            <div class="chart-bar-label">P2</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar bar3" style="height: 100%;">
+                        <div>
+                            <div class="chart-bar-value">3,500</div>
+                            <div class="chart-bar-label">P3</div>
+                        </div>
+                    </div>
                 </div>
+                <p style="font-size: 0.85rem; color: #4B5563; margin-top: 2rem;">Count of vulnerabilities by priority</p>
             </div>
 
             <div class="chart-container">
                 <div class="chart-title">Distribution by Team</div>
-                <div id="teamChart" class="chart"></div>
-                <div class="chart-legend">
-                    <strong>Definition:</strong> Number of issues assigned to each team (Tech Corp, People, Others)
+                <div class="simple-chart">
+                    <div class="chart-bar" style="height: 100%;">
+                        <div>
+                            <div class="chart-bar-value">4,200</div>
+                            <div class="chart-bar-label">Tech Corp</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar bar2" style="height: 36%;">
+                        <div>
+                            <div class="chart-bar-value">1,500</div>
+                            <div class="chart-bar-label">People</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar bar3" style="height: 15%;">
+                        <div>
+                            <div class="chart-bar-value">648</div>
+                            <div class="chart-bar-label">Others</div>
+                        </div>
+                    </div>
                 </div>
+                <p style="font-size: 0.85rem; color: #4B5563; margin-top: 2rem;">Issues assigned to each team</p>
             </div>
 
             <div class="chart-container">
                 <div class="chart-title">Top Responsible People</div>
-                <div id="responsibleChart" class="chart"></div>
-                <div class="chart-legend">
-                    <strong>Definition:</strong> Top 5 team members by number of assigned vulnerabilities
+                <div class="simple-chart">
+                    <div class="chart-bar" style="height: 45%;">
+                        <div>
+                            <div class="chart-bar-value">1,200</div>
+                            <div class="chart-bar-label">Fabiano</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar bar2" style="height: 36%;">
+                        <div>
+                            <div class="chart-bar-value">950</div>
+                            <div class="chart-bar-label">Felipe</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar bar3" style="height: 32%;">
+                        <div>
+                            <div class="chart-bar-value">850</div>
+                            <div class="chart-bar-label">Beatriz</div>
+                        </div>
+                    </div>
                 </div>
+                <p style="font-size: 0.85rem; color: #4B5563; margin-top: 2rem;">Top team members by assigned issues</p>
             </div>
         </div>
 
@@ -484,7 +430,7 @@
                     <tr>
                         <td>SEC-734299</td>
                         <td>Vulnerability</td>
-                        <td><span class="status-badge status-concluido">Concluído</span></td>
+                        <td><span class="status-badge status-done">Concluído</span></td>
                         <td>P3</td>
                         <td>Tech Corp</td>
                         <td>Beatriz de Matos</td>
@@ -510,141 +456,9 @@
         </div>
 
         <div class="footer">
-            <p>Generated: 05/06/2026 às 12:39</p>
+            <p>Generated: 05/06/2026</p>
             <p>Data source: Google Sheets - The Silence Tech Corp (FY27)</p>
         </div>
     </div>
-
-    <script>
-        let darkMode = localStorage.getItem('darkMode') === 'true';
-
-        function toggleDarkMode() {
-            darkMode = !darkMode;
-            localStorage.setItem('darkMode', darkMode);
-            document.body.classList.toggle('dark-mode');
-            initCharts();
-        }
-
-        if (darkMode) {
-            document.body.classList.add('dark-mode');
-        }
-
-        function initCharts() {
-            setTimeout(() => {
-                createStatusChart();
-                createPriorityChart();
-                createTeamChart();
-                createResponsibleChart();
-            }, 100);
-        }
-
-        function createStatusChart() {
-            const chartDom = document.getElementById('statusChart');
-            const myChart = echarts.init(chartDom, darkMode ? 'dark' : 'light');
-
-            const option = {
-                color: ['#DC2626', '#10B981', '#3B82F6'],
-                tooltip: {
-                    trigger: 'item',
-                    formatter: '{a} <br/>{b}: {c} ({d}%)'
-                },
-                legend: {
-                    orient: 'bottom',
-                    bottom: 0
-                },
-                series: [{
-                    name: 'Status',
-                    type: 'pie',
-                    radius: [0, '70%'],
-                    data: [
-                        {value: 4200, name: 'Backlog'},
-                        {value: 2100, name: 'Concluído'},
-                        {value: 48, name: 'In Progress'}
-                    ],
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    }
-                }]
-            };
-
-            myChart.setOption(option);
-            window.addEventListener('resize', () => myChart.resize());
-        }
-
-        function createPriorityChart() {
-            const chartDom = document.getElementById('priorityChart');
-            const myChart = echarts.init(chartDom, darkMode ? 'dark' : 'light');
-
-            const option = {
-                color: ['#EF4444'],
-                tooltip: {trigger: 'axis'},
-                xAxis: {
-                    type: 'category',
-                    data: ['P1 (Critical)', 'P2 (High)', 'P3 (Medium)']
-                },
-                yAxis: {type: 'value'},
-                series: [{
-                    data: [948, 1900, 3500],
-                    type: 'bar',
-                    itemStyle: {borderRadius: [4, 4, 0, 0]}
-                }]
-            };
-
-            myChart.setOption(option);
-            window.addEventListener('resize', () => myChart.resize());
-        }
-
-        function createTeamChart() {
-            const chartDom = document.getElementById('teamChart');
-            const myChart = echarts.init(chartDom, darkMode ? 'dark' : 'light');
-
-            const option = {
-                color: ['#3B82F6'],
-                tooltip: {trigger: 'axis'},
-                xAxis: {
-                    type: 'category',
-                    data: ['Tech Corp', 'People', 'Others']
-                },
-                yAxis: {type: 'value'},
-                series: [{
-                    data: [4200, 1500, 648],
-                    type: 'bar',
-                    itemStyle: {borderRadius: [4, 4, 0, 0]}
-                }]
-            };
-
-            myChart.setOption(option);
-            window.addEventListener('resize', () => myChart.resize());
-        }
-
-        function createResponsibleChart() {
-            const chartDom = document.getElementById('responsibleChart');
-            const myChart = echarts.init(chartDom, darkMode ? 'dark' : 'light');
-
-            const option = {
-                color: ['#10B981'],
-                tooltip: {trigger: 'axis'},
-                xAxis: {
-                    type: 'category',
-                    data: ['Fabiano Vieira', 'Felipe Santos', 'Beatriz Matos', 'Gabriel Branco', 'Others']
-                },
-                yAxis: {type: 'value'},
-                series: [{
-                    data: [1200, 950, 850, 300, 2648],
-                    type: 'bar',
-                    itemStyle: {borderRadius: [4, 4, 0, 0]}
-                }]
-            };
-
-            myChart.setOption(option);
-            window.addEventListener('resize', () => myChart.resize());
-        }
-
-        window.addEventListener('load', initCharts);
-    </script>
 </body>
 </html>
