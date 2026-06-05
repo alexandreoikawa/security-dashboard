@@ -583,8 +583,8 @@
                         <select id="status-filter">
                             <option value="">Todos os Status</option>
                             <option value="Backlog">Backlog</option>
-                            <option value="In Progress">Em Progresso</option>
-                            <option value="Resolved">Resolvido</option>
+                            <option value="Em Progresso">Em Progresso</option>
+                            <option value="Resolvido">Resolvido</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -1185,91 +1185,113 @@
         }
 
         function filterVulnerabilities() {
-            if (!allVulnerabilities || allVulnerabilities.length === 0) return;
+            if (!allVulnerabilities || allVulnerabilities.length === 0) {
+                console.warn('⚠️ Sem vulnerabilidades para filtrar');
+                return;
+            }
 
-            const search = document.getElementById('search-vuln')?.value?.toLowerCase() || '';
-            const status = document.getElementById('status-filter')?.value || '';
-            const priority = document.getElementById('priority-filter')?.value || '';
-            const responsible = document.getElementById('responsible-filter')?.value || '';
-            const category = document.getElementById('category-filter')?.value || '';
+            const startTime = performance.now();
+
+            // Get filter values
+            const search = (document.getElementById('search-vuln')?.value || '').toLowerCase().trim();
+            const status = (document.getElementById('status-filter')?.value || '').trim();
+            const priority = (document.getElementById('priority-filter')?.value || '').trim();
+            const responsible = (document.getElementById('responsible-filter')?.value || '').trim();
+            const category = (document.getElementById('category-filter')?.value || '').trim();
 
             const table = document.getElementById('vuln-tbody');
             if (!table) return;
 
             let visibleCount = 0;
             const totalCount = allVulnerabilities.length;
+            const fragment = document.createDocumentFragment();
 
-            // Clear table
-            table.innerHTML = '';
-
-            // Filter and render
-            allVulnerabilities.forEach(vuln => {
-                let show = true;
-
+            // Filter and collect matching rows
+            const filteredVulns = allVulnerabilities.filter(vuln => {
                 // Apply search filter
                 if (search) {
                     const searchableText = `${vuln.chave} ${vuln.resumo} ${vuln.responsavel}`.toLowerCase();
                     if (!searchableText.includes(search)) {
-                        show = false;
+                        return false;
                     }
                 }
 
                 // Apply status filter
                 if (status && vuln.status !== status) {
-                    show = false;
+                    return false;
                 }
 
                 // Apply priority filter (matching on classificacao field)
                 if (priority && vuln.classificacao !== priority) {
-                    show = false;
+                    return false;
                 }
 
                 // Apply responsible filter
                 if (responsible && vuln.responsavel !== responsible) {
-                    show = false;
+                    return false;
                 }
 
                 // Apply category filter (check if category is in the categorias string)
                 if (category && !vuln.categorias.includes(category)) {
-                    show = false;
+                    return false;
                 }
 
-                if (show) {
-                    visibleCount++;
-                    const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
-                                      vuln.status === 'Concluído' ? 'status-resolved' : 'status-inprogress';
-                    const priorityClass = `priority-${vuln.classificacao.toLowerCase()}`;
-
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td><strong>${vuln.chave}</strong></td>
-                        <td>${vuln.tipo}</td>
-                        <td><span title="${vuln.resumo}">${vuln.resumo.substring(0, 50)}...</span></td>
-                        <td><span class="status-badge ${statusClass}">${vuln.status}</span></td>
-                        <td><span class="status-badge ${priorityClass}">${vuln.classificacao}</span></td>
-                        <td>${vuln.responsavel}</td>
-                        <td><span title="${vuln.categorias}">${vuln.categorias.substring(0, 25)}...</span></td>
-                        <td>${vuln.criado}</td>
-                        <td>${vuln.dias_abertos}</td>
-                    `;
-                    table.appendChild(row);
-                }
+                return true;
             });
+
+            visibleCount = filteredVulns.length;
+
+            // Clear table and render filtered results
+            table.innerHTML = '';
+
+            filteredVulns.forEach(vuln => {
+                const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
+                                  vuln.status === 'Resolvido' ? 'status-resolved' : 'status-inprogress';
+                const priorityClass = `priority-${vuln.classificacao.toLowerCase()}`;
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${vuln.chave}</strong></td>
+                    <td>${vuln.tipo}</td>
+                    <td><span title="${vuln.resumo}">${vuln.resumo.substring(0, 50)}...</span></td>
+                    <td><span class="status-badge ${statusClass}">${vuln.status}</span></td>
+                    <td><span class="status-badge ${priorityClass}">${vuln.classificacao}</span></td>
+                    <td>${vuln.responsavel}</td>
+                    <td><span title="${vuln.categorias}">${vuln.categorias.substring(0, 25)}...</span></td>
+                    <td>${vuln.criado}</td>
+                    <td>${vuln.dias_abertos}</td>
+                `;
+                fragment.appendChild(row);
+            });
+
+            table.appendChild(fragment);
 
             // Update count
             const countElement = document.getElementById('vuln-count');
             if (countElement) {
-                countElement.textContent = `Mostrando ${visibleCount} de ${totalCount}`;
+                countElement.textContent = `Mostrando ${visibleCount.toLocaleString('pt-BR')} de ${totalCount.toLocaleString('pt-BR')}`;
             }
+
+            const endTime = performance.now();
+            console.log(`✅ Filtros aplicados: ${visibleCount}/${totalCount} resultados (${(endTime - startTime).toFixed(2)}ms)`);
         }
 
         function clearFilters(tab) {
+            console.log(`🔄 Limpando filtros para: ${tab}`);
+
             const inputs = document.querySelectorAll(`#${tab} input[type="text"]`);
             const selects = document.querySelectorAll(`#${tab} select`);
-            inputs.forEach(input => input.value = '');
-            selects.forEach(select => select.value = '');
+
+            inputs.forEach(input => {
+                input.value = '';
+            });
+
+            selects.forEach(select => {
+                select.value = '';
+            });
 
             if (tab === 'vulnerabilities') {
+                console.log(`✅ Filtros limpos, reaplicando...`);
                 filterVulnerabilities();
             }
         }
@@ -1356,45 +1378,58 @@
         }
 
         function populateFilterOptions() {
-            if (!allVulnerabilities || allVulnerabilities.length === 0) return;
+            if (!allVulnerabilities || allVulnerabilities.length === 0) {
+                console.warn('⚠️ Sem dados para popular filtros');
+                return;
+            }
 
-            // Get unique values
-            const responsaveis = [...new Set(allVulnerabilities.map(v => v.responsavel))].sort();
+            console.log('🔄 Populando opções de filtros...');
+
+            // Get unique values for responsible
+            const responsaveis = [...new Set(allVulnerabilities
+                .map(v => v.responsavel)
+                .filter(r => r && r.trim())
+            )].sort();
+
+            // Get unique values for categories
             const categorias = new Set();
             allVulnerabilities.forEach(v => {
-                v.categorias.split(';').forEach(cat => categorias.add(cat.trim()));
+                if (v.categorias) {
+                    v.categorias.split(';').forEach(cat => {
+                        const trimmed = cat.trim();
+                        if (trimmed) categorias.add(trimmed);
+                    });
+                }
             });
 
             // Populate responsible filter
             const responsibleSelect = document.getElementById('responsible-filter');
             if (responsibleSelect) {
-                const selected = responsibleSelect.value;
+                const currentValue = responsibleSelect.value;
                 responsibleSelect.innerHTML = '<option value="">Todos os Responsáveis</option>';
                 responsaveis.forEach(r => {
-                    if (r) {
-                        const option = document.createElement('option');
-                        option.value = r;
-                        option.textContent = r;
-                        responsibleSelect.appendChild(option);
-                    }
+                    const option = document.createElement('option');
+                    option.value = r;
+                    option.textContent = r;
+                    responsibleSelect.appendChild(option);
                 });
-                responsibleSelect.value = selected;
+                if (currentValue) responsibleSelect.value = currentValue;
+                console.log(`✅ Populated responsible filter: ${responsaveis.length} items`);
             }
 
             // Populate category filter
             const categorySelect = document.getElementById('category-filter');
             if (categorySelect) {
-                const selected = categorySelect.value;
+                const currentValue = categorySelect.value;
                 categorySelect.innerHTML = '<option value="">Todas as Categorias</option>';
                 Array.from(categorias).sort().forEach(c => {
-                    if (c) {
-                        const option = document.createElement('option');
-                        option.value = c;
-                        option.textContent = c;
-                        categorySelect.appendChild(option);
-                    }
+                    const option = document.createElement('option');
+                    option.value = c;
+                    option.textContent = c;
+                    categorySelect.appendChild(option);
                 });
-                categorySelect.value = selected;
+                if (currentValue) categorySelect.value = currentValue;
+                console.log(`✅ Populated category filter: ${categorias.size} items`);
             }
         }
 
@@ -1413,28 +1448,44 @@
             const total = allVulnerabilities.length;
             const backlog = allVulnerabilities.filter(v => v.status === 'Backlog').length;
             const resolved = allVulnerabilities.filter(v => v.status === 'Resolvido').length;
+            const inProgress = allVulnerabilities.filter(v => v.status === 'Em Progresso').length;
             const p1 = allVulnerabilities.filter(v => v.classificacao === 'P1').length;
+            const p2 = allVulnerabilities.filter(v => v.classificacao === 'P2').length;
+            const p3 = allVulnerabilities.filter(v => v.classificacao === 'P3').length;
+            const p4 = allVulnerabilities.filter(v => v.classificacao === 'P4').length;
 
-            console.log(`📊 Estatísticas: Total=${total}, Backlog=${backlog}, Resolvido=${resolved}, P1=${p1}`);
+            console.log(`📊 Estatísticas completas:`);
+            console.log(`   Total: ${total}`);
+            console.log(`   Backlog: ${backlog} | Em Progresso: ${inProgress} | Resolvido: ${resolved}`);
+            console.log(`   P1: ${p1} | P2: ${p2} | P3: ${p3} | P4: ${p4}`);
 
             // Find and update KPI cards in the vulnerabilities tab
             const vulnTab = document.getElementById('vulnerabilities');
-            if (!vulnTab) return;
+            if (!vulnTab) {
+                console.warn('⚠️ Tab de vulnerabilidades não encontrada');
+                return;
+            }
 
             const kpiCards = vulnTab.querySelectorAll('.kpi-value');
             if (kpiCards.length >= 4) {
                 kpiCards[0].textContent = total.toLocaleString('pt-BR');
-                kpiCards[1].textContent = (p1 || 0).toLocaleString('pt-BR');
+                kpiCards[1].textContent = p1.toLocaleString('pt-BR');
                 kpiCards[2].textContent = backlog.toLocaleString('pt-BR');
                 kpiCards[3].textContent = resolved.toLocaleString('pt-BR');
+                console.log(`✅ KPI cards atualizados`);
+            } else {
+                console.warn(`⚠️ Esperava 4 KPI cards, encontrou ${kpiCards.length}`);
             }
         }
 
         // Add event listeners for real-time filtering
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Inicializando dashboard...');
+
             // Load external data first
             loadData();
 
+            // Setup event listeners for all filter inputs
             const filterInputs = [
                 'search-vuln',
                 'status-filter',
@@ -1446,10 +1497,27 @@
             filterInputs.forEach(id => {
                 const element = document.getElementById(id);
                 if (element) {
-                    element.addEventListener('change', () => filterVulnerabilities());
-                    element.addEventListener('input', () => filterVulnerabilities());
+                    // Real-time filtering on input/change
+                    element.addEventListener('change', () => {
+                        console.log(`📝 Filtro alterado: ${id}`);
+                        filterVulnerabilities();
+                    });
+                    element.addEventListener('input', () => {
+                        filterVulnerabilities();
+                    });
+                } else {
+                    console.warn(`⚠️ Elemento não encontrado: ${id}`);
                 }
             });
+
+            // Setup clear filters button
+            const clearBtn = document.querySelector('[onclick="clearFilters(\'vulnerabilities\')"]');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    clearFilters('vulnerabilities');
+                });
+            }
 
             console.log('✅ Dashboard carregado com filtros ativos!');
         });
