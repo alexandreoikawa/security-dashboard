@@ -564,9 +564,9 @@
                     <div class="kpi-change">66% do total</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Resolvidas</div>
+                    <div class="kpi-label">Concluídas</div>
                     <div class="kpi-value">2,100</div>
-                    <div class="kpi-change positive">↓ 33% resolvidas</div>
+                    <div class="kpi-change positive">↓ 33% concluídas</div>
                 </div>
             </div>
 
@@ -738,7 +738,7 @@
                                 <td><strong>SEC-735524</strong></td>
                                 <td>Vulnerability</td>
                                 <td>[HIGH] XSS vulnerability in user profile page</td>
-                                <td><span class="status-badge status-resolved">Resolvido</span></td>
+                                <td><span class="status-badge status-resolved">Concluído</span></td>
                                 <td><span class="status-badge priority-p1">P1</span></td>
                                 <td>Maria Santos</td>
                                 <td>app-sec</td>
@@ -1475,7 +1475,7 @@
 
             const total = allVulnerabilities.length;
             const backlog = allVulnerabilities.filter(v => v.status === 'Backlog').length;
-            const resolved = allVulnerabilities.filter(v => v.status === 'Resolvido').length;
+            const resolved = allVulnerabilities.filter(v => v.status === 'Concluído').length;
             const inProgress = allVulnerabilities.filter(v => v.status === 'Em Progresso').length;
             const p1 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P1').length;
             const p2 = allVulnerabilities.filter(v => (v.prioridade || v.classificacao) === 'P2').length;
@@ -1484,7 +1484,7 @@
 
             console.log(`📊 Estatísticas completas:`);
             console.log(`   Total: ${total}`);
-            console.log(`   Backlog: ${backlog} | Em Progresso: ${inProgress} | Resolvido: ${resolved}`);
+            console.log(`   Backlog: ${backlog} | Em Progresso: ${inProgress} | Concluído: ${resolved}`);
             console.log(`   P1: ${p1} | P2: ${p2} | P3: ${p3} | P4: ${p4}`);
 
             // Find and update KPI cards in the vulnerabilities tab
