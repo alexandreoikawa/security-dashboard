@@ -514,6 +514,125 @@
             color: #DC2626;
             font-weight: 700;
         }
+
+        /* Unified Tree + KPI Card */
+        .unified-summary {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .unified-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1F2937;
+            border-left: 4px solid #DC2626;
+            padding-left: 1rem;
+        }
+
+        .tree-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #F3F4F6;
+            font-size: 0.95rem;
+        }
+
+        .tree-row:last-child {
+            border-bottom: none;
+        }
+
+        .tree-row.root {
+            font-weight: 700;
+            color: #1F2937;
+            padding: 1rem 0;
+            font-size: 1.05rem;
+            border-bottom: 2px solid #DC2626;
+            margin-bottom: 0.5rem;
+        }
+
+        .tree-row.root strong {
+            color: #DC2626;
+        }
+
+        .tree-left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .tree-left .tree-icon {
+            margin-right: 0.75rem;
+            color: #9CA3AF;
+            font-weight: 500;
+            min-width: 80px;
+        }
+
+        .tree-left strong {
+            color: #DC2626;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .tree-left .tree-note {
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            margin-left: 0.5rem;
+        }
+
+        .tree-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            min-width: 250px;
+            text-align: right;
+        }
+
+        .tree-value {
+            min-width: 80px;
+            text-align: right;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .tree-percent {
+            min-width: 120px;
+            text-align: right;
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+
+        .tree-percent.positive {
+            color: #10B981;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .unified-summary {
+                padding: 1.5rem;
+            }
+
+            .tree-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .tree-right {
+                width: 100%;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            .tree-value,
+            .tree-percent {
+                min-width: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -581,58 +700,92 @@
                 </div>
             </div>
 
-            <!-- STATUS TREE VIEW -->
-            <div class="status-tree-container">
-                <div class="status-tree">
-                    <div class="tree-item tree-root">
-                        <span class="tree-label">📊 Total: <strong id="tree-total">6,347</strong></span>
-                    </div>
-                    <div class="tree-item" style="margin-left: 1.5rem;">
-                        <span class="tree-label">├─ Em Andamento: <strong id="tree-andamento">3</strong></span>
-                    </div>
-                    <div class="tree-item" style="margin-left: 1.5rem;">
-                        <span class="tree-label">├─ Revisar: <strong id="tree-revisar">11</strong></span>
-                    </div>
-                    <div class="tree-item" style="margin-left: 1.5rem;">
-                        <span class="tree-label">├─ Backlog: <strong id="tree-backlog">237</strong></span>
-                    </div>
-                    <div class="tree-item" style="margin-left: 1.5rem;">
-                        <span class="tree-label">├─ Em Aberto: <strong id="tree-emaberto">251</strong> <span style="font-size: 0.9rem; color: #666;">(sum: 237 + 11 + 3)</span></span>
-                    </div>
-                    <div class="tree-item" style="margin-left: 1.5rem;">
-                        <span class="tree-label">├─ Concluído: <strong id="tree-concluido">5,905</strong></span>
-                    </div>
-                    <div class="tree-item" style="margin-left: 1.5rem;">
-                        <span class="tree-label">└─ Rejeitada: <strong id="tree-rejeitada">191</strong></span>
-                    </div>
-                </div>
-            </div>
+            <!-- UNIFIED SUMMARY: Tree + KPIs -->
+            <div class="unified-summary">
+                <div class="unified-title">📊 Sumário de Vulnerabilidades por Status</div>
 
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">Total de Vulnerabilidades</div>
-                    <div class="kpi-value" id="kpi-total">6,347</div>
-                    <div class="kpi-change" id="total-percent">100% do total</div>
+                <!-- Total -->
+                <div class="tree-row root">
+                    <div class="tree-left">
+                        <strong>Total:</strong>
+                        <span id="tree-total">6.347</span>
+                    </div>
+                    <div class="tree-right">
+                        <div class="tree-percent" id="total-percent">100.0% do total</div>
+                    </div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Em Andamento (Status)</div>
-                    <div class="kpi-value">3</div>
-                    <div class="kpi-change" id="inprogress-percent">0.0% do total</div>
+
+                <!-- Em Andamento -->
+                <div class="tree-row">
+                    <div class="tree-left">
+                        <span class="tree-icon">├─</span>
+                        <span>Em Andamento:</span>
+                        <strong id="tree-andamento">3</strong>
+                    </div>
+                    <div class="tree-right">
+                        <div class="tree-percent" id="andamento-percent">0.0% do total</div>
+                    </div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Backlog (Status)</div>
-                    <div class="kpi-value">237</div>
-                    <div class="kpi-change" id="backlog-percent">3.7% do total</div>
+
+                <!-- Revisar -->
+                <div class="tree-row">
+                    <div class="tree-left">
+                        <span class="tree-icon">├─</span>
+                        <span>Revisar:</span>
+                        <strong id="tree-revisar">11</strong>
+                    </div>
+                    <div class="tree-right">
+                        <div class="tree-percent" id="revisar-percent">0.2% do total</div>
+                    </div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Em Aberto (Backlog + Revisar + Em Andamento)</div>
-                    <div class="kpi-value" id="kpi-emaberto">251</div>
-                    <div class="kpi-change" id="open-percent">3.9% do total</div>
+
+                <!-- Backlog -->
+                <div class="tree-row">
+                    <div class="tree-left">
+                        <span class="tree-icon">├─</span>
+                        <span>Backlog:</span>
+                        <strong id="tree-backlog">237</strong>
+                    </div>
+                    <div class="tree-right">
+                        <div class="tree-percent" id="backlog-percent">3.7% do total</div>
+                    </div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Concluído (Status)</div>
-                    <div class="kpi-value" id="kpi-concluido">5,905</div>
-                    <div class="kpi-change positive" id="concluido-percent">93.0% concluídas</div>
+
+                <!-- Em Aberto -->
+                <div class="tree-row">
+                    <div class="tree-left">
+                        <span class="tree-icon">├─</span>
+                        <span>Em Aberto:</span>
+                        <strong id="tree-emaberto">251</strong>
+                        <span class="tree-note">(sum: 237 + 11 + 3)</span>
+                    </div>
+                    <div class="tree-right">
+                        <div class="tree-percent" id="emaberto-percent">4.0% do total</div>
+                    </div>
+                </div>
+
+                <!-- Concluído -->
+                <div class="tree-row">
+                    <div class="tree-left">
+                        <span class="tree-icon">├─</span>
+                        <span>Concluído:</span>
+                        <strong id="tree-concluido">5.905</strong>
+                    </div>
+                    <div class="tree-right">
+                        <div class="tree-percent positive" id="concluido-percent">93.0% concluídas</div>
+                    </div>
+                </div>
+
+                <!-- Rejeitada -->
+                <div class="tree-row">
+                    <div class="tree-left">
+                        <span class="tree-icon">└─</span>
+                        <span>Rejeitada:</span>
+                        <strong id="tree-rejeitada">191</strong>
+                    </div>
+                    <div class="tree-right">
+                        <div class="tree-percent" id="rejeitada-percent">3.0% do total</div>
+                    </div>
                 </div>
             </div>
 
@@ -1128,39 +1281,31 @@
                 return;
             }
 
-            // Update KPI values by ID for more reliability
-            const kpiTotal = document.getElementById('kpi-total');
-            const kpiConcluido = document.getElementById('kpi-concluido');
-
-            if (kpiTotal) kpiTotal.textContent = total.toLocaleString('pt-BR');
-            if (kpiConcluido) kpiConcluido.textContent = resolved.toLocaleString('pt-BR');
-
-            // Also update by card index as backup
-            const kpiCards = vulnTab.querySelectorAll('.kpi-value');
-            if (kpiCards.length >= 5) {
-                kpiCards[0].textContent = total.toLocaleString('pt-BR');
-                kpiCards[1].textContent = inProgress.toLocaleString('pt-BR');
-                kpiCards[2].textContent = backlog.toLocaleString('pt-BR');
-                kpiCards[3].textContent = open.toLocaleString('pt-BR');
-                kpiCards[4].textContent = resolved.toLocaleString('pt-BR');
-                console.log(`✅ KPI cards atualizados`);
-            }
+            // Update KPI values (removed - now using unified summary)
 
             // Update percentages
             const totalPercent = '100.0';
             const inProgressPercent = total > 0 ? ((inProgress / total) * 100).toFixed(1) : 0;
+            const revisingPercent = total > 0 ? ((reviewing / total) * 100).toFixed(1) : 0;
             const backlogPercent = total > 0 ? ((backlog / total) * 100).toFixed(1) : 0;
             const openPercent = total > 0 ? ((open / total) * 100).toFixed(1) : 0;
             const concluidoPercent = total > 0 ? ((resolved / total) * 100).toFixed(1) : 0;
+            const rejeitadaPercent = total > 0 ? ((rejected / total) * 100).toFixed(1) : 0;
 
+            // Update unified summary percentages
             const totalPercentElem = document.getElementById('total-percent');
             if (totalPercentElem) {
                 totalPercentElem.textContent = `${totalPercent}% do total`;
             }
 
-            const inProgressPercentElem = document.getElementById('inprogress-percent');
-            if (inProgressPercentElem) {
-                inProgressPercentElem.textContent = `${inProgressPercent}% do total`;
+            const andamentoPercentElem = document.getElementById('andamento-percent');
+            if (andamentoPercentElem) {
+                andamentoPercentElem.textContent = `${inProgressPercent}% do total`;
+            }
+
+            const revisarPercentElem = document.getElementById('revisar-percent');
+            if (revisarPercentElem) {
+                revisarPercentElem.textContent = `${revisingPercent}% do total`;
             }
 
             const backlogPercentElem = document.getElementById('backlog-percent');
@@ -1168,14 +1313,30 @@
                 backlogPercentElem.textContent = `${backlogPercent}% do total`;
             }
 
-            const openPercentElem = document.getElementById('open-percent');
-            if (openPercentElem) {
-                openPercentElem.textContent = `${openPercent}% do total`;
+            const emabertopercentElem = document.getElementById('emaberto-percent');
+            if (emabertopercentElem) {
+                emabertopercentElem.textContent = `${openPercent}% do total`;
             }
 
             const concluidoPercentElem = document.getElementById('concluido-percent');
             if (concluidoPercentElem) {
                 concluidoPercentElem.textContent = `${concluidoPercent}% concluídas`;
+            }
+
+            const rejeitadaPercentElem = document.getElementById('rejeitada-percent');
+            if (rejeitadaPercentElem) {
+                rejeitadaPercentElem.textContent = `${rejeitadaPercent}% do total`;
+            }
+
+            // Keep backward compatibility for old KPI card IDs if they still exist
+            const inProgressPercentElem = document.getElementById('inprogress-percent');
+            if (inProgressPercentElem) {
+                inProgressPercentElem.textContent = `${inProgressPercent}% do total`;
+            }
+
+            const openPercentElem = document.getElementById('open-percent');
+            if (openPercentElem) {
+                openPercentElem.textContent = `${openPercent}% do total`;
             }
 
             // Update status tree view elements
@@ -1195,12 +1356,7 @@
             if (treeConcluido) treeConcluido.textContent = resolved.toLocaleString('pt-BR');
             if (treeRejeitada) treeRejeitada.textContent = rejected.toLocaleString('pt-BR');
 
-            // SYNC: Usar a árvore como fonte de verdade para o KPI "Em Aberto"
-            const kpiEmAberto = document.getElementById('kpi-emaberto');
-            if (kpiEmAberto && treeEmAberto) {
-                kpiEmAberto.textContent = treeEmAberto.textContent;
-                console.log(`✅ KPI "Em Aberto" sincronizado com árvore: ${treeEmAberto.textContent}`);
-            }
+            // KPI values are now in unified summary
 
             console.log(`✅ Tree view atualizado: Total ${total} | Em Andamento ${inProgress} | Revisar ${reviewing} | Backlog ${backlog} | Em Aberto ${open} | Concluído ${resolved} | Rejeitada ${rejected}`);
             console.log(`✅ Percentuais atualizados: Em Progresso ${inProgressPercent}%, Backlog ${backlogPercent}%, Em Aberto ${openPercent}%, Concluído ${concluidoPercent}%`);
