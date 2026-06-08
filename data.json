@@ -41,16 +41,16 @@
     "total": 6347,
     "em_andamento": 250,
     "revisar": 150,
-    "backlog": 2600,
-    "em_aberto": 2100,
-    "concluído": 1200,
+    "backlog": 2500,
+    "em_aberto": 2500,
+    "concluído": 3400,
     "rejeitada": 47,
     "p0": 50,
     "p1": 75,
     "p2": 350,
-    "p3": 5700,
-    "outros": 127,
-    "sem_prioridade": 45
+    "p3": 5600,
+    "outros": 250,
+    "sem_prioridade": 2
   },
   "filters": {
     "responsibles": [
