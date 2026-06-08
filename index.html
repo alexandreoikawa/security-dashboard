@@ -1263,17 +1263,19 @@
 
             if (!vulns || vulns.length === 0) return;
 
-            // Use summary.total when showing all data (no filter), otherwise count filtered results
-            const total = !dataToUse && dataSource.summary?.total ? dataSource.summary.total : vulns.length;
-            const backlog = vulns.filter(v => v.status === 'Backlog').length;
-            const resolved = vulns.filter(v => v.status === 'Concluído').length;
-            const inProgress = vulns.filter(v => v.status === 'Em Andamento').length;
-            const reviewing = vulns.filter(v => v.status === 'Revisar').length;
-            const rejected = vulns.filter(v => v.status === 'Rejeitada').length;
+            // Use summary when showing all data (no filter), otherwise count filtered results
+            const isFiltered = !!dataToUse;
+            const total = !isFiltered && dataSource.summary?.total ? dataSource.summary.total : vulns.length;
+            const backlog = !isFiltered && dataSource.summary?.backlog ? dataSource.summary.backlog : vulns.filter(v => v.status === 'Backlog').length;
+            const resolved = !isFiltered && dataSource.summary?.concluído ? dataSource.summary.concluído : vulns.filter(v => v.status === 'Concluído').length;
+            const inProgress = !isFiltered && dataSource.summary?.em_andamento ? dataSource.summary.em_andamento : vulns.filter(v => v.status === 'Em Andamento').length;
+            const reviewing = !isFiltered && dataSource.summary?.revisar ? dataSource.summary.revisar : vulns.filter(v => v.status === 'Revisar').length;
+            const rejected = !isFiltered && dataSource.summary?.rejeitada ? dataSource.summary.rejeitada : vulns.filter(v => v.status === 'Rejeitada').length;
             const open = backlog + inProgress + reviewing;
-            const p1 = vulns.filter(v => v.prioridade === 'P1').length;
-            const p2 = vulns.filter(v => v.prioridade === 'P2').length;
-            const p3 = vulns.filter(v => v.prioridade === 'P3').length;
+            const p0 = !isFiltered && dataSource.summary?.p0 ? dataSource.summary.p0 : vulns.filter(v => v.prioridade === 'P0').length;
+            const p1 = !isFiltered && dataSource.summary?.p1 ? dataSource.summary.p1 : vulns.filter(v => v.prioridade === 'P1').length;
+            const p2 = !isFiltered && dataSource.summary?.p2 ? dataSource.summary.p2 : vulns.filter(v => v.prioridade === 'P2').length;
+            const p3 = !isFiltered && dataSource.summary?.p3 ? dataSource.summary.p3 : vulns.filter(v => v.prioridade === 'P3').length;
             const p4 = vulns.filter(v => v.prioridade === 'P4').length;
 
             console.log(`📊 Stats (${dataToUse ? 'filtered' : 'all'}):`);
