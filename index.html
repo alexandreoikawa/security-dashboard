@@ -48,45 +48,6 @@
             padding: 0 1rem;
         }
 
-        /* Tabs */
-        .tabs {
-            display: flex;
-            gap: 0;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #E0E0E0;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .tab-btn {
-            padding: 1rem 1.5rem;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: #666;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .tab-btn:hover {
-            color: #DC2626;
-        }
-
-        .tab-btn.active {
-            color: #DC2626;
-            border-bottom-color: #DC2626;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
         /* Filters */
         .filters {
             background: white;
@@ -518,34 +479,53 @@
             height: 1rem;
             margin-right: 0.5rem;
         }
+
+        /* Status Tree View */
+        .status-tree-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .status-tree {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #2C3E50;
+        }
+
+        .tree-item {
+            padding: 0.25rem 0;
+        }
+
+        .tree-root {
+            margin-left: 0;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .tree-label {
+            display: inline-block;
+        }
+
+        .tree-label strong {
+            color: #DC2626;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="header-content">
             <h1>🔒 Dashboard de Segurança</h1>
-            <p>The Silence Tech Corp (FY27) - Monitoramento Centralizado de Vulnerabilidades, Deployments e Feature Toggles</p>
+            <p>The Silence Tech Corp (FY27) - Monitoramento Centralizado de Vulnerabilidades</p>
         </div>
     </div>
 
     <div class="container">
-        <!-- TABS -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('vulnerabilities')">
-                ⚠️ Vulnerabilidades
-            </button>
-            <button class="tab-btn" onclick="switchTab('deployments')">
-                🚀 Deployments
-            </button>
-            <button class="tab-btn" onclick="switchTab('feature-toggles')">
-                ⚡ Feature Toggles
-            </button>
-            <button class="tab-btn" onclick="switchTab('overview')">
-                📊 Overview
-            </button>
-        </div>
-
-        <!-- TAB 1: VULNERABILITIES -->
+        <!-- VULNERABILITIES SECTION -->
         <div id="vulnerabilities" class="tab-content active">
             <!-- FILTERS -->
             <div class="filters">
@@ -556,33 +536,36 @@
                         <input type="text" id="search-vuln" placeholder="Chave, resumo ou responsável...">
                     </div>
                     <div class="filter-group">
-                        <label for="status-filter">Status</label>
+                        <label for="status-filter">Status (Coluna F)</label>
                         <select id="status-filter">
                             <option value="">Todos os Status</option>
                             <option value="Backlog">Backlog</option>
+                            <option value="Em Andamento">Em Andamento</option>
+                            <option value="Revisar">Revisar</option>
                             <option value="Concluído">Concluído</option>
-                            <option value="Em Progresso">Em Progresso</option>
                             <option value="Rejeitada">Rejeitada</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label for="priority-filter">Prioridade</label>
+                        <label for="priority-filter">Classificação de Prioridade (Coluna M)</label>
                         <select id="priority-filter">
                             <option value="">Todas as Prioridades</option>
-                            <option value="P1">P1 - Crítica</option>
-                            <option value="P2">P2 - Alta</option>
-                            <option value="P3">P3 - Média</option>
-                            <option value="P4">P4 - Baixa</option>
+                            <option value="P0">P0 - Crítica</option>
+                            <option value="P1">P1 - Alta</option>
+                            <option value="P2">P2 - Média</option>
+                            <option value="P3">P3 - Baixa</option>
+                            <option value="Outros">Outros</option>
+                            <option value="Sem Prioridade">Sem Prioridade</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label for="responsible-filter">Responsável</label>
+                        <label for="responsible-filter">Responsável (Coluna D)</label>
                         <select id="responsible-filter">
                             <option value="">Todos os Responsáveis</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label for="category-filter">Categoria</label>
+                        <label for="category-filter">Categorias (Coluna G)</label>
                         <select id="category-filter">
                             <option value="">Todas as Categorias</option>
                             <option value="app-sec">App Security</option>
@@ -598,85 +581,130 @@
                 </div>
             </div>
 
+            <!-- STATUS TREE VIEW -->
+            <div class="status-tree-container">
+                <div class="status-tree">
+                    <div class="tree-item tree-root">
+                        <span class="tree-label">📊 Total: <strong id="tree-total">6,347</strong></span>
+                    </div>
+                    <div class="tree-item" style="margin-left: 1.5rem;">
+                        <span class="tree-label">├─ Em Andamento: <strong id="tree-andamento">3</strong></span>
+                    </div>
+                    <div class="tree-item" style="margin-left: 1.5rem;">
+                        <span class="tree-label">├─ Revisar: <strong id="tree-revisar">11</strong></span>
+                    </div>
+                    <div class="tree-item" style="margin-left: 1.5rem;">
+                        <span class="tree-label">├─ Backlog: <strong id="tree-backlog">237</strong></span>
+                    </div>
+                    <div class="tree-item" style="margin-left: 1.5rem;">
+                        <span class="tree-label">├─ Em Aberto: <strong id="tree-emaberto">251</strong> <span style="font-size: 0.9rem; color: #666;">(sum: 237 + 11 + 3)</span></span>
+                    </div>
+                    <div class="tree-item" style="margin-left: 1.5rem;">
+                        <span class="tree-label">├─ Concluído: <strong id="tree-concluido">5,905</strong></span>
+                    </div>
+                    <div class="tree-item" style="margin-left: 1.5rem;">
+                        <span class="tree-label">└─ Rejeitada: <strong id="tree-rejeitada">191</strong></span>
+                    </div>
+                </div>
+            </div>
+
             <div class="kpi-grid">
                 <div class="kpi-card">
                     <div class="kpi-label">Total de Vulnerabilidades</div>
-                    <div class="kpi-value">6,348</div>
-                    <div class="kpi-change negative">↑ 12 novas esta semana</div>
+                    <div class="kpi-value" id="kpi-total">6,347</div>
+                    <div class="kpi-change" id="total-percent">100% do total</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Em Andamento</div>
+                    <div class="kpi-label">Em Andamento (Status)</div>
                     <div class="kpi-value">3</div>
                     <div class="kpi-change" id="inprogress-percent">0.0% do total</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Em Backlog</div>
-                    <div class="kpi-value">3,768</div>
-                    <div class="kpi-change" id="backlog-percent">59.4% do total</div>
+                    <div class="kpi-label">Backlog (Status)</div>
+                    <div class="kpi-value">237</div>
+                    <div class="kpi-change" id="backlog-percent">3.7% do total</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Em Aberto</div>
-                    <div class="kpi-value">0</div>
-                    <div class="kpi-change" id="open-percent">0.0% do total</div>
+                    <div class="kpi-label">Em Aberto (Backlog + Revisar + Em Andamento)</div>
+                    <div class="kpi-value" id="kpi-emaberto">251</div>
+                    <div class="kpi-change" id="open-percent">3.9% do total</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Concluídas</div>
-                    <div class="kpi-value">1,316</div>
-                    <div class="kpi-change positive" id="concluido-percent">↓ 20.7% concluídas</div>
+                    <div class="kpi-label">Concluído (Status)</div>
+                    <div class="kpi-value" id="kpi-concluido">5,905</div>
+                    <div class="kpi-change positive" id="concluido-percent">93.0% concluídas</div>
                 </div>
             </div>
 
             <!-- CHARTS -->
-            <div class="charts-grid">
+            <div class="charts-grid" id="charts-section">
                 <div class="chart-card">
-                    <div class="chart-title">Status das Vulnerabilidades</div>
-                    <div class="bar-chart">
+                    <div class="chart-title">Status das Vulnerabilidades (dados filtrados)</div>
+                    <div class="bar-chart" id="status-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Em Andamento</div>
+                            <div class="bar-bar">
+                                <div class="bar-fill" id="bar-andamento" style="width: 0%; background: #F59E0B;">0</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Revisar</div>
+                            <div class="bar-bar">
+                                <div class="bar-fill" id="bar-revisar" style="width: 0%; background: #F59E0B;">0</div>
+                            </div>
+                        </div>
                         <div class="bar-item">
                             <div class="bar-label">Backlog</div>
                             <div class="bar-bar">
-                                <div class="bar-fill" style="width: 66%">4,200</div>
+                                <div class="bar-fill" id="bar-backlog" style="width: 0%; background: #DC2626;">0</div>
                             </div>
                         </div>
                         <div class="bar-item">
-                            <div class="bar-label">Resolvida</div>
+                            <div class="bar-label">Concluído</div>
                             <div class="bar-bar">
-                                <div class="bar-fill" style="width: 33%; background: #10B981;">2,100</div>
+                                <div class="bar-fill" id="bar-concluido" style="width: 0%; background: #10B981;">0</div>
                             </div>
                         </div>
                         <div class="bar-item">
-                            <div class="bar-label">Em Progresso</div>
+                            <div class="bar-label">Rejeitada</div>
                             <div class="bar-bar">
-                                <div class="bar-fill" style="width: 5%; background: #F59E0B;">348</div>
+                                <div class="bar-fill" id="bar-rejeitada" style="width: 0%; background: #6B7280;">0</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="chart-card">
-                    <div class="chart-title">Distribuição por Prioridade</div>
-                    <div class="bar-chart">
+                    <div class="chart-title">Distribuição por Prioridade (dados filtrados)</div>
+                    <div class="bar-chart" id="priority-chart">
                         <div class="bar-item">
-                            <div class="bar-label">P1 - Crítica</div>
+                            <div class="bar-label">P0 - Crítica</div>
                             <div class="bar-bar">
-                                <div class="bar-fill" style="width: 15%">948</div>
+                                <div class="bar-fill" id="bar-p0" style="width: 0%; background: #DC2626;">0</div>
                             </div>
                         </div>
                         <div class="bar-item">
-                            <div class="bar-label">P2 - Alta</div>
+                            <div class="bar-label">P1 - Alta</div>
                             <div class="bar-bar">
-                                <div class="bar-fill" style="width: 28%; background: #F59E0B;">1,780</div>
+                                <div class="bar-fill" id="bar-p1" style="width: 0%; background: #F59E0B;">0</div>
                             </div>
                         </div>
                         <div class="bar-item">
-                            <div class="bar-label">P3 - Média</div>
+                            <div class="bar-label">P2 - Média</div>
                             <div class="bar-bar">
-                                <div class="bar-fill" style="width: 35%; background: #3B82F6;">2,220</div>
+                                <div class="bar-fill" id="bar-p2" style="width: 0%; background: #3B82F6;">0</div>
                             </div>
                         </div>
                         <div class="bar-item">
-                            <div class="bar-label">P4 - Baixa</div>
+                            <div class="bar-label">P3 - Baixa</div>
                             <div class="bar-bar">
-                                <div class="bar-fill" style="width: 22%; background: #10B981;">1,400</div>
+                                <div class="bar-fill" id="bar-p3" style="width: 0%; background: #10B981;">0</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Outros</div>
+                            <div class="bar-bar">
+                                <div class="bar-fill" id="bar-outros" style="width: 0%; background: #6B7280;">0</div>
                             </div>
                         </div>
                     </div>
@@ -694,14 +722,14 @@
                     <table id="vuln-table">
                         <thead>
                             <tr>
-                                <th>Chave</th>
-                                <th>Tipo</th>
-                                <th>Resumo</th>
-                                <th>Status</th>
-                                <th>Prioridade</th>
-                                <th>Responsável</th>
-                                <th>Categoria</th>
-                                <th>Criado</th>
+                                <th>Chave (B)</th>
+                                <th>Tipo de item (A)</th>
+                                <th>Resumo (C)</th>
+                                <th>Status (F)</th>
+                                <th>Classificação de Prioridade (M)</th>
+                                <th>Responsável (D)</th>
+                                <th>Categorias (G)</th>
+                                <th>Criado (H)</th>
                                 <th>Dias Abertos</th>
                             </tr>
                         </thead>
@@ -779,385 +807,6 @@
                 <div class="pagination" id="vuln-pagination"></div>
             </div>
         </div>
-
-        <!-- TAB 2: DEPLOYMENTS -->
-        <div id="deployments" class="tab-content">
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">Serviços Online</div>
-                    <div class="kpi-value">24/24</div>
-                    <div class="kpi-change positive">100% disponível</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Uptime Médio</div>
-                    <div class="kpi-value">99.99%</div>
-                    <div class="kpi-change">↑ 0.01% da meta</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Latência Média</div>
-                    <div class="kpi-value">145ms</div>
-                    <div class="kpi-change positive">↓ 5ms mês passado</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Deployments (7d)</div>
-                    <div class="kpi-value">47</div>
-                    <div class="kpi-change">1.1% taxa de falha</div>
-                </div>
-            </div>
-
-            <div class="filters">
-                <h3 style="margin-bottom: 1rem;">Filtros</h3>
-                <div class="filter-grid">
-                    <div class="filter-group">
-                        <label for="search-deploy">🔍 Buscar</label>
-                        <input type="text" id="search-deploy" placeholder="Nome do serviço...">
-                    </div>
-                    <div class="filter-group">
-                        <label for="env-filter">Ambiente</label>
-                        <select id="env-filter">
-                            <option value="">Todos</option>
-                            <option value="Production">Production</option>
-                            <option value="Staging">Staging</option>
-                            <option value="Development">Development</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="status-deploy-filter">Status</label>
-                        <select id="status-deploy-filter">
-                            <option value="">Todos</option>
-                            <option value="Healthy">Healthy</option>
-                            <option value="Warning">Warning</option>
-                            <option value="Critical">Critical</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="filter-buttons">
-                    <button class="btn btn-primary" onclick="applyFilters('deployments')">🔍 Aplicar Filtros</button>
-                    <button class="btn btn-secondary" onclick="clearFilters('deployments')">↺ Limpar Filtros</button>
-                    <button class="btn btn-secondary export-btn" onclick="exportData('deployments')">📥 Exportar CSV</button>
-                </div>
-            </div>
-
-            <div class="info-cards-grid">
-                <div class="info-card">
-                    <div class="info-card-title">tc-integration-logs</div>
-                    <div class="info-card-item">
-                        <span>Versão:</span><strong>v2.5.1</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Cluster:</span><strong>eks-prod-us-east-1</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Replicas:</span><strong style="color: #10B981;">3/3 ✓</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>CPU:</span><strong>45%</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Memória:</span><strong>62%</strong>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-card-title">ifood-tm-backend</div>
-                    <div class="info-card-item">
-                        <span>Versão:</span><strong>v1.8.3</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Cluster:</span><strong>eks-prod-us-east-1</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Replicas:</span><strong style="color: #10B981;">5/5 ✓</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>CPU:</span><strong>68%</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Memória:</span><strong>71%</strong>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-card-title">normalizacao-produtos</div>
-                    <div class="info-card-item">
-                        <span>Versão:</span><strong>v3.2.0</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Cluster:</span><strong>eks-prod-us-east-1</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Replicas:</span><strong style="color: #10B981;">2/2 ✓</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>CPU:</span><strong>32%</strong>
-                    </div>
-                    <div class="info-card-item">
-                        <span>Memória:</span><strong>48%</strong>
-                    </div>
-                </div>
-            </div>
-
-            <div class="charts-grid">
-                <div class="chart-card">
-                    <div class="chart-title">Saúde dos Serviços</div>
-                    <div class="bar-chart">
-                        <div class="bar-item">
-                            <div class="bar-label">Healthy</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 87%; background: #10B981;">21</div>
-                            </div>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar-label">Warning</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 13%; background: #F59E0B;">3</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 3: FEATURE TOGGLES -->
-        <div id="feature-toggles" class="tab-content">
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">Toggles Habilitados</div>
-                    <div class="kpi-value">18</div>
-                    <div class="kpi-change">Ativos agora</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Toggles Desabilitados</div>
-                    <div class="kpi-value">5</div>
-                    <div class="kpi-change">Não em uso</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Taxa de Cobertura</div>
-                    <div class="kpi-value">78%</div>
-                    <div class="kpi-change positive">↑ 5% mês passado</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Críticos Habilitados</div>
-                    <div class="kpi-value">5/5</div>
-                    <div class="kpi-change positive">100% ✓</div>
-                </div>
-            </div>
-
-            <div class="filters">
-                <h3 style="margin-bottom: 1rem;">Filtros</h3>
-                <div class="filter-grid">
-                    <div class="filter-group">
-                        <label for="search-toggle">🔍 Buscar</label>
-                        <input type="text" id="search-toggle" placeholder="Nome do toggle...">
-                    </div>
-                    <div class="filter-group">
-                        <label for="toggle-status-filter">Status</label>
-                        <select id="toggle-status-filter">
-                            <option value="">Todos</option>
-                            <option value="ENABLED">Habilitado</option>
-                            <option value="DISABLED">Desabilitado</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="toggle-category-filter">Categoria</label>
-                        <select id="toggle-category-filter">
-                            <option value="">Todas</option>
-                            <option value="Security">Security</option>
-                            <option value="Experimental">Experimental</option>
-                            <option value="Infrastructure">Infrastructure</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="filter-buttons">
-                    <button class="btn btn-primary" onclick="applyFilters('feature-toggles')">🔍 Aplicar Filtros</button>
-                    <button class="btn btn-secondary" onclick="clearFilters('feature-toggles')">↺ Limpar Filtros</button>
-                    <button class="btn btn-secondary export-btn" onclick="exportData('feature-toggles')">📥 Exportar CSV</button>
-                </div>
-            </div>
-
-            <div class="info-cards-grid">
-                <div class="info-card">
-                    <div class="info-card-title">🔐 Toggles Críticos de Segurança</div>
-                    <div class="info-card-item">
-                        <span>ENFORCE_2FA</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>SSL_PINNING</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>RATE_LIMIT_API</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>AUDIT_LOGGING</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>DATA_ENCRYPTION</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-card-title">🧪 Experimental / Testing</div>
-                    <div class="info-card-item">
-                        <span>NEW_AUTH_FLOW</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>BETA_API_V2</span>
-                        <span class="badge badge-disabled">DISABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>ML_THREAT_DETECTION</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>ADVANCED_ANALYTICS</span>
-                        <span class="badge badge-disabled">DISABLED</span>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-card-title">🏗️ Toggles de Infraestrutura</div>
-                    <div class="info-card-item">
-                        <span>CACHE_ENABLED</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>CDN_ENABLED</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>LOAD_BALANCING</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                    <div class="info-card-item">
-                        <span>AUTO_SCALING</span>
-                        <span class="badge badge-enabled">ENABLED</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 4: OVERVIEW -->
-        <div id="overview" class="tab-content">
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">Score de Segurança</div>
-                    <div class="kpi-value">82/100</div>
-                    <div class="kpi-change">MEDIUM Risk</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Conformidade</div>
-                    <div class="kpi-value">98%</div>
-                    <div class="kpi-change positive">↑ Dentro da meta</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Incidentes (30d)</div>
-                    <div class="kpi-value">2</div>
-                    <div class="kpi-change positive">↓ 50% vs 30d anterior</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">Tempo Médio de Resolução</div>
-                    <div class="kpi-value">3.2d</div>
-                    <div class="kpi-change positive">↓ Melhorando</div>
-                </div>
-            </div>
-
-            <div class="charts-grid">
-                <div class="chart-card">
-                    <div class="chart-title">Postura de Segurança por Time</div>
-                    <div class="bar-chart">
-                        <div class="bar-item">
-                            <div class="bar-label">Backend</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 85%">85%</div>
-                            </div>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar-label">Frontend</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 78%; background: #3B82F6;">78%</div>
-                            </div>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar-label">DevOps</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 92%; background: #10B981;">92%</div>
-                            </div>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar-label">QA</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 88%; background: #F59E0B;">88%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="chart-card">
-                    <div class="chart-title">Saúde da Infraestrutura</div>
-                    <div class="bar-chart">
-                        <div class="bar-item">
-                            <div class="bar-label">Disponibilidade</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 99.99%; background: #10B981;">99.99%</div>
-                            </div>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar-label">Performance</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 94%; background: #3B82F6;">94%</div>
-                            </div>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar-label">Backup/DR</div>
-                            <div class="bar-bar">
-                                <div class="bar-fill" style="width: 100%; background: #10B981;">100%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="table-section">
-                <div class="section-title">Resumo Executivo</div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td style="font-weight: 600; width: 40%;">✅ Pontos Positivos</td>
-                            <td>
-                                • 100% de Toggles Críticos ativados<br>
-                                • 99.99% de uptime nos serviços<br>
-                                • 2,100 vulnerabilidades resolvidas (33%)<br>
-                                • Conformidade em 98%
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: 600;">⚠️ Pontos de Atenção</td>
-                            <td>
-                                • 948 vulnerabilidades críticas (P1) em backlog<br>
-                                • 4,200 vulnerabilidades em backlog (66%)<br>
-                                • 12 novas vulnerabilidades nesta semana<br>
-                                • Score de segurança em 82/100 (MEDIUM)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight: 600;">📋 Recomendações</td>
-                            <td>
-                                • Priorizar resolução de P1 críticas<br>
-                                • Implementar scanner de vulnerabilidades em CI/CD<br>
-                                • Revisar e atualizar dependências regularmente<br>
-                                • Continuar monitoramento de infraestrutura
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -1167,17 +816,6 @@
         };
 
         // Tab switching
-        function switchTab(tabName) {
-            const tabs = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-btn');
-
-            tabs.forEach(tab => tab.classList.remove('active'));
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
-
         // Filter functionality
         function applyFilters(tab) {
             console.log(`🎯 applyFilters() chamado com tab: ${tab}`);
@@ -1252,7 +890,8 @@
 
             filteredVulns.forEach(vuln => {
                 const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
-                                  vuln.status === 'Concluído' ? 'status-resolved' : 'status-inprogress';
+                                  vuln.status === 'Concluído' ? 'status-resolved' :
+                                  vuln.status === 'Rejeitada' ? 'status-rejected' : 'status-inprogress';
                 const priorityClass = `priority-${vuln.prioridade ? vuln.prioridade.toLowerCase() : 'unknown'}`;
 
                 const row = document.createElement('tr');
@@ -1469,16 +1108,17 @@
             const total = vulns.length;
             const backlog = vulns.filter(v => v.status === 'Backlog').length;
             const resolved = vulns.filter(v => v.status === 'Concluído').length;
-            const inProgress = vulns.filter(v => v.status === 'Em Progresso').length;
+            const inProgress = vulns.filter(v => v.status === 'Em Andamento').length;
+            const reviewing = vulns.filter(v => v.status === 'Revisar').length;
             const rejected = vulns.filter(v => v.status === 'Rejeitada').length;
-            const open = backlog + inProgress + rejected;
+            const open = backlog + inProgress + reviewing;
             const p1 = vulns.filter(v => v.prioridade === 'P1').length;
             const p2 = vulns.filter(v => v.prioridade === 'P2').length;
             const p3 = vulns.filter(v => v.prioridade === 'P3').length;
             const p4 = vulns.filter(v => v.prioridade === 'P4').length;
 
             console.log(`📊 Stats (${dataToUse ? 'filtered' : 'all'}):`);
-            console.log(`   Total: ${total} | Backlog: ${backlog} | Concluído: ${resolved} | Em Progresso: ${inProgress} | Rejeitada: ${rejected} | Em Aberto: ${open}`);
+            console.log(`   Total: ${total} | Backlog: ${backlog} | Em Andamento: ${inProgress} | Revisar: ${reviewing} | Em Aberto: ${open} | Concluído: ${resolved} | Rejeitada: ${rejected}`);
             console.log(`   P1: ${p1} | P2: ${p2} | P3: ${p3} | P4: ${p4}`);
 
             // Find and update KPI cards in the vulnerabilities tab
@@ -1488,6 +1128,14 @@
                 return;
             }
 
+            // Update KPI values by ID for more reliability
+            const kpiTotal = document.getElementById('kpi-total');
+            const kpiConcluido = document.getElementById('kpi-concluido');
+
+            if (kpiTotal) kpiTotal.textContent = total.toLocaleString('pt-BR');
+            if (kpiConcluido) kpiConcluido.textContent = resolved.toLocaleString('pt-BR');
+
+            // Also update by card index as backup
             const kpiCards = vulnTab.querySelectorAll('.kpi-value');
             if (kpiCards.length >= 5) {
                 kpiCards[0].textContent = total.toLocaleString('pt-BR');
@@ -1499,10 +1147,16 @@
             }
 
             // Update percentages
+            const totalPercent = '100.0';
             const inProgressPercent = total > 0 ? ((inProgress / total) * 100).toFixed(1) : 0;
             const backlogPercent = total > 0 ? ((backlog / total) * 100).toFixed(1) : 0;
             const openPercent = total > 0 ? ((open / total) * 100).toFixed(1) : 0;
             const concluidoPercent = total > 0 ? ((resolved / total) * 100).toFixed(1) : 0;
+
+            const totalPercentElem = document.getElementById('total-percent');
+            if (totalPercentElem) {
+                totalPercentElem.textContent = `${totalPercent}% do total`;
+            }
 
             const inProgressPercentElem = document.getElementById('inprogress-percent');
             if (inProgressPercentElem) {
@@ -1521,10 +1175,105 @@
 
             const concluidoPercentElem = document.getElementById('concluido-percent');
             if (concluidoPercentElem) {
-                concluidoPercentElem.textContent = `↓ ${concluidoPercent}% concluídas`;
+                concluidoPercentElem.textContent = `${concluidoPercent}% concluídas`;
             }
 
+            // Update status tree view elements
+            const treeTotal = document.getElementById('tree-total');
+            const treeAndamento = document.getElementById('tree-andamento');
+            const treeRevisar = document.getElementById('tree-revisar');
+            const treeBacklog = document.getElementById('tree-backlog');
+            const treeEmAberto = document.getElementById('tree-emaberto');
+            const treeConcluido = document.getElementById('tree-concluido');
+            const treeRejeitada = document.getElementById('tree-rejeitada');
+
+            if (treeTotal) treeTotal.textContent = total.toLocaleString('pt-BR');
+            if (treeAndamento) treeAndamento.textContent = inProgress.toLocaleString('pt-BR');
+            if (treeRevisar) treeRevisar.textContent = reviewing.toLocaleString('pt-BR');
+            if (treeBacklog) treeBacklog.textContent = backlog.toLocaleString('pt-BR');
+            if (treeEmAberto) treeEmAberto.textContent = open.toLocaleString('pt-BR');
+            if (treeConcluido) treeConcluido.textContent = resolved.toLocaleString('pt-BR');
+            if (treeRejeitada) treeRejeitada.textContent = rejected.toLocaleString('pt-BR');
+
+            // SYNC: Usar a árvore como fonte de verdade para o KPI "Em Aberto"
+            const kpiEmAberto = document.getElementById('kpi-emaberto');
+            if (kpiEmAberto && treeEmAberto) {
+                kpiEmAberto.textContent = treeEmAberto.textContent;
+                console.log(`✅ KPI "Em Aberto" sincronizado com árvore: ${treeEmAberto.textContent}`);
+            }
+
+            console.log(`✅ Tree view atualizado: Total ${total} | Em Andamento ${inProgress} | Revisar ${reviewing} | Backlog ${backlog} | Em Aberto ${open} | Concluído ${resolved} | Rejeitada ${rejected}`);
             console.log(`✅ Percentuais atualizados: Em Progresso ${inProgressPercent}%, Backlog ${backlogPercent}%, Em Aberto ${openPercent}%, Concluído ${concluidoPercent}%`);
+
+            // Update charts with filtered data
+            updateCharts(vulns);
+        }
+
+        function updateCharts(vulns) {
+            if (!vulns || vulns.length === 0) {
+                console.warn('⚠️ Sem dados para atualizar gráficos');
+                return;
+            }
+
+            // Count by status
+            const statusCounts = {
+                'Em Andamento': vulns.filter(v => v.status === 'Em Andamento').length,
+                'Revisar': vulns.filter(v => v.status === 'Revisar').length,
+                'Backlog': vulns.filter(v => v.status === 'Backlog').length,
+                'Concluído': vulns.filter(v => v.status === 'Concluído').length,
+                'Rejeitada': vulns.filter(v => v.status === 'Rejeitada').length,
+            };
+
+            // Count by priority
+            const priorityCounts = {
+                'P0': vulns.filter(v => v.prioridade === 'P0').length,
+                'P1': vulns.filter(v => v.prioridade === 'P1').length,
+                'P2': vulns.filter(v => v.prioridade === 'P2').length,
+                'P3': vulns.filter(v => v.prioridade === 'P3').length,
+                'Outros': vulns.filter(v => v.prioridade === 'Outros').length,
+            };
+
+            // Find max values for width calculation
+            const maxStatus = Math.max(...Object.values(statusCounts));
+            const maxPriority = Math.max(...Object.values(priorityCounts));
+
+            // Update status chart
+            const statusChart = {
+                'bar-andamento': statusCounts['Em Andamento'],
+                'bar-revisar': statusCounts['Revisar'],
+                'bar-backlog': statusCounts['Backlog'],
+                'bar-concluido': statusCounts['Concluído'],
+                'bar-rejeitada': statusCounts['Rejeitada'],
+            };
+
+            for (const [id, count] of Object.entries(statusChart)) {
+                const elem = document.getElementById(id);
+                if (elem) {
+                    const width = maxStatus > 0 ? ((count / maxStatus) * 100) : 0;
+                    elem.style.width = `${width}%`;
+                    elem.textContent = count.toLocaleString('pt-BR');
+                }
+            }
+
+            // Update priority chart
+            const priorityChart = {
+                'bar-p0': priorityCounts['P0'],
+                'bar-p1': priorityCounts['P1'],
+                'bar-p2': priorityCounts['P2'],
+                'bar-p3': priorityCounts['P3'],
+                'bar-outros': priorityCounts['Outros'],
+            };
+
+            for (const [id, count] of Object.entries(priorityChart)) {
+                const elem = document.getElementById(id);
+                if (elem) {
+                    const width = maxPriority > 0 ? ((count / maxPriority) * 100) : 0;
+                    elem.style.width = `${width}%`;
+                    elem.textContent = count.toLocaleString('pt-BR');
+                }
+            }
+
+            console.log(`✅ Gráficos atualizados: Status ${JSON.stringify(statusCounts)} | Priority ${JSON.stringify(priorityCounts)}`);
         }
 
         // Add event listeners for real-time filtering
