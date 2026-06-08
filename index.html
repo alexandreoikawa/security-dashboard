@@ -1149,6 +1149,7 @@
 
         // Load data from JSON file
         let allVulnerabilities = [];
+        let dataSource = {}; // Store the full data object including summary
 
         async function loadData() {
             try {
@@ -1160,10 +1161,11 @@
                 }
 
                 const data = await response.json();
+                dataSource = data; // Save the full data object
 
                 if (data.vulnerabilities && Array.isArray(data.vulnerabilities)) {
                     allVulnerabilities = data.vulnerabilities;
-                    console.log(`✅ LOADED: ${allVulnerabilities.length} vulnerabilities`);
+                    console.log(`✅ LOADED: ${allVulnerabilities.length} vulnerabilities (samples)`);
                     console.log(`   Total expected: ${data.summary?.total}`);
                     console.log(`   Data structure OK: ${allVulnerabilities[0]?.id ? 'YES' : 'NO'}`);
 
@@ -1261,7 +1263,8 @@
 
             if (!vulns || vulns.length === 0) return;
 
-            const total = vulns.length;
+            // Use summary.total when showing all data (no filter), otherwise count filtered results
+            const total = !dataToUse && dataSource.summary?.total ? dataSource.summary.total : vulns.length;
             const backlog = vulns.filter(v => v.status === 'Backlog').length;
             const resolved = vulns.filter(v => v.status === 'Concluído').length;
             const inProgress = vulns.filter(v => v.status === 'Em Andamento').length;
