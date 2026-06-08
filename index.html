@@ -481,46 +481,8 @@
         }
 
         /* Status Tree View */
-        .status-tree-container {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .status-tree {
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: #2C3E50;
-        }
-
-        .tree-item {
-            padding: 0.25rem 0;
-        }
-
-        .tree-root {
-            margin-left: 0;
-            font-weight: 600;
-            color: #1F2937;
-        }
-
-        .tree-label {
-            display: inline-block;
-        }
-
-        .tree-label strong {
-            color: #DC2626;
-            font-weight: 700;
-        }
-
-        /* Unified Tree + KPI Card */
+        /* Status Summary Boxes */
         .unified-summary {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             margin-bottom: 2rem;
         }
 
@@ -533,104 +495,119 @@
             padding-left: 1rem;
         }
 
-        .tree-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #F3F4F6;
-            font-size: 0.95rem;
+        .status-boxes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
         }
 
-        .tree-row:last-child {
-            border-bottom: none;
+        .status-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #9CA3AF;
+            transition: all 0.3s ease;
         }
 
-        .tree-row.root {
-            font-weight: 700;
-            color: #1F2937;
-            padding: 1rem 0;
-            font-size: 1.05rem;
-            border-bottom: 2px solid #DC2626;
-            margin-bottom: 0.5rem;
+        .status-box:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
         }
 
-        .tree-row.root strong {
-            color: #DC2626;
+        .status-box.total {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+            color: white;
+            border-top: none;
         }
 
-        .tree-left {
-            display: flex;
-            align-items: center;
-            flex: 1;
+        .status-box.total .status-label {
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .tree-left .tree-icon {
-            margin-right: 0.75rem;
-            color: #9CA3AF;
-            font-weight: 500;
-            min-width: 80px;
+        .status-box.total .status-value {
+            color: white;
         }
 
-        .tree-left strong {
-            color: #DC2626;
-            font-weight: 700;
-            margin-right: 0.5rem;
+        .status-box.total .status-percent {
+            color: rgba(255, 255, 255, 0.85);
         }
 
-        .tree-left .tree-note {
+        .status-box.em-andamento {
+            border-top-color: #F59E0B;
+        }
+
+        .status-box.revisar {
+            border-top-color: #F59E0B;
+        }
+
+        .status-box.backlog {
+            border-top-color: #DC2626;
+        }
+
+        .status-box.em-aberto {
+            border-top-color: #3B82F6;
+        }
+
+        .status-box.concluido {
+            border-top-color: #10B981;
+        }
+
+        .status-box.rejeitada {
+            border-top-color: #6B7280;
+        }
+
+        .status-label {
             font-size: 0.85rem;
-            color: #9CA3AF;
-            margin-left: 0.5rem;
-        }
-
-        .tree-right {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            min-width: 250px;
-            text-align: right;
-        }
-
-        .tree-value {
-            min-width: 80px;
-            text-align: right;
             font-weight: 600;
-            color: #1F2937;
-        }
-
-        .tree-percent {
-            min-width: 120px;
-            text-align: right;
             color: #6B7280;
-            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .tree-percent.positive {
+        .status-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 0.75rem;
+        }
+
+        .status-percent {
+            font-size: 0.9rem;
+            color: #6B7280;
+            font-weight: 500;
+        }
+
+        .status-note {
+            font-size: 0.8rem;
+            color: #9CA3AF;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .status-box.concluido .status-percent {
             color: #10B981;
             font-weight: 600;
         }
 
         @media (max-width: 768px) {
-            .unified-summary {
-                padding: 1.5rem;
-            }
-
-            .tree-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-
-            .tree-right {
-                width: 100%;
-                justify-content: space-between;
+            .status-boxes-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 1rem;
             }
 
-            .tree-value,
-            .tree-percent {
-                min-width: auto;
+            .status-box.total {
+                grid-column: 1 / -1;
+            }
+
+            .status-value {
+                font-size: 1.75rem;
+            }
+
+            .status-label {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -700,91 +677,59 @@
                 </div>
             </div>
 
-            <!-- UNIFIED SUMMARY: Tree + KPIs -->
+            <!-- UNIFIED SUMMARY: Status Boxes -->
             <div class="unified-summary">
                 <div class="unified-title">📊 Sumário de Vulnerabilidades por Status</div>
 
-                <!-- Total -->
-                <div class="tree-row root">
-                    <div class="tree-left">
-                        <strong>Total:</strong>
-                        <span id="tree-total">6.347</span>
+                <div class="status-boxes-grid">
+                    <!-- Total -->
+                    <div class="status-box total">
+                        <div class="status-label">Total de Vulnerabilidades</div>
+                        <div class="status-value" id="tree-total">6.347</div>
+                        <div class="status-percent" id="total-percent">100.0% do total</div>
                     </div>
-                    <div class="tree-right">
-                        <div class="tree-percent" id="total-percent">100.0% do total</div>
-                    </div>
-                </div>
 
-                <!-- Em Andamento -->
-                <div class="tree-row">
-                    <div class="tree-left">
-                        <span class="tree-icon">├─</span>
-                        <span>Em Andamento:</span>
-                        <strong id="tree-andamento">3</strong>
+                    <!-- Em Andamento -->
+                    <div class="status-box em-andamento">
+                        <div class="status-label">Em Andamento</div>
+                        <div class="status-value" id="tree-andamento">3</div>
+                        <div class="status-percent" id="andamento-percent">0.0% do total</div>
                     </div>
-                    <div class="tree-right">
-                        <div class="tree-percent" id="andamento-percent">0.0% do total</div>
-                    </div>
-                </div>
 
-                <!-- Revisar -->
-                <div class="tree-row">
-                    <div class="tree-left">
-                        <span class="tree-icon">├─</span>
-                        <span>Revisar:</span>
-                        <strong id="tree-revisar">11</strong>
+                    <!-- Revisar -->
+                    <div class="status-box revisar">
+                        <div class="status-label">Revisar</div>
+                        <div class="status-value" id="tree-revisar">11</div>
+                        <div class="status-percent" id="revisar-percent">0.2% do total</div>
                     </div>
-                    <div class="tree-right">
-                        <div class="tree-percent" id="revisar-percent">0.2% do total</div>
-                    </div>
-                </div>
 
-                <!-- Backlog -->
-                <div class="tree-row">
-                    <div class="tree-left">
-                        <span class="tree-icon">├─</span>
-                        <span>Backlog:</span>
-                        <strong id="tree-backlog">237</strong>
+                    <!-- Backlog -->
+                    <div class="status-box backlog">
+                        <div class="status-label">Backlog</div>
+                        <div class="status-value" id="tree-backlog">237</div>
+                        <div class="status-percent" id="backlog-percent">3.7% do total</div>
                     </div>
-                    <div class="tree-right">
-                        <div class="tree-percent" id="backlog-percent">3.7% do total</div>
-                    </div>
-                </div>
 
-                <!-- Em Aberto -->
-                <div class="tree-row">
-                    <div class="tree-left">
-                        <span class="tree-icon">├─</span>
-                        <span>Em Aberto:</span>
-                        <strong id="tree-emaberto">251</strong>
-                        <span class="tree-note">(sum: 237 + 11 + 3)</span>
+                    <!-- Em Aberto -->
+                    <div class="status-box em-aberto">
+                        <div class="status-label">Em Aberto</div>
+                        <div class="status-value" id="tree-emaberto">251</div>
+                        <div class="status-percent" id="emaberto-percent">4.0% do total</div>
+                        <div class="status-note">sum: 237 + 11 + 3</div>
                     </div>
-                    <div class="tree-right">
-                        <div class="tree-percent" id="emaberto-percent">4.0% do total</div>
-                    </div>
-                </div>
 
-                <!-- Concluído -->
-                <div class="tree-row">
-                    <div class="tree-left">
-                        <span class="tree-icon">├─</span>
-                        <span>Concluído:</span>
-                        <strong id="tree-concluido">5.905</strong>
+                    <!-- Concluído -->
+                    <div class="status-box concluido">
+                        <div class="status-label">Concluído</div>
+                        <div class="status-value" id="tree-concluido">5.905</div>
+                        <div class="status-percent" id="concluido-percent">93.0% concluídas</div>
                     </div>
-                    <div class="tree-right">
-                        <div class="tree-percent positive" id="concluido-percent">93.0% concluídas</div>
-                    </div>
-                </div>
 
-                <!-- Rejeitada -->
-                <div class="tree-row">
-                    <div class="tree-left">
-                        <span class="tree-icon">└─</span>
-                        <span>Rejeitada:</span>
-                        <strong id="tree-rejeitada">191</strong>
-                    </div>
-                    <div class="tree-right">
-                        <div class="tree-percent" id="rejeitada-percent">3.0% do total</div>
+                    <!-- Rejeitada -->
+                    <div class="status-box rejeitada">
+                        <div class="status-label">Rejeitada</div>
+                        <div class="status-value" id="tree-rejeitada">191</div>
+                        <div class="status-percent" id="rejeitada-percent">3.0% do total</div>
                     </div>
                 </div>
             </div>
