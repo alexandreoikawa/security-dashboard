@@ -257,9 +257,29 @@
             color: #92400E;
         }
 
+        .status-reviewing {
+            background: #DBEAFE;
+            color: #0C4A6E;
+        }
+
         .status-resolved {
             background: #DCFCE7;
             color: #166534;
+        }
+
+        .status-rejected {
+            background: #F3F4F6;
+            color: #4B5563;
+        }
+
+        .status-unknown {
+            background: #E5E7EB;
+            color: #6B7280;
+        }
+
+        .priority-p0 {
+            background: #FEE2E2;
+            color: #991B1B;
         }
 
         .priority-p1 {
@@ -280,6 +300,16 @@
         .priority-p4 {
             background: #E0F2FE;
             color: #0C4A6E;
+        }
+
+        .priority-outros {
+            background: #F3F4F6;
+            color: #4B5563;
+        }
+
+        .priority-sem {
+            background: #E5E7EB;
+            color: #6B7280;
         }
 
         /* Charts */
@@ -987,10 +1017,38 @@
             table.innerHTML = '';
 
             filteredVulns.forEach(vuln => {
-                const statusClass = vuln.status === 'Backlog' ? 'status-backlog' :
-                                  vuln.status === 'Concluído' ? 'status-resolved' :
-                                  vuln.status === 'Rejeitada' ? 'status-rejected' : 'status-inprogress';
-                const priorityClass = `priority-${vuln.prioridade ? vuln.prioridade.toLowerCase() : 'unknown'}`;
+                // Determine status badge class
+                let statusClass = 'status-unknown';
+                if (vuln.status === 'Backlog') statusClass = 'status-backlog';
+                else if (vuln.status === 'Concluído') statusClass = 'status-resolved';
+                else if (vuln.status === 'Rejeitada') statusClass = 'status-rejected';
+                else if (vuln.status === 'Em Andamento') statusClass = 'status-inprogress';
+                else if (vuln.status === 'Revisar') statusClass = 'status-reviewing';
+
+                // Determine priority badge class
+                let priorityClass = 'priority-outros';
+                if (vuln.prioridade === 'P0') priorityClass = 'priority-p0';
+                else if (vuln.prioridade === 'P1') priorityClass = 'priority-p1';
+                else if (vuln.prioridade === 'P2') priorityClass = 'priority-p2';
+                else if (vuln.prioridade === 'P3') priorityClass = 'priority-p3';
+                else if (vuln.prioridade === 'P4') priorityClass = 'priority-p4';
+                else if (vuln.prioridade === 'Outros') priorityClass = 'priority-outros';
+                else if (vuln.prioridade === 'Sem Prioridade') priorityClass = 'priority-sem';
+
+                // Calculate days open
+                let diasAbertos = '-';
+                if (vuln.criado) {
+                    try {
+                        const [dataParte, horaParte] = vuln.criado.split(' ');
+                        const [dia, mes, ano] = dataParte.split('/');
+                        const dataVuln = new Date(ano, mes - 1, dia);
+                        const dataHoje = new Date();
+                        const milissegundos = dataHoje - dataVuln;
+                        diasAbertos = Math.floor(milissegundos / (1000 * 60 * 60 * 24));
+                    } catch (e) {
+                        diasAbertos = '-';
+                    }
+                }
 
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1002,7 +1060,7 @@
                     <td>${vuln.responsavel || ''}</td>
                     <td><span title="${vuln.categorias}">${(vuln.categorias || '').substring(0, 25)}...</span></td>
                     <td>${vuln.criado || ''}</td>
-                    <td>${vuln.dias_abertos || '-'}</td>
+                    <td>${diasAbertos}</td>
                 `;
                 fragment.appendChild(row);
             });
