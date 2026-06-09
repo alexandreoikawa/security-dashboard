@@ -423,7 +423,7 @@
     "extraction_method": "MCP read_sheet_values - authenticated Google Sheets API",
     "mcp_authenticated_user": "alexandre.oikawa@ifood.com.br",
     "data_verified": true,
-    "extraction_date": "2026-06-09T21:04:31.476173Z",
+    "extraction_date": "2026-06-09T21:27:59.027736Z",
     "spreadsheet_id": "1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY",
     "sheet_name": "Página1",
     "data_range": "A2:M6348",
