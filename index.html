@@ -1000,7 +1000,10 @@
                 if (responsible && vuln.responsavel !== responsible) return false;
 
                 // Category filter
-                if (category && !vuln.categorias.includes(category)) return false;
+                if (category) {
+                    const cats = Array.isArray(vuln.categorias) ? vuln.categorias : (vuln.categorias ? vuln.categorias.split(';').map(c => c.trim()) : []);
+                    if (!cats.includes(category)) return false;
+                }
 
                 return true;
             });
@@ -1204,8 +1207,9 @@
             const categorias = new Set();
             allVulnerabilities.forEach(v => {
                 if (v.categorias) {
-                    v.categorias.split(';').forEach(cat => {
-                        const trimmed = cat.trim();
+                    const cats = Array.isArray(v.categorias) ? v.categorias : v.categorias.split(';');
+                    cats.forEach(cat => {
+                        const trimmed = typeof cat === 'string' ? cat.trim() : String(cat).trim();
                         if (trimmed) categorias.add(trimmed);
                     });
                 }
