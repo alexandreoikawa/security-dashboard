@@ -67,7 +67,7 @@ Começamos do zero com uma abordagem honesta e transparente:
     }
   ],
   "summary": {
-    "total": 6347,
+    "total": 6414,
     "by_status": {...},
     "by_priority": {...},
     "by_area": {...},
@@ -78,7 +78,7 @@ Começamos do zero com uma abordagem honesta e transparente:
     "extraction_method": "MCP read_sheet_values - authenticated Google Sheets API",
     "mcp_authenticated_user": "alexandre.oikawa@ifood.com.br",
     "data_verified": true,
-    "total_records_verified": 6347,
+    "total_records_verified": 6414,
     "compliance": {
       "mcp_rules_followed": true,
       "synthetic_data_included": false,
@@ -133,7 +133,7 @@ python3 build_data_from_mcp_real.py
    - Ou via servidor: `http://localhost:8000/dashboard.html`
 
 2. **Validar dados**
-   - Verificar que 6347 registros estão carregados (no metadata)
+   - Verificar que 6414 registros estão carregados (no metadata)
    - Testar filtros (status, prioridade)
    - Confirmar que estatísticas estão corretas
 

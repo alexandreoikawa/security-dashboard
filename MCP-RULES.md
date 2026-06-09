@@ -12,10 +12,10 @@ Nenhuma exceção. Nenhuma síntese. Nenhuma geração de dados.
 
 - **Sheet ID**: `1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY`
 - **Sheet Name**: `Página1`
-- **Data Range**: `A2:M6348` (cabeçalho em A1:M1)
+- **Data Range**: `A2:M6415` (cabeçalho em A1:M1)
 - **Autenticação**: `alexandre.oikawa@ifood.com.br` via MCP
 - **Função MCP**: `mcp__google_workspace__read_sheet_values()`
-- **Extraction Pattern**: 7 chunks paralelos (1000 + 1000 + 1000 + 1000 + 1000 + 1000 + 347 = 6347 registros)
+- **Extraction Pattern**: 7 chunks paralelos (1000 + 1000 + 1000 + 1000 + 1000 + 1000 + 414 = 6414 registros)
 
 ---
 
@@ -92,7 +92,7 @@ Nenhuma exceção. Nenhuma síntese. Nenhuma geração de dados.
 # 1. Extrair via MCP
 result = mcp__google_workspace__read_sheet_values(
     spreadsheet_id="1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY",
-    range_name="Página1!A2:M6348"  # ou chunk específico
+    range_name="Página1!A2:M6415"  # ou chunk específico
 )
 
 # 2. Processar dados extraídos
