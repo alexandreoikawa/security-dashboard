@@ -1054,6 +1054,11 @@
                 }
 
                 const row = document.createElement('tr');
+                // Convert categorias array to string if needed
+                const categoriasStr = Array.isArray(vuln.categorias)
+                    ? vuln.categorias.join(';')
+                    : (vuln.categorias || '');
+
                 row.innerHTML = `
                     <td><strong>${vuln.id || vuln.chave}</strong></td>
                     <td>${vuln.tipo || ''}</td>
@@ -1061,7 +1066,7 @@
                     <td><span class="status-badge ${statusClass}">${vuln.status || ''}</span></td>
                     <td><span class="status-badge ${priorityClass}">${vuln.prioridade || vuln.classificacao || ''}</span></td>
                     <td>${vuln.responsavel || ''}</td>
-                    <td><span title="${vuln.categorias}">${(vuln.categorias || '').substring(0, 25)}...</span></td>
+                    <td><span title="${categoriasStr}">${categoriasStr.substring(0, 25)}...</span></td>
                     <td>${vuln.criado || ''}</td>
                     <td>${diasAbertos}</td>
                 `;
