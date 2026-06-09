@@ -1,34 +1,98 @@
-# Security Dashboard - The Silence Tech Corp (FY27)
+# 🔐 Security Dashboard - Dados Reais do MCP
 
-Dashboard interativo para visualização e rastreamento de vulnerabilidades e tickets de segurança.
+Dashboard profissional de gerenciamento de vulnerabilidades com dados 100% reais extraídos via MCP autenticado da Google Sheets.
 
-## 🎯 Features
+## 📊 Visão Geral
 
-- 📊 4 KPI Cards com métricas principais
-- 📈 4 Gráficos interativos (Status, Prioridade, Time, Responsável)
-- 📋 Tabela com vulnerabilidades recentes
-- 🌙 Modo escuro (Dark Mode)
-- 🔍 Filtros por Status, Prioridade e Time
-- 📱 Responsivo (Mobile, Tablet, Desktop)
-- 🖨️ Exportação para PDF/Print
-- 🚀 100% Self-contained (sem necessidade de servidor)
+- **Total de Registros:** 6.347 vulnerabilidades verificadas via MCP API
+- **Fonte de Dados:** Google Sheets autenticada (`1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY`)
+- **Usuário Autenticado:** `alexandre.oikawa@ifood.com.br`
+- **Qualidade:** 100% dados reais, zero dados sintéticos
+- **Última Atualização:** Via MCP `read_sheet_values()` API
 
 ## 🚀 Como Usar
 
-1. Abra o arquivo `index.html` em qualquer navegador
-2. Ou acesse a versão online: [link do GitHub Pages aqui]
+### Opção 1: Abrir Local (Recomendado)
+```bash
+python3 -m http.server 8000
+# Abrir: http://localhost:8000/
+```
 
-## 📊 Dados
+### Opção 2: GitHub Pages
+```
+https://alexandreoikawa.github.io/security-dashboard/
+```
 
-- **Fonte**: Google Sheets - The Silence Tech Corp (FY27)
-- **Total de items**: 6.348
-- **Status**: Backlog, In Progress, Concluído
-- **Prioridades**: P1 (Critical), P2 (High), P3 (Medium)
+## 📁 Arquivos Principais
 
-## 🔧 Atualização
+```
+├── index.html                    # Dashboard (profissional)
+├── data.json                     # Dados MCP (6347 registros)
+├── build_data_from_mcp_real.py   # Script de processamento
+├── MCP-RULES.md                  # Regras críticas
+└── README.md                     # Este arquivo
+```
 
-Para atualizar os dados, edite os valores nos gráficos dentro do arquivo `index.html`.
+## 🔄 Atualizar Dados
+
+```bash
+python3 build_data_from_mcp_real.py
+git add data.json
+git commit -m "Update: Fresh data from MCP API"
+```
+
+## 🎯 Funcionalidades
+
+### Filtros
+- 🔍 Busca por ID, título ou responsável
+- 📌 Status: Backlog, Concluído, Rejeitada
+- 🎯 Prioridade: P0, P1, P2, P3, Red Team
+- 👥 Responsável
+- 🏢 Área
+
+### Estatísticas
+- Total em tempo real
+- Distribuição por status
+- Percentuais automáticos
+- Cards com cores indicativas
+
+### Exportação
+- 📥 Export em CSV dos dados filtrados
+
+## 🔐 Dados do MCP
+
+- **Spreadsheet:** 1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY
+- **Sheet:** Página1
+- **Range:** A2:M6348 (6347 registros)
+- **Autenticação:** MCP read_sheet_values() API
+- **Verificação:** 100% real, 0% sintético
+
+## 🛡️ Regras MCP (CRÍTICAS)
+
+✅ **FAZER:**
+- Usar MCP read_sheet_values() autenticado
+- Manter dados do Google Sheets
+- Documentar origem MCP
+
+❌ **NUNCA:**
+- Gerar IDs fictícios
+- Inventar dados
+- Usar fontes alternativas
+
+Ver `MCP-RULES.md` para detalhes.
+
+## 📊 Métricas
+
+| Métrica | Valor |
+|---------|-------|
+| Total | 6.347 |
+| Concluídas | ~93% |
+| Backlog | ~3-4% |
+| Áreas | 10+ |
+| Responsáveis | 50+ |
 
 ---
 
-Created with ❤️ using Python + ECharts + Alpine.js
+**Status:** ✅ Pronto para Produção  
+**Dados:** 100% Real (MCP Autenticado)  
+**Data:** 2026-06-09
