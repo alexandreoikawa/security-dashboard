@@ -1172,16 +1172,28 @@
                     console.log(`   Total expected: ${data.summary?.total}`);
                     console.log(`   Data structure OK: ${allVulnerabilities[0]?.id ? 'YES' : 'NO'}`);
 
-                    // Populate dropdowns with unique values
-                    populateFilterOptions();
+                    try {
+                        // Populate dropdowns with unique values
+                        populateFilterOptions();
+                    } catch (e) {
+                        console.error('Error in populateFilterOptions:', e);
+                    }
 
-                    // Update stats with all data first (before filtering)
-                    updateStatistics(allVulnerabilities);
+                    try {
+                        // Update stats with all data first (before filtering)
+                        updateStatistics(allVulnerabilities);
+                    } catch (e) {
+                        console.error('Error in updateStatistics:', e);
+                    }
 
-                    // Populate table with filters applied
-                    populateTable();
+                    try {
+                        // Populate table with filters applied
+                        populateTable();
+                    } catch (e) {
+                        console.error('Error in populateTable:', e);
+                    }
                 } else {
-                    throw new Error('Formato de dados inválido');
+                    throw new Error(`Formato de dados inválido: vulnerabilities=${typeof data.vulnerabilities}, isArray=${Array.isArray(data.vulnerabilities)}`);
                 }
             } catch (error) {
                 console.error('❌ Erro ao carregar dados:', error);
@@ -1196,12 +1208,17 @@
             }
 
             console.log('🔄 Populando opções de filtros...');
+            console.log(`   allVulnerabilities.length: ${allVulnerabilities.length}`);
+            if (allVulnerabilities.length > 0) {
+                console.log(`   First record: ${JSON.stringify(allVulnerabilities[0], null, 2).substring(0, 200)}`);
+            }
 
             // Get unique values for responsible
             const responsaveis = [...new Set(allVulnerabilities
                 .map(v => v.responsavel)
-                .filter(r => r && r.trim())
+                .filter(r => r && typeof r === 'string' && r.trim())
             )].sort();
+            console.log(`   Responsáveis found: ${responsaveis.length}`);
 
             // Get unique values for categories
             const categorias = new Set();
