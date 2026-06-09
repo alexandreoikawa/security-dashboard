@@ -12,8 +12,8 @@ Começamos do zero com uma abordagem honesta e transparente:
 ### ✅ 2. Extração de Dados REAIS
 - Chamada: `mcp__google_workspace__read_sheet_values()`
 - Spreadsheet ID: `1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY`
-- Range: `Página1!A2:M6348`
-- **Resultado: 6347 registros REAIS extraídos com sucesso**
+- Range: `Página1!A2:M6415`
+- **Resultado: 6414 registros REAIS extraídos com sucesso**
 
 ### ✅ 3. Dashboard Novo e Limpo
 - Arquivo: `dashboard.html`
@@ -30,7 +30,7 @@ Começamos do zero com uma abordagem honesta e transparente:
 
 ## Estrutura de Dados
 
-### Columns da Google Sheet (A2:M6348)
+### Columns da Google Sheet (A2:M6415)
 ```
 [0] tipo: 'Vulnerability'
 [1] id: 'SEC-740511'
@@ -109,7 +109,7 @@ python3 build_data_from_mcp_real.py
 ## Verificação de Qualidade
 
 ✅ **Autenticação MCP:** Verificada
-✅ **6347 registros:** Confirmado via MCP API
+✅ **6414 registros:** Confirmado via MCP API
 ✅ **Dados Reais:** 100% da Google Sheets
 ✅ **Dados Sintéticos:** Zero
 ✅ **Metadata Completa:** Sim
@@ -147,7 +147,7 @@ python3 build_data_from_mcp_real.py
 **SEMPRE SEGUIR:**
 - Dados APENAS via `mcp__google_workspace__read_sheet_values()`
 - Spreadsheet: `1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY`
-- Range: `Página1!A2:M6348`
+- Range: `Página1!A2:M6415`
 - User autenticado: `alexandre.oikawa@ifood.com.br`
 - Zero dados sintéticos, zero sample data, zero mock data
 

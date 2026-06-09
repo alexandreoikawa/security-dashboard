@@ -4,7 +4,7 @@ Dashboard profissional de gerenciamento de vulnerabilidades com dados 100% reais
 
 ## 📊 Visão Geral
 
-- **Total de Registros:** 6.347 vulnerabilidades verificadas via MCP API
+- **Total de Registros:** 6.414 vulnerabilidades verificadas via MCP API
 - **Fonte de Dados:** Google Sheets autenticada (`1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY`)
 - **Usuário Autenticado:** `alexandre.oikawa@ifood.com.br`
 - **Qualidade:** 100% dados reais, zero dados sintéticos
@@ -27,7 +27,7 @@ https://alexandreoikawa.github.io/security-dashboard/
 
 ```
 ├── index.html                    # Dashboard (profissional)
-├── data.json                     # Dados MCP (6347 registros)
+├── data.json                     # Dados MCP (6414 registros)
 ├── build_data_from_mcp_real.py   # Script de processamento
 ├── MCP-RULES.md                  # Regras críticas
 └── README.md                     # Este arquivo
@@ -63,7 +63,7 @@ git commit -m "Update: Fresh data from MCP API"
 
 - **Spreadsheet:** 1X5OzRBls1iiWz8O_GEseL6fn8iRxMcXcNzoDyuo9qsY
 - **Sheet:** Página1
-- **Range:** A2:M6348 (6347 registros)
+- **Range:** A2:M6415 (6414 registros)
 - **Autenticação:** MCP read_sheet_values() API
 - **Verificação:** 100% real, 0% sintético
 
@@ -85,7 +85,7 @@ Ver `MCP-RULES.md` para detalhes.
 
 | Métrica | Valor |
 |---------|-------|
-| Total | 6.347 |
+| Total | 6.414 |
 | Concluídas | ~93% |
 | Backlog | ~3-4% |
 | Áreas | 10+ |
