@@ -363,7 +363,6 @@
                         <option value="">Todos os Status</option>
                         <option value="Backlog">Backlog</option>
                         <option value="Concluído">Concluído</option>
-                        <option value="Rejeitada">Rejeitada</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -413,11 +412,6 @@
                 <div class="status-label">Concluído</div>
                 <div class="status-value" id="concluido-count">0</div>
                 <div class="status-percent" id="concluido-percent">0%</div>
-            </div>
-            <div class="status-box rejeitada">
-                <div class="status-label">Rejeitada</div>
-                <div class="status-value" id="rejeitada-count">0</div>
-                <div class="status-percent" id="rejeitada-percent">0%</div>
             </div>
         </div>
 
@@ -524,7 +518,6 @@
             const total = allVulnerabilities.length;
             const backlog = allVulnerabilities.filter(v => v.status === 'Backlog').length;
             const concluido = allVulnerabilities.filter(v => v.status === 'Concluído').length;
-            const rejeitada = allVulnerabilities.filter(v => v.status === 'Rejeitada').length;
 
             document.getElementById('total-count').textContent = total.toLocaleString('pt-BR');
             document.getElementById('total-percent').textContent = '100% do total';
@@ -534,9 +527,6 @@
 
             document.getElementById('concluido-count').textContent = concluido;
             document.getElementById('concluido-percent').textContent = total > 0 ? `${(concluido/total*100).toFixed(1)}%` : '0%';
-
-            document.getElementById('rejeitada-count').textContent = rejeitada;
-            document.getElementById('rejeitada-percent').textContent = total > 0 ? `${(rejeitada/total*100).toFixed(1)}%` : '0%';
         }
 
         function applyFilters() {
