@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Data Load Test</title>
+    <style>
+        body { font-family: monospace; white-space: pre-wrap; padding: 20px; background: #f5f5f5; }
+        .success { color: green; }
+        .error { color: red; font-weight: bold; }
+        .info { color: blue; }
+        .warning { color: orange; }
+        section { background: white; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Dashboard Data Load Diagnostic</h1>
+    <section id="output"></section>
+    
+    <script>
+        const output = document.getElementById('output');
+        let testsPassed = 0;
+        let testsFailed = 0;
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = type === 'success' ? '✓' : type === 'error' ? '✗' : type === 'warning' ? '⚠' : 'ℹ';
+            const html = `<div class="${type}">${prefix} [${timestamp}] ${message}</div>`;
+            output.innerHTML += html;
+            
+            if (type === 'success') testsPassed++;
+            if (type === 'error') testsFailed++;
+        }
+        
+        async function runTests() {
+            log('Starting comprehensive data load tests...', 'info');
+            log('', 'info');
+            
+            // Test 1: Check if data.json exists and is accessible
+            log('TEST 1: Fetching data.json', 'info');
+            try {
+                const response = await fetch('./data.json?v=' + Date.now());
+                log(`HTTP Response: ${response.status} ${response.statusText}`, response.ok ? 'success' : 'error');
+                
+                if (!response.ok) {
+                    log(`Failed to fetch data.json: HTTP ${response.status}`, 'error');
+                    return;
+                }
+                
+                // Test 2: Parse JSON
+                log('TEST 2: Parsing JSON', 'info');
+                let data;
+                try {
+                    data = await response.json();
+                    log('JSON parsed successfully', 'success');
+                } catch (e) {
+                    log(`JSON parsing error: ${e.message}`, 'error');
+                    return;
+                }
+                
+                // Test 3: Check data structure
+                log('TEST 3: Checking data structure', 'info');
+                log(`typeof data: ${typeof data}`, 'info');
+                log(`data.vulnerabilities exists: ${!!data.vulnerabilities}`, data.vulnerabilities ? 'success' : 'error');
+                log(`data.vulnerabilities is array: ${Array.isArray(data.vulnerabilities)}`, Array.isArray(data.vulnerabilities) ? 'success' : 'error');
+                log(`data.vulnerabilities.length: ${data.vulnerabilities?.length}`, data.vulnerabilities?.length > 0 ? 'success' : 'warning');
+                log(`data.summary exists: ${!!data.summary}`, data.summary ? 'success' : 'error');
+                log(`data.metadata exists: ${!!data.metadata}`, data.metadata ? 'success' : 'error');
+                
+                if (!data.vulnerabilities || !Array.isArray(data.vulnerabilities)) {
+                    log('✗ CRITICAL: data.vulnerabilities is not a valid array', 'error');
+                    return;
+                }
+                
+                // Test 4: Check first record structure
+                log('TEST 4: Checking first record structure', 'info');
+                const first = data.vulnerabilities[0];
+                const requiredFields = ['id', 'titulo', 'status', 'prioridade', 'responsavel', 'categorias'];
+                requiredFields.forEach(field => {
+                    const hasField = field in first;
+                    log(`  ${field}: ${hasField ? first[field] : 'MISSING'}`, hasField ? 'success' : 'error');
+                });
+                
+                // Test 5: Simulate populateFilterOptions
+                log('TEST 5: Simulating populateFilterOptions', 'info');
+                try {
+                    const responsaveis = [...new Set(data.vulnerabilities
+                        .map(v => v.responsavel)
+                        .filter(r => r && typeof r === 'string' && r.trim())
+                    )].sort();
+                    log(`Found ${responsaveis.length} unique responsáveis`, 'success');
+                    
+                    const categorias = new Set();
+                    data.vulnerabilities.forEach(v => {
+                        if (v.categorias) {
+                            const cats = Array.isArray(v.categorias) ? v.categorias : v.categorias.split(';');
+                            cats.forEach(cat => {
+                                const trimmed = typeof cat === 'string' ? cat.trim() : String(cat).trim();
+                                if (trimmed) categorias.add(trimmed);
+                            });
+                        }
+                    });
+                    log(`Found ${categorias.size} unique categories`, 'success');
+                } catch (e) {
+                    log(`Error in populateFilterOptions simulation: ${e.message}`, 'error');
+                }
+                
+                // Test 6: Check summary fields
+                log('TEST 6: Checking summary fields', 'info');
+                const summaryFields = ['total', 'backlog', 'concluído', 'rejeitada', 'p0', 'p1', 'p2', 'p3'];
+                summaryFields.forEach(field => {
+                    const value = data.summary?.[field];
+                    log(`  summary.${field}: ${typeof value === 'number' ? value : 'MISSING'}`, typeof value === 'number' ? 'success' : 'warning');
+                });
+                
+                log('', 'info');
+                log(`SUMMARY: ${testsPassed} passed, ${testsFailed} failed`, testsFailed === 0 ? 'success' : 'error');
+                
+            } catch (error) {
+                log(`Unexpected error: ${error.message}`, 'error');
+                log(error.stack, 'error');
+            }
+        }
+        
+        // Run tests when page loads
+        window.addEventListener('load', runTests);
+    </script>
+</body>
+</html>
